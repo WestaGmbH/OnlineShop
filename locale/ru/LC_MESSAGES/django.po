@@ -671,7 +671,7 @@ msgstr "Аксессуары"
 
 #: .\shop\templates\dedicated_templates\translation_vocabulary.html:45
 msgid "Pendants with chains"
-msgstr "Кулоны на подвеске"
+msgstr "Кулоны на цепи"
 
 #: .\shop\templates\dedicated_templates\translation_vocabulary.html:46
 msgid "Chains"
@@ -683,7 +683,7 @@ msgstr "Колье"
 
 #: .\shop\templates\dedicated_templates\translation_vocabulary.html:48
 msgid "Pearlchains"
-msgstr "Жемчужные подвески"
+msgstr "Жемчужные ожерелья"
 
 #: .\shop\templates\dedicated_templates\translation_vocabulary.html:51
 msgid "Hoops"
