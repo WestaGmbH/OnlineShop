@@ -28,8 +28,8 @@ A Django-based e-commerce service with multi-language support and core shop func
 
 1. **Clone the repo**  
    ```bash
-   git clone https://github.com/westa-ow/OnlineOliverWeberShop
-   cd OnlineOliverWeberShop
+   git clone https://github.com/WestaGmbH/OnlineShop
+   cd OnlineShop
    ```
    
 2. **Create & activate a clean virtual environment**
@@ -51,16 +51,15 @@ A Django-based e-commerce service with multi-language support and core shop func
     cp .env.example .env        # macOS/Linux
     copy .env.example .env      # Windows
     ```
-    ```env
-      DEBUG=True
-      ALLOWED_HOSTS=localhost,127.0.0.1
-      FIREBASE_CREDENTIALS=credentials/key.json
-    ```
-    and fill all variables 
    
-
    - 4.2 Place service Firebase key to credentials/key.json 
-    
+
+   - 4.3 Fill all variables
+   ```env
+     DEBUG=True
+     ALLOWED_HOSTS=localhost,127.0.0.1
+     FIREBASE_CREDENTIALS=credentials/key.json
+   ```
 
 5. **Apply migrations**
     ```bash
