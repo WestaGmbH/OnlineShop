@@ -1,0 +1,88 @@
+{% extends 'widgets/base.html' %}
+{% block title %} Login {% endblock %}
+{% load static %}
+{% load widget_tweaks %}
+{% block content %}
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static "css/profile/profile_information.css" %}">
+    <link rel="stylesheet" href="{% static "css/auth/login.css" %}">
+    <link rel="stylesheet" href="{% static "css/auth/authMain.css" %}">
+</head>
+<body>
+    {% if error_messages or form.errors %}
+        {% include "registration/errorDialog.html" %}
+    {% endif %}
+    {% include 'widgets/navigation_bar.html' %}
+    <section id="wrapper" class="stick_parent_lb">
+        <div id="top_column">
+            <div class="container">
+
+            </div>
+        </div>
+        <div class="container">
+            <div id="content-wrapper">
+                <section id="main">
+                    <div class="container">
+                        <header class="auth-page-header">
+                            <h1 class="auth-header"> {% trans "Log in to your account" %}</h1>
+                        </header>
+                        <section id="content" class="page-content card card-block">
+                            <section class="login-form">
+                                <form id="login-form" action="{% url 'login' %}" method="post">
+                                    {% csrf_token %}
+                                    <div>
+                                        <input type="hidden" name="back" value="my-account">
+                                        <div class="form-group row ">
+                                            <div class="col-md-12 form-control-comment">
+                                                <span class="req">*</span>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <label>Email</label>
+                                                {{ form.username | add_class:"form-control" | attr:"placeholder: " }}
+                                            </div>
+                                        </div>
+                                        <div class="form-group row ">
+                                            <div class="col-md-12 form-control-comment">
+                                                <span class="req">*</span>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <label>{% trans "Password" %}</label>
+                                                <div class="input-group js-parent-focus">
+                                                    {{  form.password | add_class:"form-control js-child-focus js-visible-password" | attr:"placeholder: "  }}
+                                                    {% include "widgetElements/showPasswordBtn.html" %}
+                                                </div>
+                                            </div>
+                                            <div class="forgot-password col-md-12">
+                                                <a href="{% url "password_reset" %}" >
+                                                    {% trans "Forgot your password?" %}
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <footer class="form-footer text-sm-center clearfix">
+                                        <button class="btn btn-primary btn-confirm" data-link-action="sign-in" type="submit">
+                                            {% trans "Sign in" %}
+                                        </button>
+                                    </footer>
+                                </form>
+                            </section>
+                            <div class="logininstead">
+                                <a href="{% url "register" %}" data-link-action="display-register-form">
+                                    {% trans "No account? Create one here" %}
+                                </a>
+                            </div>
+                        </section>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </section>
+</body>
+{{ form.errors|json_script:"form_errors" }}
+</html>
+{% endblock %}

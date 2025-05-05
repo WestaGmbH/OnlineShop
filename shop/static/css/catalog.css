@@ -1,0 +1,679 @@
+*{
+    font-family: 'Poppins', Verdana, sans-serif;
+}
+
+body::-webkit-scrollbar {
+    display: none;
+}
+
+@media (min-width: 1261px) {
+     .everything {
+         display: grid;
+         width: 1260px;
+         max-width: 100%;
+         grid-template-columns: 23% 77%;
+         padding-left: 15px;
+         padding-right: 15px;
+     }
+     .products-section{
+         display: block;
+         margin-left: 60px;
+     }
+     .products-grid{
+        display: grid;
+        justify-content: center;
+        gap: 60px;
+        margin-right: 30px;
+    }
+     .select-per-page, .select-order{
+        border: 1px solid #d5d5d5;
+        width: auto;
+        padding: 10px;
+        margin-top: 20px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+        display: inline-block;
+        height: auto;
+        float:right;
+        color: #777;
+     }
+     .crystal-container {
+        position: relative;
+        width: 20px; /* Adjust based on your image size and desired spacing */
+        height: 20px; /* Adjust based on your image size and desired spacing */
+        margin: 5px 0; /* Vertical spacing between rows */
+     }
+    .crystal-container:nth-child(9n - 1),.crystal-container:nth-child(9n - 2),.crystal-container:nth-child(9n - 3), .crystal-container:nth-child(9n - 4), .crystal-container:nth-child(9n - 5), .crystal-container:nth-child(9n - 6), .crystal-container:nth-child(9n - 7), .crystal-container:nth-child(9n - 8), .crystal-container:nth-child(9n) {
+        margin-left: 21px; /* Adjust to achieve the honeycomb effect */
+    }
+    .crystal-container:nth-child(9n ){
+        /*clear: both;*/
+        margin-right: 20px;
+    }
+    .semi a{
+        font-size: 20px;
+    }
+}
+@media (min-width: 961px) and (max-width: 1260px)
+{
+    .everything {
+         display: grid;
+         width: 1260px;
+         max-width: 100%;
+         grid-template-columns: 23% 77%;
+         padding-left: 15px;
+         padding-right: 15px;
+     }
+     .products-section{
+         display: block;
+         margin-left: 60px;
+     }
+     .products-grid{
+        display: grid;
+        justify-content: center;
+        gap: 60px;
+        margin-right: 30px;
+    }
+     .select-per-page, .select-order{
+        border: 1px solid #d5d5d5;
+        width: auto;
+        padding: 10px;
+        margin-top: 20px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+        display: inline-block;
+        height: auto;
+        float:right;
+        color: #777;
+     }
+     .crystal-container {
+        position: relative;
+        width: 20px; /* Adjust based on your image size and desired spacing */
+        height: 20px; /* Adjust based on your image size and desired spacing */
+        margin: 5px 0; /* Vertical spacing between rows */
+     }
+    .crystal-container:nth-child(9n - 1),.crystal-container:nth-child(9n - 2),.crystal-container:nth-child(9n - 3), .crystal-container:nth-child(9n - 4), .crystal-container:nth-child(9n - 5), .crystal-container:nth-child(9n - 6), .crystal-container:nth-child(9n - 7), .crystal-container:nth-child(9n - 8), .crystal-container:nth-child(9n) {
+        margin-left: 21px; /* Adjust to achieve the honeycomb effect */
+    }
+    .crystal-container:nth-child(9n ){
+        /*clear: both;*/
+    }
+    .semi a{
+        font-size: 20px;
+    }
+}
+@media (max-width: 960px) {
+     .everything {
+         display: flex;
+         flex-direction: column;
+         max-width: 100%;
+     }
+     .products-section{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+     }
+     .products-grid{
+        display: grid;
+        justify-content: center;
+        gap: 60px;
+     }
+     .select-per-page, .select-order{
+        border: 1px solid #d5d5d5;
+        padding: 10px;
+        margin-top: 20px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+        display: inline-block;
+        height: auto;
+        float:right;
+        color: #777;
+     }
+     .crystal-container {
+        position: relative;
+        width: 40px; /* Adjust based on your image size and desired spacing */
+        height: 40px; /* Adjust based on your image size and desired spacing */
+        margin: 5px 0; /* Vertical spacing between rows */
+     }
+     .crystal-container:nth-child(9n - 1),.crystal-container:nth-child(9n - 2),.crystal-container:nth-child(9n - 3), .crystal-container:nth-child(9n - 4), .crystal-container:nth-child(9n - 5), .crystal-container:nth-child(9n - 6), .crystal-container:nth-child(9n - 7), .crystal-container:nth-child(9n - 8), .crystal-container:nth-child(9n) {
+        margin-left: 30px; /* Adjust to achieve the honeycomb effect */
+     }
+     .semi a{
+         font-size: 16px;
+     }
+}
+.everything{
+    margin-top: 120px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.filters-section{
+    margin-top: 80px;
+
+}
+.filters, .categories, .collections{
+    border: 2px solid #f2f2f2;
+    margin: 10px 20px 0 20px;
+    padding: 20px;
+    border-radius: 3px;
+}
+
+#categoriesPanel{
+    display: none;
+}
+
+.filters .filter-price hr,.filters .filter-crystal-color hr, .filters .filter-plating hr, .filters .filter-base hr, .filters .filter-size hr, .filters .filter-name hr{
+    margin: 0 0 10px;
+}
+
+#iconFiltersCollaps{
+    cursor:pointer;
+}
+
+.filters-label, .categories-label, .collections-label{
+    font-size: 20px;
+    margin-left: 20px;
+
+    .fa-plus{
+        font-size: 17px;
+        color: #777777;
+    }
+}
+.filters-label{
+    color: #777777;
+    .filters-label-title{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
+.categories-list, .collections-list{
+    margin-left: 20px;
+    line-height: 35px;
+    /*margin: 0;*/
+    padding: 0;
+}
+
+.categories-list li, .collections-list li{
+    font-size: 14px;
+    display: list-item;
+    list-style: none;
+    margin: 0;
+}
+.categories-list li span, .collections-list li{
+
+    cursor: pointer;
+    font-weight: normal; /* Or another appropriate default weight */
+
+}
+.container-subcategories{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+/*.crystals,*/ .platings, .sizes, .bases{
+    margin-left: 20px;
+}
+ul.sub-category-list {
+    overflow: hidden;
+    height: 0;
+    transition: height 0.2s ease-in-out;
+}
+
+ul.sub-category-list.open {
+    max-height: 500px; /* You might need to adjust this depending on the size of your content */
+}
+.crystal-select{
+    background-color: #fff;
+  border: 2px solid #f2f2f2;
+  padding: 18px;
+  border-radius: 3px;
+  width: 100%;
+  font-size: 14px;
+  cursor: pointer;
+}
+.remove-filters-container{
+    display: none;
+    margin-top: 10px;
+}
+.remove-filters{
+    font-size: 13px;
+    cursor: pointer;
+    width: auto;
+    padding: 0;
+}
+.remove-filters:hover{
+
+    margin-left: 5px;
+
+}
+#contains-in-name{
+    width: 100%;
+    font-size: 16px;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #dadada;
+}
+#submit-button{
+    padding: 20px;
+    width: 100%;
+    margin: 10px 0px 0px 0px;
+    background-color: #003665;
+    border-radius: 4px;
+    color: white;
+    cursor: pointer;
+}
+
+
+.view-settings{
+    display: flex;
+    width: 94%;
+    gap:10px;
+    justify-content: space-between;
+}
+
+
+.select-per-page select,.select-order select{
+    background: none;
+    border: 1px solid #d2d2d2;
+    border-radius: 6px;
+    padding: 5px 10px 5px 10px;
+    text-align: center;
+    color: #777;
+}
+
+
+.filter-panel{
+    max-height: 100%;
+    /*transition: max-height 0.6s;*/
+}
+.filter-panel.collapsed-filters{
+    max-height: 0;
+    overflow: hidden;
+}
+@media (max-width: 768px) {
+   .products-grid{
+      grid-template-columns: 115px 115px;
+   }
+}
+@media (min-width: 768px) and (max-width: 960px)  {
+   .products-grid{
+      grid-template-columns: 115px 115px 115px;
+   }
+}
+@media (min-width: 961px ) and (max-width: 1080px) {
+    .products-grid{
+      grid-template-columns: 115px 115px  ;
+   }
+}
+@media (min-width: 1081px ) and (max-width: 1449px) {
+    .products-grid{
+      grid-template-columns: 115px 115px 115px 115px ;
+   }
+}
+@media (min-width: 1450px ) {
+    .products-grid{
+        grid-template-columns: repeat(auto-fill, minmax(115px, 115px));
+    }
+
+    .filters, .categories, .collections{
+        margin: 10px 20px 0 0;
+    }
+}
+.product-container{
+    cursor: pointer;
+    flex: 0 1 150px;
+    justify-content: center;
+    border-radius: 10px;
+    text-align: center;
+    width: auto;
+}
+.product-container:hover{
+    opacity: 80%;
+
+}
+
+
+.icon-container {
+    position: absolute;
+    top: 60%; /* Adjust based on your design */
+    left: 50%;
+    /* Initial state set to be below center, but visible for debugging */
+    transform: translate(-50%, 60px); /* Adjust starting position */
+    opacity: 0; /* Start fully transparent */
+    transition: opacity 0.5s ease, transform 0.4s ease; /* Apply transitions */
+    display: flex;
+    justify-content: space-around;
+    width: 75px; /* Adjust based on content */
+}
+
+.icon-container div{
+    width: 32px; /* Rectangle size */
+    height: 32px; /* Rectangle size */
+    background-color: white; /* Rectangle color */
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Center the icon within the rectangle */
+    z-index: 2;
+    box-shadow: 0px 4px 6px rgba(0,0,0,0.2); /* Shadow added here */
+}
+/* Style your heart-icon-container and new-icon-container if needed */
+.icon-container i, .icon-container div {
+    transition: transform 0.3s ease; /* Smooth transition for the transform */
+}
+
+/* Hover effect */
+.icon-container div:hover {
+    transform: translateY(-5px); /* Move up by 10 pixels */
+}
+.product-container:hover .icon-container, .card-carousel-item:hover .icon-container {
+    opacity: 1;
+    transform: translate(-50%, -50%); /* Move to center and scale to original size */
+}
+#product-card-success, #product-card{
+    border: none;
+    border-radius: 10px;
+    line-height: 1.5rem;
+    padding: 20px 40px;
+}
+dialog{
+    transform: translate(0%, 0%) scale(0);
+
+    transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
+}
+
+dialog[open] {
+  /* Final state when dialog is open */
+  opacity: 1;
+  transform: translate(-0%, -0%) scale(1);
+}
+::backdrop {
+  background: rgba(0, 0, 0, 0.5);
+  /* Initial state for backdrop fade-in */
+  opacity: 0;
+  transition: opacity 0.4s ease-in-out;
+}
+
+dialog[open]::backdrop {
+  /* Final state for backdrop */
+  opacity: 1;
+}
+
+
+
+strong, spansucc{
+    font-size: 14px;
+}
+
+
+/*SLIDER START*/
+.range_container {
+  display: flex;
+  flex-direction: column;
+  /*width: 80%;*/
+  margin: 30px 30px;
+}
+
+.sliders_control {
+  position: relative;
+  min-height: 14px;
+}
+
+.form_control {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  font-size: 24px;
+  color: #635a5a;
+}
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  pointer-events: all;
+  width: 24px;
+  height: 24px;
+  background-color: #fff;
+  border-radius: 50%;
+  box-shadow: 0 0 0 1px #C6C6C6;
+  cursor: pointer;
+}
+
+input[type=range]::-moz-range-thumb {
+  -webkit-appearance: none;
+  pointer-events: all;
+  width: 16px;
+  height: 16px;
+  background-color: #fff;
+  border-radius: 50%;
+  box-shadow: 0 0 0 1px #C6C6C6;
+  cursor: pointer;
+}
+
+input[type=range]::-webkit-slider-thumb:hover {
+  background: #f7f7f7;
+}
+
+input[type=range]::-webkit-slider-thumb:active {
+  box-shadow: inset 0 0 3px #387bbe, 0 0 9px #387bbe;
+  -webkit-box-shadow: inset 0 0 3px #387bbe, 0 0 9px #387bbe;
+}
+
+.fromInput-text, .toInput-text {
+  color: #8a8383;
+  width: 50px;
+  height: 30px;
+  font-size: 20px;
+  border: none;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+   opacity: 1;
+}
+
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 2px;
+  width: 100%;
+  position: absolute;
+  background-color: #C6C6C6;
+  pointer-events: none;
+}
+
+#fromSlider {
+  height: 0;
+  z-index: 1;
+}
+/*SLIDER END*/
+
+
+.img-section{
+    position: relative;
+    width: 115px;
+    height: 115px;
+    margin-bottom: 20px;
+    /*padding: 10px;*/
+}
+.icon-pre-order{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 30px;
+}
+.tooltip-pre-order {
+    position: absolute;
+    top: 40px; /* Adjust as needed to position below the icon */
+    right: 10px;
+    background-color: #333;
+    color: #fff;
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 12px;
+    white-space: nowrap;
+    visibility: hidden; /* Hidden by default */
+    opacity: 0; /* Transparent initially */
+    transition: opacity 0.3s; /* Smooth transition for showing the tooltip */
+    z-index: 1; /* Ensures the tooltip appears above other content */
+}
+
+.icon-pre-order:hover .tooltip-pre-order {
+    visibility: visible;
+    opacity: 1;
+}
+.info-section{
+    margin-bottom: 10px;
+}
+
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[type='number'] {
+    -moz-appearance: textfield;
+}
+
+.sections-divider{
+    width: 94%;
+    float:left;
+}
+
+
+.pages{
+    display: flex;
+    justify-content: space-between; /* This spreads out the items */
+    align-items: flex-end; /* Aligns items at the bottom */
+    width: 100%; /* Ensure it covers the full width */
+    flex-wrap: wrap; /* Allows items to wrap as needed */
+}
+.semi{
+    display: flex;
+    justify-content: space-between; /* This spreads out the items */
+    align-items: flex-end; /* Aligns items at the bottom */
+    width: 93%; /* Ensure it covers the full width */
+    /*margin-right: 300px;*/
+}
+.semi a{
+    padding: 10px;
+    color: #003665;
+    text-decoration: none;
+}
+.semi a:hover{
+    text-decoration: none;
+    color: #7c9dbe;
+}
+.semi span{
+    padding: 10px;
+    font-size: 20px;
+    color: #003665;
+}
+#jump{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 50px;
+}
+#jump #button-jump-to{
+    margin-left: 10px;
+    padding: 10px;
+    /*width: 80px;*/
+    border-radius: 5px;
+    background-color: #d0d0d0;
+    color: #313131;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.4s all;
+}
+#jump #button-jump-to:hover{
+    background-color: #a6a6a6;
+}
+#jump #page-number-input{
+    padding: 10px;
+    width: 80px;
+    border-radius: 5px;
+    border: 1px solid #d0d0d0;
+    font-size: 16px;
+}
+#jump #button-go{
+    margin-left: 10px;
+    padding: 10px;
+    width: 80px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+input[type=checkbox]{
+    cursor: pointer;
+    display: none;
+}
+.checkbox-label{
+    cursor: pointer;
+    font-size: 14px;
+
+}
+
+.checkbox-label:hover{
+    font-weight: 600;
+
+}
+.crystal-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 100%; /* Ensure the grid fits within the container */
+    margin: 0 auto; /* Center the grid horizontally */
+}
+
+
+.crystal-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    cursor: pointer;
+}
+
+/* Optional: Additional styling for the container and images */
+.crystal-container:hover {
+    transform: scale(1.1);
+    transition: transform 0.2s;
+}
+.selected {
+    border: 2px solid #002222; /* Change background to gray when selected */
+    border-radius: 5px;
+}
+
+.categories-list, .collections-list {
+    transition: max-height 0.5s ease-in-out;
+    overflow: hidden;
+}
+
+.categories.collapsed .categories-list, .collections.collapsed .collections-list {
+    max-height: 0;
+}
+
+.categories-label, .collections-label {
+    cursor: pointer;
+    user-select: none;
+}
+
+.chevron {
+    transition: transform 0.5s ease-in-out;
+}
+
+.categories.collapsed .chevron, .collections.collapsed .chevron {
+    transform: rotate(-90deg);
+}
+
+.mobile-favourites-btn{
+    cursor: pointer;
+    border: 2px solid #797979;
+    display: flex;
+    gap: 5px;
+    padding: 10px ;
+    border-radius: 8px;
+}
+.favourites-mobile-container{
+    display: flex;
+}

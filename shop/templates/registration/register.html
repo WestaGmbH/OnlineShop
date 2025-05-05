@@ -1,0 +1,202 @@
+{% extends 'widgets/base.html' %}
+{% block title %} Registration {% endblock %}
+{% load static %}
+{% load widget_tweaks %}
+{% block content %}
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Registration</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="{% static "css/profile/profile_information.css" %}">
+    <link rel="stylesheet" href="{% static "css/auth/register.css" %}">
+    <link rel="stylesheet" href="{% static "css/auth/authMain.css" %}">
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+</head>
+<body>
+
+    {% if error_messages or form.errors %}
+        {% include "registration/errorDialog.html" %}
+    {% endif %}
+{% include "widgets/navigation_bar.html" %}
+<section id="wrapper" class="stick_parent_lb">
+
+    <aside id="notifications">
+        <div class="container"></div>
+    </aside>
+    <div class="container">
+        <div id="content-wrapper">
+            <section id="main">
+                <div class="container">
+                    <header class="auth-page-header">
+                        <h1 class="auth-header"> {% trans "Create an account" %}</h1>
+                    </header>
+                    <section id="content" class="page-content card card-block">
+                        <section class="sociallogin displayCustomerAccountFormTop authentication hidden-print">
+                            <div class="col-xs-12">
+                            </div>
+                        </section>
+                    <section class="register-form">
+                        <form action="{% url 'register' %}" id="customer-form" class="js-customer-form" method="post">
+                        {% csrf_token %}
+                            <div>
+                                <div class="form-group row ">
+                                    <div class="col-md-12 form-control-valign">
+                                        <label>{% trans "Social title" %}</label>
+                                        {% for radio in form.social_title %}
+                                            <label class="radio-inline">
+                                                <span class="custom-radio">
+                                                    {{ radio.tag }}
+                                                    <span></span>
+                                                </span> {{ radio.choice_label }}
+                                            </label>
+                                        {% endfor %}
+                                    </div>
+                                    <div class="col-md-12 form-control-comment"></div>
+                                </div>
+
+                                <div class="form-group row ">
+
+                                    <div class="col-md-12 form-control-comment">
+                                        <span class="req">*</span>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <label>{% trans "First name" %}</label>
+                                        {{ form.first_name | add_class:"form-control" | attr:"" }}
+                                    </div>
+                                </div>
+                                <div class="form-group row ">
+
+                                    <div class="col-md-12 form-control-comment">
+                                        <span class="req">*</span>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <label>{% trans "Last name" %}</label>
+                                        {{ form.last_name | add_class:"form-control" | attr:"" }}
+                                    </div>
+                                </div>
+                                <div class="form-group row ">
+                                    <div class="col-md-12 form-control-comment">
+                                        <span class="req">*</span>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <label>Email</label>
+                                        {{ form.email | add_class:"form-control" | attr:"placeholder: "|attr:"autocomplete:off" }}
+                                    </div>
+                                </div>
+                                <div class="form-group row ">
+
+                                    <div class="col-md-12 form-control-comment">
+                                        <span class="req">*</span>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <label>{% trans "Password" %}</label>
+                                        <div class="input-group js-parent-focus">
+                                            {{ form.password1 | add_class:"form-control js-child-focus js-visible-password" | attr:""|attr:"autocomplete:new-password" }}
+                                            {% include "widgetElements/showPasswordBtn.html" with target="password1" %}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row ">
+
+                                    <div class="col-md-12 form-control-comment">
+                                        <span class="req">*</span>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <label>{% trans "Confirm you password" %}</label>
+                                        <div class="input-group js-parent-focus">
+                                            {{ form.password2 | add_class:"form-control js-child-focus js-visible-password" | attr:""|attr:"autocomplete:new-password" }}
+                                            {% include "widgetElements/showPasswordBtn.html" with target="password2" %}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row ">
+                                    <div class="col-md-12">
+                                        <label>{% trans "Birthdate" %}</label>
+                                        {{ form.birthdate | add_class:"form-control" | attr:"" }}
+                                        <span class="form-control-comment"> (E.g.: 1970-05-31) </span>
+                                    </div>
+                                    <div class="col-md-12 form-control-comment"></div>
+                                </div>
+                                <div class="form-group row ">
+                                    <div class="col-md-12">
+                                        <label></label>
+                                        <span class="custom-checkbox">
+                                            {{ form.offers | add_class:"form-control" | attr:"" }}
+                                            <span>
+                                                <i class="material-icons rtl-no-flip checkbox-checked"></i>
+                                            </span>
+                                            <label>{% trans "Receive offers from our partners" %}</label>
+                                        </span>
+                                    </div>
+                                    <div class="col-md-12 form-control-comment"></div>
+                                </div>
+                                <div class="form-group row ">
+                                    <div class="col-md-12">
+                                        <label></label>
+                                        <span class="custom-checkbox">
+                                            {{ form.receive_newsletter | add_class:"form-control" | attr:"" }}
+                                            <span>
+                                                <i class="material-icons rtl-no-flip checkbox-checked"></i>
+                                            </span>
+                                            <label>
+                                                {% trans "Sign up for our newsletter" %}<br><em> {% trans "You may unsubscribe at any moment. For that purpose, please find our contact info in the legal notice" %}.</em>
+                                            </label>
+                                        </span>
+                                    </div>
+                                    <div class="col-md-12 form-control-comment"></div>
+                                </div>
+                                <div class="form-group row">
+                                  <div class="col-md-12">
+                                    <div class="custom-checkbox">
+                                      <span class="custom-checkbox">
+                                          {{ form.gdpr_consent|add_class:"form-control" }}
+                                          <span>
+                                              <i class="material-icons rtl-no-flip checkbox-checked"></i>
+                                          </span>
+                                          <label for="{{ form.gdpr_consent.id_for_label }}">
+                                            {% trans "I consent to the processing and use of my personal data in accordance with GDPR" %}
+                                          </label>
+                                          {% if form.gdpr_consent.errors %}
+                                            <div class="text-danger">
+                                              {{ form.gdpr_consent.errors.as_text }}
+                                            </div>
+                                          {% endif %}
+                                      </span>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="form-group row ">
+                                    <div class="col-md-12">
+                                        <label class="help-msg-register">
+                                            {% trans "If you want to register as a B2B customer, please contact us." %}
+                                        </label>
+                                    </div>
+                                    <div class="col-md-12 form-control-comment"></div>
+                                </div>
+                                <div class="g-recaptcha" data-sitekey="{{ RECAPTCHA_SITE_KEY }}"></div>
+                            </div>
+
+
+                            <footer class="form-footer clearfix">
+                                <button class="btn btn-primary btn-confirm wide form-control-submit float-xs-right" data-link-action="save-customer" type="submit" value="REGISTER"> {% trans "Save" %} </button>
+                            </footer>
+                        </form>
+                    </section>
+                        <p class="logininstead">{% trans "Already have an account?" %} <a class="" href="{% url 'login' %}"> {% trans "Log in instead!" %}</a>
+                        </p>
+                    </section>
+                    <footer class="page-footer hidden"> </footer>
+                </div>
+            </section>
+        </div>
+    </div>
+</section>
+</body>
+{{ form.errors|json_script:"form_errors" }}
+</html>
+
+{% endblock %}

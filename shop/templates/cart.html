@@ -1,0 +1,174 @@
+{% extends 'widgets/base.html' %}
+{% load widget_tweaks %}
+{% load static %}
+{% load i18n %}
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My cart</title>
+    <link rel="stylesheet"  href="{% static 'css/SeparateWidgets/product_card.css' %}">
+    <link rel="stylesheet"  href="{% static 'css/catalog.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/checkout_cart.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/checkout/checkout_step_cart.css' %}">
+
+    <meta name="cartConfig" content='{
+        "sale": {{ sale|safe }},
+        "price_category": "{{ price_category|safe }}",
+        "show_quantities": {{ show_quantities|yesno:"true,false" }},
+        "user_email": "{{ user.email }}",
+        "customer_type": "{{ customer_type|escapejs }}",
+        "preOrderIconUrl": "{% static 'icons/pre-order-icon.webp' %}",
+        "silverIconUrl": "{% static 'icons/silverIcon.png' %}",
+        "changeFavouritesStateUrl": "{% url 'change_favorite_state' %}",
+        "addToCatalogUrl": "{% url 'add_from_catalog' %}",
+        "cartUrl": "{% url 'cart' %}",
+        "isAuthenticated": {{ user.is_authenticated|yesno:"true,false" }},
+        "shopPageUrl": "{{ shop_page_url|escapejs }}",
+        "updateInputUrl": "{% url "update_input" %}",
+        "deleteDocumentUrl": "{% url "delete_document" %}",
+        "checkoutAddressesUrl": "{% url 'checkout_addresses' %}",
+        "checkoutAnonymUrl": "{% url 'cart_anonymous' %}",
+        "checkPromocodeUrl": "{% url "check_promocode" %}",
+        "firebaseFunctionScriptUrl": "{% static 'js/firebaseFunctions.js' %}"
+
+    }'>
+    {{ config|json_script:"config-data" }}
+    <script src="{% static "js/checkout/totalCalculation.js" %}"></script>
+    <script type="module" src="{% static "js/firebaseFunctions.js" %}"></script>
+    <script src="{% static "js/productsTransmutation.js" %}"></script>
+    <script src="{% static "js/product_cards.js" %}"></script>
+    <link rel="icon" href="{% static "images/icons/web-icon.png" %}" type="image/x-icon">
+</head>
+<body>
+{% include 'widgets/navigation_bar.html' %}
+<div class="page-content-container">
+    <div class="page-content">
+      <div class="doc-content">
+
+        <div class="shopping-cart-label">{% trans "Shopping cart"%}</div>
+        <ul id="documents-list">
+          {% for document in documents %}
+            <div class="document-container" data-document-id="{{ document.name }}" data-document="{{ document }}">
+                <div class="document-container-body">
+                    <div><img class="document-image" src="{{ document.image_url }}" alt="{{ document.name }}"></div>
+                    <div class="document-info" id="info-{{ document.name }}">
+                        <div class="row-1">
+                            <div class="document-number">{{ document.category }} {{ document.product_name }}</div>
+                            <div class="deleteBut"  data-product-id="{{ document.name }}" ><i class="fa-solid fa-remove"></i></div>
+                        </div>
+                        <div class="row-2">
+                            <div class="column-1">
+
+                                <div class="document-description">{{ document.description }}</div>
+                                <div class="current-quantity" id="current-quantity-{{ document.name }}">{% trans "In cart"%}: {{ document.quantity }}</div>
+                            </div>
+                            <div class="column-2">
+                                <div>
+                                    <div class="quantity-slider" id="quantity-slider-{{ document.name }}" >
+                                        <div class="slider-body" >
+                                            <input class="inp" min=1 id="quantity-input-inp-{{ document.name }}" value="{{ document.quantity }}" type="number" placeholder="Enter the quantity">
+                                            {% if document.quantity_max < 5 %} <span> {% trans "Less than 5 items left" %} </span>{% endif %}
+                                            <button class="quantity-input-button" id="quantity-input-apply-{{ document.name }}">{% trans "Confirm"%}</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="sum" id="sum-{{ document.name }}">{{ currency }}{{ document.sum }}</div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+          </div>
+        {% endfor %}
+
+        </ul>
+      <div class="back-button" >
+        <a class="back-to-shopping" href="{% url "catalog" %}">
+            <i class="fa-solid fa-chevron-left"> </i>
+            <span>{% trans "Continue shopping"%}</span>
+        </a>
+      </div>
+
+      <div class="complementary-products">
+          <h2>{% trans "Recommended based on items in your cart" %}:</h2>
+
+          <div class="carousel-container">
+            <button class="carousel-arrow left-arrow" aria-label="Scroll left">
+              <i class="fa-solid fa-chevron-left"></i>
+            </button>
+
+            <div class="carousel-items">
+              <!-- Example item structure; you would loop through your similar products -->
+
+            </div>
+
+            <button class="carousel-arrow right-arrow" aria-label="Scroll right">
+              <i class="fa-solid fa-chevron-right"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+        <div class="final-container">
+            <div class="finish-section">
+                <div class="card-detailed-totals">
+                    <h4>{% trans "Subtotal" %}</h4>
+                    <div class="info-cart-block">
+                        <div class="block-total">
+                            <div class="final-unique-quantity">5 {% trans "items" %}</div>
+                            <div class="final-sum" id="final-sum">{{ currency }}0.00</div>
+                        </div>
+                    </div>
+                    <div class="promo-block">
+                        {% if not active_coupon %}
+                            <div class="voucher">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag"> <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path> <line x1="7" y1="7" x2="7" y2="7"></line> </svg>
+                                <span class="label-voucher" id="promocode-label">{% trans "Have a promo code?" %}</span>
+                            </div>
+                        {% else %}
+                            <div>
+                                <div class="coupon">{% trans "Active promo code" %}: {{ active_coupon.coupon_code }} </div>
+                                <div class="coupon">({{ active_coupon.discount }}% {% trans "discount" %})</div>
+                            </div>
+                        {% endif %}
+                    </div>
+                    <div class="card-block-totals" >
+                        <div class="cart-total">
+                            <span class="label-total">{% trans "Total"  %} ({% trans "VAT Incl." %})</span>
+                            <span class="value-total">{{ currency }}0.00</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="cart-detailed-actions">
+                    <button class="finish-order" id="finishOrderButton">{% trans "Proceed to checkout"%}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<dialog id="product-card">
+
+</dialog>
+<div id="overlay-cart" class="overlay-cart hidden"></div>
+<div id="promo-modal" class="modal-promocode hidden">
+    <div class="modal-header">
+        <span>{% trans "Enter promo code" %}</span>
+        <button id="close-modal" class="close-button">×</button>
+    </div>
+    <div class="modal-body">
+        <input type="text" id="promocode-input" class="input-field" placeholder="{% trans "Enter promo code" %}">
+        <div id="error-message" class="error-message hidden">{% trans "Promo code is invalid" %}</div>
+        <button id="submit-promocode" class="submit-button">Ok</button>
+    </div>
+</div>
+
+{% include "widgets/overlay.html" %}
+
+</body>
+
+<script type="module" src="{% static "js/checkout/stepCart.js" %}"></script>
+</html>
+
+{%endblock%}

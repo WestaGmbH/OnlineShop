@@ -1,0 +1,108 @@
+{% load static %}
+{% load i18n %}
+
+<link rel="stylesheet" href="{% static 'css/profile/profile_information.css' %}">
+<link rel="stylesheet" href="{% static 'css/profile/profile_order_import.css' %}">
+<section id="content" class="page-content col-md-12 col-lg-9 myacc_content">
+    <header class="page-header">
+        <h1> {% trans "Order import" %}</h1>
+    </header>
+    <div>{% trans "Here you can upload an xlsx file that holds product numbers and quantities to add them to your cart immediately" %}</div>
+
+    <div class="container-buttons">
+        <a class="download-btn" href="{% static "files/Example.xlsx" %}">{% trans "Download example" %} <i class="fa-solid fa-download"></i> </a>
+        <form id="upload-form" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input type="file" id="file-input" name="file" accept=".xlsx,.xls" />
+            <button type="button" class="upload-btn" id="upload-button">{% trans "Upload xlsx" %} <i class="fa-solid fa-upload"></i></button>
+        </form>
+    </div>
+
+    <div id="errorModal" class="modal-import">
+        <div class="modal-overlay">
+            <div class="modal-content-import">
+            <div class="success-message"><span>{% trans "Items were successfully added!" %}</span> <span class="close-button">&times;</span></div>
+            <div class="error-message"> {% trans "Errors occurred during file processing:" %}</div>
+            <span class="close-button">&times;</span>
+            <div id="errorText"></div>
+            <button id="okButton">OK</button>
+        </div>
+        </div>
+
+    </div>
+
+</section>
+<script>
+    document.getElementById('upload-button').addEventListener('click', function() {
+        document.getElementById('file-input').click();
+    });
+
+    document.getElementById('file-input').addEventListener('change', function() {
+        let fileInput = document.getElementById('file-input');
+        let formData = new FormData();
+        formData.append('file', fileInput.files[0]);
+
+        fetch("{% url 'upload_cart' %}", {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'X-CSRFToken': getCookie('csrftoken'),
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === 'success') {
+                let errorModal = document.getElementById("errorModal");
+                let errorText = document.getElementById("errorText");
+                let okButton = document.getElementById("okButton");
+                let closeButton = document.querySelector(".close-button");
+                let overlay = document.querySelector(".modal-overlay");
+
+                if (data.errors) {
+                    errorModal.style.display = "block";
+                    document.body.classList.add('modal-open');
+                    overlay.style.display = "flex"; // Show overlay
+                    errorText.innerHTML = '';
+                    for (let i = 0; i < data.errors.length; i++) {
+                        let errorText1 = document.createElement('p');
+                        errorText1.textContent = data.errors[i];
+                        errorText.appendChild(errorText1);
+                    }
+                } else {
+                    alert('Products updated successfully');
+                }
+
+                okButton.onclick = function () {
+                    errorModal.style.display = "none";
+                    overlay.style.display = "none"; // Hide overlay
+                    document.body.classList.remove('modal-open');
+                };
+
+                closeButton.onclick = function () {
+                    errorModal.style.display = "none";
+                    overlay.style.display = "none"; // Hide overlay
+                    document.body.classList.remove('modal-open');
+                };
+            }
+        })
+        .catch(error => {
+            alert('An error occurred while processing the request');
+            console.error('Error:', error);
+        });
+    });
+    function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                // Does this cookie string begin with the name we want?
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+</script>

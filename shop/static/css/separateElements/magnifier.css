@@ -1,0 +1,128 @@
+.zoom-image {
+    display: block;
+}
+
+.magnifier {
+    position: absolute;
+    border: 3px solid #000;
+    border-radius: 50%;
+    cursor: none;
+    width: 100px;
+    height: 100px;
+    display: none;
+    overflow: hidden;
+    pointer-events: none;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    transform: translate(-50%, -50%) scale(2);
+    transform-origin: center center;
+    z-index: 2000;
+}
+
+.toggle-zoom-button {
+    /*position: absolute;*/
+    right: 10px;
+    bottom: -50px;
+    background: #003765;
+    color: #fff;
+    border: 7px solid #003765;
+    padding: 3px 3px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.toggle-zoom-button i {
+    background: transparent;
+    padding: 11px 13px;
+    border-radius: 3px;
+    color: inherit;
+    transition: all 0.3s ease;
+}
+.toggle-zoom-button:active{
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+
+.toggle-zoom-button:hover {
+    background: #074b91;
+    border-color: #074b91;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+}
+
+.toggle-zoom-button.active {
+    background: #033f72;
+    border-color: #033f72;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+    transform: translateY(-5px);
+
+}
+
+.toggle-zoom-button.active i {
+    background: #074b91;
+    color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.toggle-zoom-button.active:hover {
+    background: #003765;
+    border-color: #003765;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+}
+
+.toggle-zoom-button.active:hover i {
+    background: #074b91;
+    color: #fff;
+}
+
+.toggle-zoom-button:not(.active) {
+    background: #003765;
+    color: #fff;
+    border-color: #003765;
+}
+
+.toggle-zoom-button:not(.active) i {
+    background: transparent;
+    color: inherit;
+}
+
+.zoom-settings {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.zoom-settings label {
+    font-size: 14px;
+    color: #333;
+}
+
+.zoom-settings input[type="range"] {
+    width: 200px;
+    cursor: pointer;
+    height: 2px;
+    position: inherit;
+}
+.zoom-settings input[type="range"]:focus {
+    outline: none;
+}
+
+.zoom-slider-container{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap:10px;
+}
+.magnifier-settings{
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    margin-top: 15px;
+    align-items: center;
+}
+

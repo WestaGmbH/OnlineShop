@@ -1,0 +1,64 @@
+{% load static %}
+{% load i18n %}
+
+<link rel="stylesheet" href="{% static 'css/profile/profile_menu.css' %}">
+
+
+<div class="container-menu">
+    <div class="myaccount">
+        <div class="this-table">
+           <span class="myacc_name" style="word-wrap: break-word;word-break: break-all;white-space: normal;">{% if user.first_name %} {{ user.first_name }} {% elif user.email %} {{ user.email }} {% else %}  {% endif %} {{ user.last_name|default:"" }}</span>
+                <div class="links">
+
+                        <a href="{% url 'admin_tools' feature_name='dashboard'%}">
+                            <i><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-monitor"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg></i>
+                            Dashboard
+                        </a>
+                    {% if user_role == "Admin" %}
+                        <a id="history-link" href="{% url 'admin_tools' feature_name='orders_control'%}">
+                            <i><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 28" width="24" height="24"><path d="M15,2.28l8.8,4.43a2.22,2.22,0,0,1,1.22,2V19.24a2.22,2.22,0,0,1-1.22,2L15,25.66a2.19,2.19,0,0,1-2,0l-8.8-4.43a2.22,2.22,0,0,1-1.21-2V8.69a2.22,2.22,0,0,1,1.22-2L13,2.28A2.19,2.19,0,0,1,15,2.28Z" style="fill:none;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:2px"></path><polyline points="3.45 7.51 14.08 12.86 24.7 7.51" style="fill:none;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:2px"></polyline><line x1="14" y1="26" x2="14" y2="13" style="fill:none;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:2px"></line><line x1="8.59" y1="4.57" x2="19.57" y2="10.09" style="fill:none;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:2px"></line></svg></i>
+                            Orders Control
+                        </a>
+
+                        <a id="identity-link" href="{% url 'admin_tools' feature_name='users_control'%}">
+                            <i><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 28" width="24" height="24"><path d="M16.26,15.7A4,4,0,0,0,14,15H7a4,4,0,0,0-4,4v2l1,2h7" style="fill:none;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:2px"></path><circle cx="10.5" cy="7" r="4" style="fill:none;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:2px"></circle><polygon points="22.96 14.85 26.15 18.04 18.18 26 15 26 15 22.82 22.96 14.85" style="fill:none;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:2px"></polygon></svg></i>
+                            Users control
+                        </a>
+
+                        <a id="identity-link" href="{% url 'admin_tools' feature_name='manage_banners'%}">
+                            <i><svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#003665" viewBox="0 0 24 24">
+                              <path d="M6 2a2 2 0 0 0-2 2v15a3 3 0 0 0 3 3h12a1 1 0 1 0 0-2h-2v-2h2a1 1 0 0 0 1-1V4a2 2 0 0 0-2-2h-8v16h5v2H7a1 1 0 1 1 0-2h1V2H6Z" clip-rule="evenodd"/>
+                            </svg></i>
+                            Manage Banners
+                        </a>
+                        <a id="identity-link" href="{% url 'admin_tools' feature_name='manage_promocodes'%}">
+                            <i><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag"> <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path> <line x1="7" y1="7" x2="7" y2="7"></line> </svg>
+                            </i>
+                            Manage Promocodes
+                        </a>
+                        <a id="identity-link" href="{% url 'admin_tools' feature_name='manage_stores'%}">
+                            <i><svg xmlns="http://www.w3.org/2000/svg" class="admin-icon-stores" width="24px" height="24px" viewBox="0 0 395.71 395.71" fill="currentColor"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g> <path d="M197.849,0C122.131,0,60.531,61.609,60.531,137.329c0,72.887,124.591,243.177,129.896,250.388l4.951,6.738 c0.579,0.792,1.501,1.255,2.471,1.255c0.985,0,1.901-0.463,2.486-1.255l4.948-6.738c5.308-7.211,129.896-177.501,129.896-250.388 C335.179,61.609,273.569,0,197.849,0z M197.849,88.138c27.13,0,49.191,22.062,49.191,49.191c0,27.115-22.062,49.191-49.191,49.191 c-27.114,0-49.191-22.076-49.191-49.191C148.658,110.2,170.734,88.138,197.849,88.138z"></path> </g> </g></svg></i>
+                            Manage Stores
+                        </a>
+                        <a id="identity-link" href="{% url 'upload_db_update'%}">
+                            <i><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" stroke="currentColor" class="bi bi-database-fill" viewBox="0 0 16 16"><path d="M3.904 1.777C4.978 1.289 6.427 1 8 1s3.022.289 4.096.777C13.125 2.245 14 2.993 14 4s-.875 1.755-1.904 2.223C11.022 6.711 9.573 7 8 7s-3.022-.289-4.096-.777C2.875 5.755 2 5.007 2 4s.875-1.755 1.904-2.223"/><path d="M2 6.161V7c0 1.007.875 1.755 1.904 2.223C4.978 9.71 6.427 10 8 10s3.022-.289 4.096-.777C13.125 8.755 14 8.007 14 7v-.839c-.457.432-1.004.751-1.49.972C11.278 7.693 9.682 8 8 8s-3.278-.307-4.51-.867c-.486-.22-1.033-.54-1.49-.972"/><path d="M2 9.161V10c0 1.007.875 1.755 1.904 2.223C4.978 12.711 6.427 13 8 13s3.022-.289 4.096-.777C13.125 11.755 14 11.007 14 10v-.839c-.457.432-1.004.751-1.49.972-1.232.56-2.828.867-4.51.867s-3.278-.307-4.51-.867c-.486-.22-1.033-.54-1.49-.972"/><path d="M2 12.161V13c0 1.007.875 1.755 1.904 2.223C4.978 15.711 6.427 16 8 16s3.022-.289 4.096-.777C13.125 14.755 14 14.007 14 13v-.839c-.457.432-1.004.751-1.49.972-1.232.56-2.828.867-4.51.867s-3.278-.307-4.51-.867c-.486-.22-1.033-.54-1.49-.972"></path>
+                            </svg></i>
+                            Database update
+                        </a>
+                    {% elif user_role == "Special_Admin" %}
+                        <a id="history-link" href="{% url 'admin_tools' feature_name='orders_control'%}">
+                            <i><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 28" width="24" height="24"><path d="M15,2.28l8.8,4.43a2.22,2.22,0,0,1,1.22,2V19.24a2.22,2.22,0,0,1-1.22,2L15,25.66a2.19,2.19,0,0,1-2,0l-8.8-4.43a2.22,2.22,0,0,1-1.21-2V8.69a2.22,2.22,0,0,1,1.22-2L13,2.28A2.19,2.19,0,0,1,15,2.28Z" style="fill:none;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:2px"></path><polyline points="3.45 7.51 14.08 12.86 24.7 7.51" style="fill:none;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:2px"></polyline><line x1="14" y1="26" x2="14" y2="13" style="fill:none;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:2px"></line><line x1="8.59" y1="4.57" x2="19.57" y2="10.09" style="fill:none;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:2px"></line></svg></i>
+                            Orders Control
+                        </a>
+
+                        <a id="identity-link" href="{% url 'admin_tools' feature_name='users_control'%}">
+                            <i><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 28" width="24" height="24"><path d="M16.26,15.7A4,4,0,0,0,14,15H7a4,4,0,0,0-4,4v2l1,2h7" style="fill:none;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:2px"></path><circle cx="10.5" cy="7" r="4" style="fill:none;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:2px"></circle><polygon points="22.96 14.85 26.15 18.04 18.18 26 15 26 15 22.82 22.96 14.85" style="fill:none;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:2px"></polygon></svg></i>
+                            Users control
+                        </a>
+                    {% endif %}
+
+                </div>
+
+        </div>
+    </div>
+</div>

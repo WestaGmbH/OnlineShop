@@ -1,0 +1,32 @@
+{% load static %}
+{% load i18n %}
+
+<link rel="stylesheet"  href="{% static 'css/profile/profile_information.css' %}">
+<link rel="stylesheet"  href="{% static 'css/profile/profile_catalogs.css' %}">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<script src="https://unpkg.com/pdfjs-dist@2.16.105/legacy/build/pdf.js"></script>
+<section id="content" class="page-content col-md-12 col-lg-9 myacc_content">
+  <header class="profile-page-header">
+    <h1>{% trans "Catalogs" %}</h1>
+  </header>
+  <div class="catalog-grid">
+  {% for file in pdf_files %}
+    <div class="catalog-card" data-url="{{ file.url }}">
+      <img class="catalog-image" src="{{ file.preview_img_url }}" alt="{{ file.name }}" />
+      <h3 class="file-name">
+        {{ file.name }}
+        <a
+          href="{{ file.url }}"
+          class="download-btn"
+          data-filename="{{ file.name }}.pdf"
+          title="Download {{ file.name }}"
+        >
+          <i class="fa fa-download"></i>
+        </a>
+      </h3>
+    </div>
+  {% endfor %}
+</div>
+
+</section>
+<script src="{% static "js/pages/profile/profile_catalogs.js" %}"></script>

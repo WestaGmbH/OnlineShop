@@ -1,0 +1,361 @@
+{% extends 'widgets/base.html' %}
+{% block content %}
+{% load static %}
+{% load i18n %}
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>Product {{product_id}}</title>
+    <script src="https://kit.fontawesome.com/yourcode.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+    <link rel="stylesheet" href="{% static "css/shop_page.css" %}">
+    <link rel="stylesheet"  href="{% static 'css/catalog.css' %}">
+    <link rel="icon" href="{% static "images/icons/web-icon.png" %}" type="image/x-icon">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="{% static "js/product_cards.js" %}"></script>
+
+</head>
+<body>
+
+<script>
+    let cartData = {{cart|safe}};
+    let inside = "{{ inside|safe }}";
+</script>
+
+{% include 'widgets/navigation_bar.html' %}
+
+<div id="product-card" {% if not is_available %} style="height: 50vh" {% endif %}>
+    {% if is_available %}
+        <div class="card-content">
+            <div>
+                <div class="image-wrapper">
+                    <div class="image-container">
+                        {% if document.additionalImages %}
+                            <button class="arrow-left"><i class="fas fa-arrow-left" aria-hidden="true"></i></button>
+                        {% endif %}
+                        <img class="zoom-image img-card" id="main-page-image" alt="{{ document.name }}" src="{{ document.image_url }}" width="400" height="400">
+                        {% if document.additionalImages %}
+                            <button class="arrow-right"><i class="fas fa-arrow-right" aria-hidden="true"></i></button>
+                        {% endif %}
+                    </div>
+                    <div class="thumbnails-container">
+                        {% if document.additionalImages %}
+                            {% for image in document.additionalImages %}
+                                <img class="thumbnail-item {% if forloop.first %}active{% endif %}" alt="" src="{{ image }}" width="90" height="90">
+                            {% endfor %}
+                        {% else %}
+
+                        {% endif %}
+                    </div>
+                </div>
+
+            </div>
+            <div class="close-card">
+                <i class="fa-solid fa-close" aria-hidden="true"></i>
+            </div>
+            <div class="info-column">
+                <h2>{{ document.category }} {{ document.product_name }}</h2>
+                <h4>{{ document.name }}</h4>
+                <div class="price-text">{{ currency }}{{ document.price }}</div>
+
+                <div class="property-container">
+                    <span class="label-name">
+                        {% trans "Plating" %}:
+                    </span>
+                    <span class="label-value">
+                        {{ document.plating }}
+                    </span>
+                </div>
+                <div class="property-container">
+                    <span class="label-name">
+                        {% trans "Stone" %}:
+                    </span>
+                    <span class="label-value">
+                        {{ document.stone }}
+                    </span>
+                </div>
+                {% if document.size %}
+                    <div class="property-container">
+                        <span class="label-name">
+                            {% trans "Size" %}:
+                        </span>
+                        <span class="label-value">
+                            {{ document.size }}
+                        </span>
+                    </div>
+                {% endif %}
+                <div class="dimensions-container">
+                    {% if document.product_width %}
+                        <div>
+                            <span class="label-name">
+                                {% trans "Product width" %}:
+                            </span>
+                            <span>
+                                {{ document.product_width }} cm
+                            </span>
+                        </div>
+                    {% endif %}
+                    {% if document.product_height %}
+                        <div>
+                            <span class="label-name">
+                                {% trans "Product height" %}:
+                            </span>
+                            <span>
+                                {{ document.product_height }} cm
+                            </span>
+                        </div>
+                    {% endif %}
+                </div>
+            {% if document.chain_length %}
+                <div class="property-container chain-length-container">
+                    <span class="card-dropdown-label">
+                        {% trans "Chain length" %}:
+                    </span>
+                    <span>
+                        {{ document.chain_length }} cm
+                    </span>
+                </div>
+            {% endif %}
+                <div class="bottom-card-part">
+                    {% if document.quantity > 0 %}
+                        <div class="input-container">
+                            <button id="btn-minus" class="minus-button-dialog no-select">-</button>
+                            <input id="input-quantity" type="number" style="text-align: center;" class="quantity-input-dialog" min="1" value="1">
+                            <button id="btn-plus" class="plus-button-dialog no-select">
+                                +
+                            </button>
+                        </div>
+                    {% endif %}
+                    <div class="maximum-span">
+                        {% if show_quantities %}
+                            {% if document.quantity > 5 or document.pre_order %}
+                                {% trans "In stock" %}: {{ document.quantity }}
+                            {% elif document.quantity <= 0 %}
+                                <i class="fa-solid fa-remove cross-icon"></i> {% trans "Out of stock" %}
+                            {% endif %}
+                        {% else %}
+                            {% if document.quantity > 5 or document.pre_order %}
+                                <i class="fa-solid fa-check"></i> {% trans "In stock" %}
+                            {% elif document.quantity < 5 and document.quantity > 0 %}
+                                {% trans "Less than 5 pieces left!" %}
+                            {% elif document.quantity <= 0 %}
+                                <i class="fa-solid fa-remove cross-icon"></i> {% trans "Out of stock" %}
+                            {% endif %}
+                        {% endif %}
+                    </div>
+                    {% if document.quantity > 0 %}
+                        <button id="add-to-cart-search" type="submit" class="add-to-cart-dialog">
+                            <i class="fa-solid fa-cart-shopping" aria-hidden="true"></i>
+                            <span>{% trans "Add to cart" %}</span>
+                        </button>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    {% else %}
+        <div>
+            <span class="wrong-product"> {% trans "Oops... searched product is not available" %}</span>
+        </div>
+    {% endif %}
+</div>
+
+<dialog id="product-card-success" >
+
+</dialog>
+
+<script></script>
+{% include "widgets/footer.html" %}
+
+</body>
+
+    {{ document|json_script:"document" }}
+
+<script>
+
+    const currency_symbol = "{{ currency|safe }}";
+    let current_thumbnail_index = 0;
+    document.addEventListener('DOMContentLoaded', function() {
+        current_thumbnail_index = 0;
+    });
+
+    let csrftoken = getCookie('csrftoken');
+    let product_dict = JSON.parse(document.getElementById('document').textContent);
+
+
+    document.addEventListener("DOMContentLoaded", async function () {
+        let containerWrapper = document.querySelector('.image-wrapper');
+        let image = document.getElementById('main-page-image');
+        if (window.matchMedia("(min-width: 769px)").matches) {
+            setupZoom(containerWrapper, image, vocabulary, true);
+        }
+        thumbnailsSetup();
+    });
+
+    function thumbnailsSetup(){
+        const arrowLeft = document.querySelector(".arrow-left");
+        const arrowRight = document.querySelector(".arrow-right");
+        const items = document.querySelectorAll('.thumbnail-item');
+        const mainImage = document.getElementById('main-page-image');
+        const itemsImages = Array.from(document.querySelectorAll('.thumbnail-item'))
+                   .map(img => img.src);
+        // Click handlers for arrows
+        if (arrowLeft){
+            arrowLeft.addEventListener('click', function () {
+                if (current_thumbnail_index > 0) {
+                    updateImage(current_thumbnail_index - 1);
+                }
+            });
+        }
+        if (arrowRight) {
+            arrowRight.addEventListener('click', function () {
+                if (current_thumbnail_index < items.length - 1) {
+                    updateImage(current_thumbnail_index + 1);
+                }
+            });
+        }
+
+        // Image refresh function and arrow visibility control
+        function updateImage(index) {
+            if (index < 0 || index >= items.length) return;
+            current_thumbnail_index = index;
+
+            mainImage.src = itemsImages[index];
+            // If we are in the first image, make the left arrow transparent and not clickable, otherwise show it
+            arrowLeft .style.opacity       = index === 0           ? '0' : '1';
+            arrowLeft .style.pointerEvents = index === 0           ? 'none' : 'auto';
+            arrowRight.style.opacity       = index === items.length - 1 ? '0' : '1';
+            arrowRight.style.pointerEvents = index === items.length - 1 ? 'none' : 'auto';
+
+            const thumbItems = document.querySelectorAll('.thumbnail-item');
+            thumbItems.forEach((thumb, idx) => {
+                thumb.classList.toggle('active', idx === index);
+            });
+
+        }
+
+        const thumbnails = document.querySelectorAll('.thumbnail-item');
+        thumbnails.forEach((thumb, index) => {
+
+            if (index === 0) thumb.classList.add('active');
+            thumb.addEventListener('click', function () {
+                updateImage(index);
+            });
+        });
+        updateImage(0);
+    }
+
+
+    document.getElementById('add-to-cart-search').addEventListener('click', function (){
+        let input = document.getElementById('input-quantity');
+
+        fetch("{% url "add_from_catalog" %}", {
+            method: 'POST',
+            headers: {
+                'X-CSRFToken': csrftoken,
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({'document': product_dict.name, 'quantity': parseInt(input.value)})
+
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data.status);
+            if (data.status === 'success') {
+
+                trackAddToCart(data.product.name, data.product.product_name, data.sum, currency==="$"? "USD":"EUR");
+                setTimeout(() => {
+                    activate_success_card_shop(data.product, data.quantity, data.cart_size, data.subtotal, currency, vocabulary, "{% url "cart" %}");
+                }, 0);
+
+            } else {
+                alert(`{% trans 'An error occured' %}: ` + data.error);
+            }
+        });
+    });
+    document.getElementById('input-quantity').addEventListener('input', function() {
+        let input = document.getElementById('input-quantity');
+        if(!product_dict.pre_order) {
+            if (input.value > product_dict.quantity || input.value < 1) {
+                if (input.value > product_dict.quantity) {
+                    input.value = product_dict.quantity;
+                } else {
+                    input.value = 1;
+                }
+                alert(`{% trans 'Quantity number has to be less than or equal to quantity number in stock or and be greater than 0'%}`);
+            }
+        }
+        else{
+            if (input.value > 20 || input.value < 1) {
+                if (input.value > 20) {
+                    input.value = 20;
+                } else {
+                    input.value = 1;
+                }
+                alert(`{% trans "Maximum items for pre-order is 20, minimum is 1" %}`);
+            }
+        }
+    });
+
+    document.getElementById('btn-minus').addEventListener('click', () => {
+        let input = document.getElementById('input-quantity');
+        if(input.value > 1)
+            input.value -= 1;
+    });
+    document.getElementById('btn-plus').addEventListener('click', () => {
+        let input = document.getElementById('input-quantity');
+        console.log(product_dict);
+        if(!product_dict.pre_order) {
+            console.log("Here");
+            if (input.value < product_dict.quantity) {
+                let currentValue = Number(input.value === "" ? 1 : input.value);
+                input.value = currentValue + 1;
+            }
+        }
+        else{
+            console.log("Here2");
+            if (input.value < 20) {
+                let currentValue = Number(input.value === "" ? 1 : input.value);
+                input.value = currentValue + 1;
+            }
+        }
+    });
+    function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+
+    function changeCurrentQuantityText(productId, quantity){
+        const current_quantity = document.getElementById('current-quantity-'+productId);
+        current_quantity.innerText = "{{ _("Current quantity")|escapejs }}: "+ quantity;
+    }
+$.ajaxSetup({
+    beforeSend: function(xhr, settings) {
+        if (!this.crossDomain) {
+            xhr.setRequestHeader("X-CSRFToken", csrftoken);
+        }
+    }
+});
+
+function trackAddToCart(productId, productName, productPrice, currency) {
+  cbq('track', 'AddToCart', {
+    content_ids: [productId],
+    content_name: productName,
+    value: productPrice,
+    currency: currency
+  });
+}
+
+</script>
+{%endblock%}

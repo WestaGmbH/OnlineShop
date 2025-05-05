@@ -1,0 +1,45 @@
+.selected-lang{
+    font-weight: normal;
+}
+
+.selected-lang::before{
+    background-image: url(https://www.worldometers.info/img/flags/gm-flag.gif);
+}
+.gm:before {
+    background-image: url(https://www.worldometers.info/img/flags/gm-flag.gif);
+}
+
+.uk:before {
+    background-image: url(https://www.worldometers.info/img/flags/uk-flag.gif);
+}
+.fr:before {
+    background-image: url(https://www.worldometers.info/img/flags/fr-flag.gif);
+}
+
+.sp:before {
+    background-image: url(https://www.worldometers.info/img/flags/sp-flag.gif);
+}
+.it:before {
+    background-image: url(https://www.worldometers.info/img/flags/it-flag.gif);
+}
+.language-dropdown{
+    align-content: center;
+    margin-right: 10px;
+}
+.selected-language {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-size: 40px 40px;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 40px;
+    height: 40px;
+    padding-left: 10px;
+    border-radius: 50px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    text-indent: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+}

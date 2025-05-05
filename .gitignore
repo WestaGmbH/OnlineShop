@@ -1,0 +1,24 @@
+#GitIgnore
+
+# Python bytecode
+**/__pycache__/
+*.py[cod]
+
+# Virtualenv
+venv/
+
+# Environment files
+.env
+
+# Django local DB
+db.sqlite3
+
+# Logs
+logs/
+*.log
+
+# Firebase service account (секрет)
+credentials/
+
+# User uploads
+shop/media/

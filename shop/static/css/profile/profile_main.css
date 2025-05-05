@@ -1,0 +1,27 @@
+@media (min-width: 769px) {
+    .cont1-1 {
+        width: 1460px;
+        max-width: 100%;
+        display: flex;
+        gap:10px;
+    }
+}
+@media (max-width: 768px) {
+    .cont1-1 {
+        width: 100%;
+        max-width: 100%;
+        display: flex;
+    }
+}
+.cont1-1{
+   margin-top: 150px;
+   margin-left: auto;
+   margin-right: auto;
+   padding-left: 15px;
+   padding-right: 15px;
+}
+
+.profile-page-header h1{
+    margin-bottom: 40px!important;
+    color: #0a0a0a!important;
+}

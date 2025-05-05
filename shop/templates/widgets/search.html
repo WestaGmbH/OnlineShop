@@ -1,0 +1,31 @@
+{% block content %}
+
+{% load static %}
+{% load i18n %}
+<meta charset="UTF-8">
+<meta name="search-urls" content='{
+  "fetchNumbersUrl": "{% url "fetch_numbers" %}",
+  "shopPageUrlPattern": "{% url "shop_page" "DUMMY_ID" %}"
+}'>
+<meta name="csrftoken" content="{{ csrf_token }}">
+<link rel="stylesheet" href="{% static 'css/SeparateWidgets/search.css' %}">
+<div id="side_search_wrap" class="searchPanel">
+    <div class="search-header">
+        <h4 class="side_title">Search</h4>
+        <span class="close_cross">
+            <i>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </i>
+        </span>
+    </div>
+    <div class="search-container">
+        <input type="text" id="input-search" class="search-form" autocomplete="off" placeholder="Start typing here...">
+        <div id="dropdown"></div>
+    </div>
+</div>
+
+<script src="{% static 'js/widgets/search.js' %}" defer></script>
+{% endblock %}
