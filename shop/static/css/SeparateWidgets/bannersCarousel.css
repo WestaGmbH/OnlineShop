@@ -1,13 +1,17 @@
 .carousel-item {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    display: none;
-    transition: opacity 0.5s ease-in-out;
-    text-align: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+  text-align: center;
+  display: none;
+}
+
+.carousel-item.active {
+  display: block;
 }
 @media only screen and (min-width: 769px) {
     .carousel {
@@ -36,10 +40,33 @@
     }
 }
 
-.carousel-item.active {
-    opacity: 1;
-}
 .carousel-item img {
     width: 100%; /* Adjust based on your needs */
     vertical-align: middle;
+}
+.carousel-nav {
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.5);
+  border: none;
+  color: white;
+  font-size: 2rem;
+  padding: 0.2em 0.5em;
+  cursor: pointer;
+  z-index: 10;
+  border-radius: 3px;
+}
+.carousel-prev {
+  left: 10px;
+}
+
+.carousel-next {
+  right: 10px;
+}
+.carousel-nav:focus {
+  outline: none;
+}
+.carousel-wrapper{
+    display: flex;
+    align-items: center;
+    gap:10px;
 }

@@ -1,45 +1,86 @@
 document.addEventListener("DOMContentLoaded", async function () {
     setupImageCarousel();
 });
+// function setupImageCarousel() {
+//
+//     function cycleItems() {
+//
+//
+//         requestAnimationFrame(() => {
+//             // This slight delay ensures the browser has time to apply the above styles
+//             setTimeout(() => {
+//                 currentItem.style.display = "none";
+//             }, 500);
+//         });
+//
+//         // Use requestAnimationFrame to ensure the next frame starts the fade-in
+//         requestAnimationFrame(() => {
+//             // This slight delay ensures the browser has time to apply the above styles
+//             setTimeout(() => {
+//                 nextItem.style.opacity = 1;
+//             }, 20);
+//         });
+//
+//
+//     }
+//
+//     setInterval(cycleItems, 8000); // Adjusted timing for visual clarity
+// }
 function setupImageCarousel() {
-    let currentIndex = 0;
-    const items = document.querySelectorAll('.carousel-item');
-    const itemAmount = items.length;
+  let currentIndex = 0;
+  const items = document.querySelectorAll('.carousel-item');
+  const itemAmount = items.length;
+  let autoTimer;
 
-    // Initialize the first item's opacity directly for clarity
-    items[0].style.display = "block";
-    items[0].style.opacity = 1;
+  items[0].style.display = "block";
+  items[0].style.opacity = '1';
 
-    function cycleItems() {
-        const currentItem = items[currentIndex];
-        const nextIndex = (currentIndex + 1) % itemAmount;
-        const nextItem = items[nextIndex];
+  startAutoCycle();
 
-        // Fade out the current item by directly setting opacity to 0
-        currentItem.style.opacity = 0;
-        requestAnimationFrame(() => {
-            // This slight delay ensures the browser has time to apply the above styles
-            setTimeout(() => {
-                currentItem.style.display = "none";
-            }, 500);
-        });
+  document.getElementById('carousel-prev')
+    .addEventListener('click', () => {
+      stopAutoCycle();
+      showSlide((currentIndex - 1 + itemAmount) % itemAmount);
+      startAutoCycle();
+    });
+  document.getElementById('carousel-next')
+    .addEventListener('click', () => {
+      stopAutoCycle();
+      showSlide((currentIndex + 1) % itemAmount);
+      startAutoCycle();
+    });
 
-        // Ensure the next item is positioned but invisible, ready to fade in
-        nextItem.style.opacity = 0;
-        nextItem.style.display = "block";
-        nextItem.classList.add('active');
+  function showSlide(newIndex) {
+    const prev = items[currentIndex];
+    const next = items[newIndex];
 
-        // Use requestAnimationFrame to ensure the next frame starts the fade-in
-        requestAnimationFrame(() => {
-            // This slight delay ensures the browser has time to apply the above styles
-            setTimeout(() => {
-                nextItem.style.opacity = 1;
-            }, 20);
-        });
+    prev.style.opacity = '0';
+    requestAnimationFrame(() => {
+        setTimeout(() => {
+            prev.style.display = "none";
+        }, 500);
+    });
 
-        // Update the currentIndex to the next item
-        currentIndex = nextIndex;
-    }
+    next.style.opacity = '0';
+    next.style.display = "block";
+    next.classList.add('active');
+    requestAnimationFrame(() => {
+        setTimeout(() => {
+            next.style.opacity = '1';
+        }, 20);
+    });
+    currentIndex = newIndex;
+  }
 
-    setInterval(cycleItems, 8000); // Adjusted timing for visual clarity
+  function cycleItems() {
+    showSlide((currentIndex + 1) % itemAmount);
+  }
+
+  function startAutoCycle() {
+    autoTimer = setInterval(cycleItems, 8000);
+  }
+
+  function stopAutoCycle() {
+    clearInterval(autoTimer);
+  }
 }
