@@ -36,19 +36,28 @@ function setupImageCarousel() {
   items[0].style.opacity = '1';
 
   startAutoCycle();
+  const prevBtn = document.getElementById('carousel-prev');
+  const nextBtn = document.getElementById('carousel-next');
+  let isNavCooldown = false;
+  function handleNav(offset) {
+      if (isNavCooldown) return;
+      isNavCooldown = true;
 
-  document.getElementById('carousel-prev')
-    .addEventListener('click', () => {
       stopAutoCycle();
-      showSlide((currentIndex - 1 + itemAmount) % itemAmount);
-      startAutoCycle();
-    });
-  document.getElementById('carousel-next')
-    .addEventListener('click', () => {
-      stopAutoCycle();
-      showSlide((currentIndex + 1) % itemAmount);
-      startAutoCycle();
-    });
+
+      setTimeout(() => {
+        showSlide((currentIndex + offset + itemAmount) % itemAmount);
+        startAutoCycle();
+
+        isNavCooldown = false;
+      }, 220);
+    }
+
+
+  prevBtn.addEventListener('click', () => handleNav(-1));
+  nextBtn.addEventListener('click', () => handleNav(+1));
+
+
 
   function showSlide(newIndex) {
     const prev = items[currentIndex];
