@@ -1,0 +1,51 @@
+{% load static %}
+{% load i18n %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<link rel="stylesheet" href="{% static "css/admin_tools/at_invoices.css" %}">
+
+<section id="content" class="page-content col-md-12 col-lg-9 myacc_content">
+    <h1>{% trans "Invoice Management" %}</h1>
+
+    <div id="invoice-form" class="card mb-4 p-4">
+        <h2>{% trans "Create New Invoice" %}</h2>
+        <form id="create-invoice-form">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="userEmail">{% trans "User UID or Email" %}</label>
+                <input type="text" id="userEmail" name="userEmail" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="amount">{% trans "Amount (in cents)" %}</label>
+                <input type="number" id="amount" name="amount" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="currency">{% trans "Currency (ISO code)" %}</label>
+                <input type="text" id="currency" name="currency" class="form-control" value="USD" required>
+            </div>
+            <button type="submit" class="btn btn-primary mt-3">{% trans "Create and Send" %}</button>
+        </form>
+    </div>
+
+    <!-- Invoice listing -->
+    <div id="invoice-list" class="card p-4">
+        <h2>{% trans "All Invoices" %}</h2>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>{% trans "Invoice ID" %}</th>
+                    <th>{% trans "User" %}</th>
+                    <th>{% trans "Amount" %}</th>
+                    <th>{% trans "Currency" %}</th>
+                    <th>{% trans "Status" %}</th>
+                    <th>{% trans "Created At" %}</th>
+                    <th>{% trans "Actions" %}</th>
+                </tr>
+            </thead>
+            <tbody id="invoices-body">
+                <!-- Populated by JS -->
+            </tbody>
+        </table>
+    </div>
+
+</section>
+<script src="{% static "js/admin_tools/atInvoices.js" %}"></script>

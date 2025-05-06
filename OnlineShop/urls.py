@@ -18,6 +18,8 @@ Including another URLconf
 from shop import views
 from shop.views import csp_report
 from shop.views_scripts.admin_views import upload_view
+from shop.views_scripts.manage_invoices import invoices_managing
+from shop.views_scripts.manage_invoices.invoices_managing import create_invoice, list_invoices
 from shop.views_scripts.profile_orders_pay import create_partial_checkout_session
 from shop.router_viewsets import PromoCodeViewSet, StoreViewSet
 from shop.views_scripts import profile_views, paypal_views
@@ -129,6 +131,8 @@ urlpatterns = i18n_patterns(
     path('admin_tools/orders_control/edit_product_in_stock/', change_in_stock, name='change_in_stock'),
     path('admin_tools/orders_control/upload_in_stock/<str:order_id>/', upload_in_stock, name='upload_in_stock'),
     path('upload-db-update/', upload_view, name='upload_db_update'),
+    path('admin_tools/invoices/create/', invoices_managing.create_invoice, name='create_invoice'),
+    path('admin_tools/invoices/list/', invoices_managing.list_invoices, name='list_invoices'),
 
     # Manage banners urls
     path('delete-banner-relationship/<int:rel_id>/', delete_banner_relationship, name='delete_banner_relationship'),

@@ -6,6 +6,7 @@ from io import StringIO
 
 import stripe
 from django.contrib.auth.decorators import login_required
+from django.core.mail import send_mail
 from django.http import JsonResponse, HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import TemplateView
@@ -13,9 +14,10 @@ from django.views.generic import TemplateView
 from OnlineShop import settings
 from shop.views import get_user_category, get_user_prices, \
     get_user_session_type, get_cart, orders_ref, single_order_ref, delete_user_coupons, get_active_coupon, \
-    mark_user_coupons_as_used
+    mark_user_coupons_as_used, invoices_ref
 from shop.views_scripts.checkout_cart_views import clear_all_cart, email_process, get_check_id, generate_unique_order_id
 from shop.views_scripts.profile_orders_pay import stripe_partial_checkout
+from firebase_admin import firestore as _fs
 
 logger = logging.getLogger(__name__)
 stripe.api_key = settings.STRIPE_SECRET_KEY
@@ -229,44 +231,58 @@ def stripe_webhook(request):
     Stripe webhook to handle checkout.session.completed events
     """
     stripe.api_key = settings.STRIPE_SECRET_KEY
-    endpoint_secret = settings.STRIPE_ENDPOINT_SECRET
     payload = request.body.decode('utf-8')
     sig_header = request.META['HTTP_STRIPE_SIGNATURE']
-    event = None
 
     try:
         event = stripe.Webhook.construct_event(
-            payload, sig_header, endpoint_secret
+            payload, sig_header, settings.STRIPE_WEBHOOK_SECRET
         )
     except ValueError as e:
-        # Invalid payload
         logger.error(f"Invalid payload: {e}")
         return HttpResponse(status=400)
     except stripe.error.SignatureVerificationError as e:
-        # Invalid signature
         logger.error(f"Signature verification error: {e}")
         return HttpResponse(status=400)
 
-
-    logger.info(f"Stripe webhook event received: {event['type']}, ID: {event['data']['object']['id']}")
+    event_type = event['type']
+    logger.info(f"Stripe webhook event received: {event_type}, ID: {event['data']['object']['id']}")
+    data = event['data']['object']
 
     if event['type'] == 'checkout.session.completed':
         # Extract the session ID from the event data
-        session_id = event['data']['object']['id']
-
+        session = stripe.checkout.Session.retrieve(data['id'])
         # Retrieve the metadata, including 'Id', from the session
-        session = stripe.checkout.Session.retrieve(session_id)
         metadata = session.metadata
-
         # Access 'Id' from metadata and update Firestore
         order_id = metadata.get('Id')
 
         if order_id:
-            # Update the 'Status' field to 'Paid'
             if metadata.get('payment_type') == "Stripe":
-                stripe_checkout(metadata.get('email'), metadata.get('full_name'), order_id, metadata.get('vat'), metadata.get('shippingPrice'), metadata.get('shippingAddress'), metadata.get('billingAddress'), "STRIPE", metadata.get("lang_code", "gb"))
+                stripe_checkout(
+                    metadata.get('email'), metadata.get('full_name'),
+                    order_id, metadata.get('vat'), metadata.get('shippingPrice'),
+                    metadata.get('shippingAddress'), metadata.get('billingAddress'),
+                    "STRIPE", metadata.get("lang_code", "gb"))
             elif metadata.get('payment_type') == "BANK TRANSFER":
-                stripe_partial_checkout(metadata.get('email'), metadata.get('paid_sum'),  order_id, metadata.get("lang_code", "gb"))
+                stripe_partial_checkout(
+                    metadata.get('email'), metadata.get('paid_sum'),
+                    order_id, metadata.get("lang_code", "gb"))
             logger.info(f"Order {order_id} has been successfully updated and marked as paid.")
+
+        invoice_docs = invoices_ref.where('stripeSessionId', '==', session.id).limit(1).get()
+        if invoice_docs:
+            inv_ref = invoice_docs[0].reference
+            inv_ref.update({
+                'status': 'paid',
+                'paidAt': _fs.SERVER_TIMESTAMP,
+            })
+            invoice_email = metadata.get('email')
+            send_mail(
+                subject=f"Payment received for invoice {inv_ref.id}",
+                message="Thank you, your payment has been received.",
+                from_email=settings.EMAIL_HOST_USER,
+                recipient_list=[f"{invoice_email}"],
+            )
 
     return HttpResponse(status=200)

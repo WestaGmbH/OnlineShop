@@ -37,6 +37,7 @@ single_order_ref = db.collection("Order")
 promocodes_ref = db.collection('Promocodes')
 used_promocodes_ref = db.collection('UsedPromocodes')
 active_promocodes_ref = db.collection('ActivePromocodes')
+invoices_ref = db.collection('Invoices')
 
 READER = geoip2.database.Reader(GEOIP_config)
 

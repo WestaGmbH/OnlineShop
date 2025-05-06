@@ -5,6 +5,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Admin tools</title>
+    <meta name="admin_config" content='{
+        "listInvoicesUrl": "{% url 'list_invoices' %}",
+        "createInvoiceUrl": "{% url 'create_invoice' %}"
+
+    }'>
     <link rel="stylesheet" href="{% static "css/admin_tools/admin_tools_main.css" %}">
     <link rel="icon" href="{% static "images/icons/web-icon.png" %}" type="image/x-icon">
 </head>
@@ -28,6 +33,8 @@
         {% include 'admin_tools/AT_manage_banners.html' %}
     {% elif feature_name == 'manage_promocodes' %}
         {% include 'admin_tools/AT_manage_promocodes.html' %}
+    {% elif feature_name == 'manage_invoices' %}
+        {% include 'admin_tools/AT_invoices.html' %}
     {% elif feature_name == 'manage_stores' %}
         {% include 'admin_tools/AT_stores.html' %}
     {% elif feature_name == 'upload_db_update' %}
