@@ -48,8 +48,8 @@ def create_invoice(request):
                 'quantity': 1,
             }],
             mode='payment',
-            success_url=domain_url + 'success/',
-            cancel_url=domain_url + 'cancelled/',
+            success_url=domain_url + 'invoice/success/',
+            cancel_url=domain_url + 'invoice/cancelled/',
             metadata={'email': user_email},
         )
     except Exception as e:
