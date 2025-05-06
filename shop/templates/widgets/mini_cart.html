@@ -18,7 +18,10 @@
                 <span>{% trans "Subtotal:"%}</span>
                 <span id="subtotalValue">{{ currency }}0.00</span>
             </div><br>
-            <button class="checkout-btn">{% trans "Proceed to Checkout"%}</button>
+            <div class="cart-btn-container">
+                <button class="checkout-btn">{% trans "Proceed to Checkout"%}</button>
+                <button class="clear-cart-btn" id="clear-cart">{% trans "Clear the cart" %}</button>
+            </div>
         </div>
     </div>
 <script src="{% static "js/widgets/miniCart.js" %}"></script>

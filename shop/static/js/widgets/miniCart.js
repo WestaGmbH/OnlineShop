@@ -61,6 +61,7 @@ function miniCartPanel() {
                     const itemElement = document.createElement('div');
                     itemElement.setAttribute('data-item-name', item.name);
                     itemElement.classList.add('mini-cart-product');
+                    itemElement._cartItem = item;
 
                     const img_column = document.createElement('div');
                     const img = document.createElement('img');
@@ -118,66 +119,50 @@ function miniCartPanel() {
                     const deleteIcon = document.createElement('i');
                     deleteIcon.classList.add('fa-solid', 'fa-trash', 'delete-icon');
 
-                    const tooltip = document.createElement('span');
-                    tooltip.classList.add('delete-icon-tooltip');
-                    tooltip.textContent = vocabulary['Remove from cart']; // Tooltip text
-
                     // Append the delete icon and tooltip to the delete panel
                     deletePanel.appendChild(deleteIcon);
-                    deletePanel.appendChild(tooltip);
                     deleteIcon.addEventListener('mouseover', function(event) {
-                        const tooltipX = event.clientX; // Horizontal coordinate of the cursor
-                        const tooltipY = event.clientY; // Vertical coordinate of the cursor
-                        tooltip.style.left = tooltipX + 'px';
-                        tooltip.style.top = (tooltipY + 20) + 'px'; // Position slightly below the cursor
-                        tooltip.style.opacity = '1';
-                        tooltip.style.visibility = 'visible';
+                        showTooltip(event, vocabulary['Remove from cart'])
                     });
 
                     // Mouseout event to hide tooltip
                     deleteIcon.addEventListener('mouseout', function() {
-                        tooltip.style.opacity = '0';
-                        tooltip.style.visibility = 'hidden';
+                        removeTooltip();
                         // Reset position if necessary
                     });
 
                     // Append the delete panel to the img_column or itemElement
                     img_column.appendChild(deletePanel); // This places the delete panel over the image
-
-                    // Event listener for delete icon click
-                    deleteIcon.addEventListener('click', function(event) {
+                    function removeCartItem(itemEl, itemObj) {
                         if(isCheckout){
                             alert(vocabulary['You cant delete items during checkout. Go back to shop pages to change your cart']);
                             return;
                         }
-                        event.stopPropagation();
 
-                        const itemToDelete = this.closest('.mini-cart-product');
+                        itemEl.classList.add('item-deleting');
 
-                        itemToDelete.classList.add('item-deleting');
+                        itemEl.addEventListener('transitionend', function onEnd(e) {
+                            console.log(e.propertyName);
+                            if (e.propertyName === 'max-height') {
+                              itemEl.removeEventListener('transitionend', onEnd);
+                              deleteFromCart(itemObj.name);
+                              itemEl.remove();
 
-                        itemToDelete.addEventListener('transitionend', function(event) {
-                            console.log(event.propertyName );
-                            if (event.propertyName === 'opacity') {
-                                console.log('max-height transition finished, proceed with deletion');
-                                deleteFromCart(item.name);
+                              let newSum = 0;
+                              cart = cart.filter(ci => ci.name !== itemObj.name);
+                              cart.forEach(ci => newSum += parseFloat(ci.sum));
+                              document.getElementById('subtotalValue').textContent = currency + newSum.toFixed(1);
 
-                                console.log('Deletion successful, updating UI...');
-                                itemToDelete.remove(); // Remove the item from the DOM
-                                // Update subtotal here or any other UI elements as needed
-                                // Recalculate and update the subtotal
-                                let newSum = 0;
-                                cart = cart.filter(cartItem => cartItem.name !== item.name); // Update your cart array
-                                cart.forEach(cartItem => {
-                                    newSum += parseFloat(cartItem.sum);
-                                });
-                                document.getElementById('subtotalValue').textContent = currency+`${newSum.toFixed(1)}`;
-                                console.log(cart.length);
-                                if(cart.length === 0){
-                                    showCartIsEmpty(cartItemsContainer);
-                                }
+                              if (cart.length === 0) {
+                                showCartIsEmpty(cartItemsContainer);
+                              }
                             }
                         }, { once: true });
+                    }
+                    // Event listener for delete icon click
+                    deleteIcon.addEventListener('click', function(event) {
+                        event.stopPropagation();
+                        removeCartItem(itemElement, item);
 
                     });
                     // Add more details as needed
@@ -291,8 +276,14 @@ function deleteFromCart(documentId) {
     });
 }
 
-document.getElementById('closeCartBtn').onclick = closeCart;
+function deleteAllFromCart() {
+    document
+        .querySelectorAll('.mini-cart-product .delete-icon')
+        .forEach(icon => icon.click());
+}
+document.getElementById('clear-cart').addEventListener('click', deleteAllFromCart);
 
+document.getElementById('closeCartBtn').onclick = closeCart;
 function closeCart(){
     let cartPanel = document.getElementById('cartPanel');
     let overlay = document.getElementById('overlay');
