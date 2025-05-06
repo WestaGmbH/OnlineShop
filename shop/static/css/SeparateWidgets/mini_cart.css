@@ -126,7 +126,7 @@ img{
   position: relative;
   display: flex;
   align-items: center;
-  overflow: hidden;
+  /*overflow: hidden;*/
   transition: opacity 0.4s ease, transform 0.4s ease, max-height 0.4s ease;
   max-height: 200px; /* Adjust based on your item's actual height */
 }

@@ -173,18 +173,6 @@ article, aside, details, figcaption, figure, footer, header, main, menu, nav, se
 .icon-container i, .icon-container div {
     transition: transform 0.3s ease; /* Smooth transition for the transform */
 }
-.custom-tooltip {
-    background-color: white;
-    color: black;
-    padding: 8px 16px;
-    border-radius: 3px;
-    font-size: 13px;
-    font-weight: 600;
-    z-index: 1000; /* Ensure it appears above other content */
-    pointer-events: none; /* Allows mouse events to pass through the tooltip */
-
-    box-shadow: 0px 4px 6px rgba(0,0,0,0.2); /* Shadow added here */
-}
 /* Hover effect */
 .icon-container div:hover {
     transform: translateY(-5px); /* Move up by 10 pixels */

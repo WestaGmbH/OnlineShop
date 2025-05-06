@@ -417,7 +417,7 @@ def upload_file(request):
                     continue  # If no product is found, continue processing the next line
 
                 if document['quantity'] < new_quantity:
-                    errors.append(_('Requested quantity') + f'({new_quantity})' + _('is less than number of products in storage for product')+ f': {product_name}')
+                    errors.append(_('Requested quantity') + f'({new_quantity})' + _('exceeds available stock in storage for product')+ f': {product_name}.' + _(" Product was not added to cart."))
                     continue
                 # Determine the price of the product depending on the category
                 if category == "VK3":
