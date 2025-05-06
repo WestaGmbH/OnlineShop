@@ -734,6 +734,7 @@ def get_vocabulary_product_card():
         "The product is made of silver": _("The product is made of silver"),
         "To enlarge the picture, hover your mouse over the image": _("To enlarge the picture, hover your mouse over the image"),
         "The product is made of steel": _("The product is made of steel"),
+        "Pay": _("Pay"),
 
 
 

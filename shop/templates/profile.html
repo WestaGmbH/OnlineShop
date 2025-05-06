@@ -18,7 +18,9 @@
         "profileAddressesUrl": "{% url "profile" feature_name="addresses" %}",
         "updateAddressUrl": "{% url "update_address" address_id="BIG" %}",
         "shopPageUrlPattern": "{% url "shop_page" "DUMMY_ID" %}",
-        "fetchNumbersUrl": "{% url "fetch_numbers" %}"
+        "fetchNumbersUrl": "{% url "fetch_numbers" %}",
+        "userEmail": "{{ user.email }}",
+        "listInvoicesUrl": "{% url 'list_invoices' %}"
     }'>
     {{ config_data|json_script:"config-data" }}
     <link rel="stylesheet" href="{% static 'css/profile/profile_main.css' %}">
@@ -47,6 +49,8 @@
         {% include 'profile/profile_archive_search.html' %}
     {% elif feature_name == 'customer_chat' %}
         {% include 'profile/profile_chat.html' %}
+    {% elif feature_name == 'my_invoices' %}
+        {% include 'profile/profile_my_invoices.html' %}
     {% elif feature_name == 'favourites' %}
         {% include 'profile/profile_favourites.html' %}
     {% elif feature_name == 'catalogs' %}

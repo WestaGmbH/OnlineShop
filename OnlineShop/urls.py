@@ -19,7 +19,7 @@ from shop import views
 from shop.views import csp_report
 from shop.views_scripts.admin_views import upload_view
 from shop.views_scripts.manage_invoices import invoices_managing
-from shop.views_scripts.manage_invoices.invoices_managing import create_invoice, list_invoices
+from shop.views_scripts.manage_invoices.invoices_managing import create_invoice, list_invoices, InvoiceSuccessView, InvoiceCancelledView
 from shop.views_scripts.profile_orders_pay import create_partial_checkout_session
 from shop.router_viewsets import PromoCodeViewSet, StoreViewSet
 from shop.views_scripts import profile_views, paypal_views
@@ -152,6 +152,8 @@ urlpatterns = i18n_patterns(
     path('create-checkout-session/', create_checkout_session, name='create_checkout_session'), # Creating a payment session
     path('success/', SuccessView.as_view(), name='success'),  # Success Page
     path('cancelled/', CancelledView.as_view(), name='cancelled'),  # Cancellation Page
+    path('invoice/success/', InvoiceSuccessView.as_view(), name='success'),  # Success Page
+    path('invoice/cancelled/', InvoiceCancelledView.as_view(), name='cancelled'),  # Cancellation Page
     path('webhook/', stripe_webhook, name='stripe_webhook'),
     # Creating a payment session for partial payment
     path('create-partial-checkout-session/', create_partial_checkout_session, name='create_partial_checkout_session'),

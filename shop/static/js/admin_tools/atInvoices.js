@@ -19,6 +19,17 @@ $(function() {
       ...(window.config || {}),
       ...getAdminMetaConfig()
     };
+    function formatDateTime(isoString) {
+        if (!isoString) return '-';
+        const date = new Date(isoString);
+        const dd = String(date.getDate()).padStart(2, '0');
+        const mm = String(date.getMonth() + 1).padStart(2, '0');
+        const yyyy = date.getFullYear();
+        const hh = String(date.getHours()).padStart(2, '0');
+        const min = String(date.getMinutes()).padStart(2, '0');
+        const ss = String(date.getSeconds()).padStart(2, '0');
+        return `${dd}-${mm}-${yyyy} ${hh}:${min}:${ss}`;
+      }
 
     const csrftoken = $('input[name=csrfmiddlewaretoken]').val();
     $.ajaxSetup({
@@ -36,11 +47,11 @@ $(function() {
                 $('#invoices-body').append(`
                   <tr>
                     <td>${inv.id}</td>
-                    <td>${inv.userId}</td>
+                    <td>${inv.email}</td>
                     <td>${(inv.amount/100).toFixed(2)}</td>
                     <td>${inv.currency}</td>
                     <td>${inv.status}</td>
-                    <td>${inv.createdAt}</td>
+                    <td>${formatDateTime(inv.createdAt)}</td>
                     <td><a href="${inv.checkoutUrl}" target="_blank">Pay</a></td>
                   </tr>
                 `);

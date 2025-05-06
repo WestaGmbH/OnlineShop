@@ -9,6 +9,7 @@ from django.template.loader import render_to_string
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST, require_GET
 from django.utils.translation import gettext as _
+from django.views.generic import TemplateView
 
 from OnlineShop import settings
 from shop.views import is_admin, invoices_ref
@@ -92,5 +93,19 @@ def list_invoices(request):
         inv['paidAt'] = inv['paidAt'].isoformat() if inv.get('paidAt') else None
         invoices.append(inv)
     return JsonResponse({ 'invoices': invoices })
+
+class InvoiceSuccessView(TemplateView):
+    """
+    Stripe success page
+    """
+    template_name = 'stripe/successInvoice.html'
+
+
+
+class InvoiceCancelledView(TemplateView):
+    """
+    Stripe cancelled page
+    """
+    template_name = 'stripe/cancelledInvoice.html'
 
 

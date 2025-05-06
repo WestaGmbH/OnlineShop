@@ -90,3 +90,9 @@
 .panel-dashboard, .panel-fav, .panel-orders, .panel-acc, .panel-address, .panel-catalogs, .panel-logout{
     stroke:#000;
 }
+.acc-invoice g{
+    fill: currentColor;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 5px;
+}

@@ -1,10 +1,51 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% load static %}
+{% load i18n %}
+<link rel="stylesheet" href="{% static 'css/profile/profile_information.css' %}">
+<link rel="stylesheet" href="{% static 'css/profile/profile_my_invoices.css' %}">
+{% block content %}
+<section id="invoices-section" class="page-content col-md-12 col-lg-9 myacc_content">
+    <header class="page-header">
+        <h1>{% trans "My Invoices" %}</h1>
+    </header>
 
-</body>
-</html>
+    <div class="invoices-tabs">
+        <button class="tab-btn active" data-tab="pending">{% trans "Pending" %}</button>
+        <button class="tab-btn" data-tab="history">{% trans "History" %}</button>
+    </div>
+
+    <div id="pending" class="tab-content">
+        <h2>{% trans "Invoices to Pay" %}</h2>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>{% trans "ID" %}</th>
+                    <th>{% trans "Amount" %}</th>
+                    <th>{% trans "Currency" %}</th>
+                    <th>{% trans "Created" %}</th>
+                    <th>{% trans "Action" %}</th>
+                </tr>
+            </thead>
+            <tbody id="pending-body"></tbody>
+        </table>
+    </div>
+
+    <div id="history" class="tab-content" style="display:none">
+        <h2>{% trans "Paid Invoices" %}</h2>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>{% trans "ID" %}</th>
+                    <th>{% trans "Amount" %}</th>
+                    <th>{% trans "Currency" %}</th>
+                    <th>{% trans "Paid At" %}</th>
+                </tr>
+            </thead>
+            <tbody id="history-body"></tbody>
+        </table>
+    </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'js/pages/profile/profileMyInvoices.js' %}"></script>
+{% endblock %}
