@@ -1,11 +1,15 @@
 #GitIgnore
 
+# IDE files
+.idea
+
 # Python bytecode
 **/__pycache__/
 *.py[cod]
 
 # Virtualenv
 venv/
+.venv/
 
 # Environment files
 .env

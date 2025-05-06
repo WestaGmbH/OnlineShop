@@ -299,7 +299,7 @@ function renderGallery(stone) {
 }
 let currentPlating = "";
 currentPlating = "";
-function generateDialogContent(id, items_array, currency, show_quantities, add_to_cart_url, vocabulary, cookie, checkout_url, isFavourite, user_auth, single_product_url, allItems, favouriteItems, pre_order_img_src, silverIconSrc, change_fav_state_url, translations_categories, isCheckout){
+function generateDialogContent(id, items_array, currency, show_quantities, add_to_cart_url, vocabulary, cookie, checkout_url, isFavourite, user_auth, single_product_url, allItems, favouriteItems, pre_order_img_src, silverIconSrc, steelIconSrc, change_fav_state_url, translations_categories, isCheckout){
     let quantity_max = 1;
     document.body.style.overflow = 'hidden';
     const item = items_array.find(item => item.name === id);
@@ -774,7 +774,7 @@ function generateDialogContent(id, items_array, currency, show_quantities, add_t
         const card_bottom_content = document.createElement('div');
         card_bottom_content.classList.add('card-bottom-content');
 
-        generateBottomPart(card_bottom_content, groupItems, items_array, currency, show_quantities, add_to_cart_url, vocabulary, cookie, checkout_url, isFavourite, user_auth, single_product_url, allItems, favouriteItems, pre_order_img_src, silverIconSrc, change_fav_state_url, translations_categories);
+        generateBottomPart(card_bottom_content, groupItems, items_array, currency, show_quantities, add_to_cart_url, vocabulary, cookie, checkout_url, isFavourite, user_auth, single_product_url, allItems, favouriteItems, pre_order_img_src, silverIconSrc, steelIconSrc, change_fav_state_url, translations_categories);
 
         card.appendChild(card_bottom_content);
     }
@@ -813,7 +813,7 @@ function updateCarouselImages(selectedPlatingKey, allItems) {
     });
 }
 
-function generateBottomPart(card_bottom_content, groupItems, items_array, currency, show_quantities, add_to_cart_url, vocabulary, cookie, checkout_url, isFavourite, user_auth, single_product_url, allItems, favouriteItems, pre_order_img_src, silverIconSrc, change_fav_state_url, translations_categories){
+function generateBottomPart(card_bottom_content, groupItems, items_array, currency, show_quantities, add_to_cart_url, vocabulary, cookie, checkout_url, isFavourite, user_auth, single_product_url, allItems, favouriteItems, pre_order_img_src, silverIconSrc, steelIconSrc, change_fav_state_url, translations_categories){
     const bottom_title = document.createElement('div');
     bottom_title.classList.add('card-bottom-title');
     bottom_title.textContent = `${vocabulary['Similar products']}`;
@@ -832,6 +832,7 @@ function generateBottomPart(card_bottom_content, groupItems, items_array, curren
                 favouriteItems,
                 pre_order_img_src,
                 silverIconSrc,
+                steelIconSrc,
                 vocabulary,
                 translations_categories,
                 currency,
@@ -1134,7 +1135,7 @@ function setupZoom(image_container, image, vocabulary, isSearchPage){
     zoomSlider.type = 'range';
     zoomSlider.classList.add('zoom-slider');
     zoomSlider.min = '1'; // Minimal scale
-    zoomSlider.max = '4'; // Maximum scale
+    zoomSlider.max = '2'; // Maximum scale
     zoomSlider.step = '0.1'; // Step change
     zoomSlider.value = '1'; // Default value
 
@@ -1166,16 +1167,29 @@ function setupZoom(image_container, image, vocabulary, isSearchPage){
 
     buttonMagnifier.appendChild(magnifier_icon);
 
-
     image_container.appendChild(magnifier);
+
+
+    const zoom_container_wrapper = document.createElement('div');
+    zoom_container_wrapper.classList.add('zoom-container-wrapper');
+
     const magnifier_settings_container = document.createElement('div');
     magnifier_settings_container.classList.add('magnifier-settings');
 
+    const magnifier_instructions_container = document.createElement('div');
+
+    const magnifier_instructions_text = document.createElement('span');
+    magnifier_instructions_text.classList.add('magnifier-instructions-text', 'hint-text');
+    magnifier_instructions_text.textContent = vocabulary['To enlarge the picture, hover your mouse over the image'];
+    magnifier_instructions_container.appendChild(magnifier_instructions_text);
 
     magnifier_settings_container.appendChild(zoomSettings);
     magnifier_settings_container.appendChild(buttonMagnifier);
 
-    image_container.appendChild(magnifier_settings_container);
+    zoom_container_wrapper.appendChild(magnifier_instructions_container);
+    zoom_container_wrapper.appendChild(magnifier_settings_container);
+
+    image_container.appendChild(zoom_container_wrapper);
 
     let isZoomEnabled = true;
 
@@ -1243,7 +1257,7 @@ function setupZoom(image_container, image, vocabulary, isSearchPage){
 }
 
 
-function createProductCard(isCarousel, item, itemCounter, allItems, filteredItems, favouriteItems, pre_order_img_src, silverIconSrc,  vocabulary, translations_categories, currency, change_fav_state_url, show_quantities, add_to_cart_url, cookie, checkout_url, user_auth, single_product_url, isCheckout){
+function createProductCard(isCarousel, item, itemCounter, allItems, filteredItems, favouriteItems, pre_order_img_src, silverIconSrc, steelIconSrc,  vocabulary, translations_categories, currency, change_fav_state_url, show_quantities, add_to_cart_url, cookie, checkout_url, user_auth, single_product_url, isCheckout){
 
     const favouriteItem = favouriteItems.find(item_fav => item_fav.name === item.name); // Assuming `item.name` is the name of your current item
     // Check if the item was found in the favourites
@@ -1275,6 +1289,7 @@ function createProductCard(isCarousel, item, itemCounter, allItems, filteredItem
             favouriteItems,
             pre_order_img_src,
             silverIconSrc,
+            steelIconSrc,
             change_fav_state_url,
             translations_categories,
             isCheckout
@@ -1317,6 +1332,12 @@ function createProductCard(isCarousel, item, itemCounter, allItems, filteredItem
     silver_icon.className = 'icon-silver';
     silver_icon.src = silverIconSrc;
     div_silver_icon.appendChild(silver_icon);
+
+    const div_steel_icon = document.createElement('div');
+    const steel_icon = document.createElement('img');
+    steel_icon.className = 'icon-steel';
+    steel_icon.src = steelIconSrc;
+    div_steel_icon.appendChild(steel_icon);
 
     const imgWrapper = document.createElement('div');
     imgWrapper.className = isCarousel ? 'card-img-wrapper' : 'img-wrapper';
@@ -1415,6 +1436,12 @@ function createProductCard(isCarousel, item, itemCounter, allItems, filteredItem
         imgSection.appendChild(div_silver_icon);
         div_silver_icon.addEventListener('mouseenter', (event) => {
             showTooltip(event, vocabulary["The product is made of silver"]);
+        });
+    }
+    if (item.material === "Steel"){
+        imgSection.appendChild(div_steel_icon);
+        div_silver_icon.addEventListener('mouseenter', (event) => {
+            showTooltip(event, vocabulary["The product is made of steel"]);
         });
     }
     // Create the info section

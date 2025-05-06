@@ -146,6 +146,7 @@ import(window.config.firebaseFunctionScriptUrl)
                             favouriteItems,
                             window.config.preOrderIconUrl,
                             window.config.silverIconUrl,
+                            window.config.steelIconUrl,
                             window.config.changeFavouritesStateUrl,
                             translations_categories,
                             false
@@ -680,6 +681,7 @@ import(window.config.firebaseFunctionScriptUrl)
                     favouriteItems,
                     window.config.preOrderIconUrl,
                     window.config.silverIconUrl,
+                    window.config.steelIconUrl,
                     vocabulary,
                     translations_categories,
                     currency,

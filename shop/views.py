@@ -731,6 +731,7 @@ def get_vocabulary_product_card():
         "You must add at least 1 order to your cart to proceed to checkout": _("You must add at least 1 order to your cart to proceed to checkout"),
         "In cart": _("In cart"),
         "The product is made of silver": _("The product is made of silver"),
+        "To enlarge the picture, hover your mouse over the image": _("To enlarge the picture, hover your mouse over the image"),
 
 
 

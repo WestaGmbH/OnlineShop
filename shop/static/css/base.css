@@ -246,3 +246,8 @@ body{
 .page-content-container{
     margin-top: 150px;
 }
+
+.hint-text{
+    font-size: 14px;
+    color: #777777;
+}
