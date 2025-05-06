@@ -247,14 +247,12 @@ def stripe_webhook(request):
 
     event_type = event['type']
     logger.info(f"Stripe webhook event received: {event_type}, ID: {event['data']['object']['id']}")
-    data = event['data']['object']
 
-    if event['type'] == 'checkout.session.completed':
-        # Extract the session ID from the event data
+    if event and event['type'] == 'checkout.session.completed':
+        logger.info(f"Stripe webhook event (verified): {event['type']}, ID: {event['data']['object']['id']}")
+        data = event['data']['object']
         session = stripe.checkout.Session.retrieve(data['id'])
-        # Retrieve the metadata, including 'Id', from the session
         metadata = session.metadata
-        # Access 'Id' from metadata and update Firestore
         order_id = metadata.get('Id')
 
         if order_id:
@@ -284,5 +282,6 @@ def stripe_webhook(request):
                 from_email=settings.EMAIL_HOST_USER,
                 recipient_list=[f"{invoice_email}"],
             )
-
-    return HttpResponse(status=200)
+        return HttpResponse(status=200)
+    else:
+        return HttpResponse(status=400)
