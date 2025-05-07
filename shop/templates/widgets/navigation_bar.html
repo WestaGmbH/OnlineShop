@@ -52,14 +52,26 @@
             </div>
 
             <div class="toolbar-icons-container">
-                <a href="{% url "param_catalog" category_id="0" category_name="all"%}" class="link" title="{% trans "ALL PRODUCTS" %}">{% trans "ALL PRODUCTS" %}</a>
-                <a href="{% url "param_catalog" category_id="3" category_name="necklaces"%}" class="link" title="{% trans "Necklaces"%}">{% trans "NECKLACES" %}</a>
-                <a href="{% url "param_catalog" category_id="8" category_name="earrings"%}" class="link" title="{% trans "Earrings"%}">{% trans "EARRINGS"%}</a>
-                <a href="{% url "param_catalog" category_id="7" category_name="rings"%}" class="link" title="{% trans "Rings"%}">{% trans "RINGS"%}</a>
-                <a href="{% url "param_catalog" category_id="9" category_name="bracelets"%}" class="link" title="{% trans "Bracelets"%}">{% trans "BRACELETS"%}</a>
-                <a href="{% url "param_catalog" category_id="4" category_name="accessories"%}" class="link" title="{% trans "Accessories"%}" >{% trans "ACCESSORIES"%}</a>
+                <a href="{% url "param_catalog" category_id="0" category_name="all"%}" class="link visible-above-1200" title="{% trans "ALL PRODUCTS" %}">{% trans "ALL PRODUCTS" %}</a>
+                <a href="{% url "param_catalog" category_id="3" category_name="necklaces"%}" class="link visible-above-1200" title="{% trans "Necklaces"%}">{% trans "NECKLACES" %}</a>
+                <a href="{% url "param_catalog" category_id="8" category_name="earrings"%}" class="link visible-above-1200" title="{% trans "Earrings"%}">{% trans "EARRINGS"%}</a>
+                <a href="{% url "param_catalog" category_id="7" category_name="rings"%}" class="link visible-above-1200" title="{% trans "Rings"%}">{% trans "RINGS"%}</a>
+                <a href="{% url "param_catalog" category_id="9" category_name="bracelets"%}" class="link visible-above-1200" title="{% trans "Bracelets"%}">{% trans "BRACELETS"%}</a>
+                <a href="{% url "param_catalog" category_id="4" category_name="accessories"%}" class="link visible-above-1200" title="{% trans "Accessories"%}" >{% trans "ACCESSORIES"%}</a>
+
+                <div class="dropdown-link hidden-above-1200 dropdown-menu-intermediate">
+                    <a href="#" class="link dropdown-toggle" id="catalogs-toggle">{% trans "ADDRESSES" %}</a>
+                    <div class="dropdown-intermediate dropdown-menu">
+                        <a href="{% url "param_catalog" category_id="0" category_name="all"%}" class="dropdown-links" title="{% trans "ALL PRODUCTS" %}">{% trans "ALL PRODUCTS" %}</a>
+                        <a href="{% url "param_catalog" category_id="3" category_name="necklaces"%}" class="dropdown-links" title="{% trans "Necklaces"%}">{% trans "NECKLACES" %}</a>
+                        <a href="{% url "param_catalog" category_id="8" category_name="earrings"%}" class="dropdown-links" title="{% trans "Earrings"%}">{% trans "EARRINGS"%}</a>
+                        <a href="{% url "param_catalog" category_id="7" category_name="rings"%}" class="dropdown-links" title="{% trans "Rings"%}">{% trans "RINGS"%}</a>
+                        <a href="{% url "param_catalog" category_id="9" category_name="bracelets"%}" class="dropdown-links" title="{% trans "Bracelets"%}">{% trans "BRACELETS"%}</a>
+                        <a href="{% url "param_catalog" category_id="4" category_name="accessories"%}" class="dropdown-links" title="{% trans "Accessories"%}" >{% trans "ACCESSORIES"%}</a>
+                    </div>
+                </div>
                 <div class="dropdown-link">
-                    <a href="#" class="link" id="collections-toggle">{% trans "COLLECTIONS" %}</a>
+                    <a href="#" class="link dropdown-toggle" id="collections-toggle">{% trans "COLLECTIONS" %}</a>
                     <div class="dropdown-menu" id="collections-menu">
                         <a href="{% url "param_catalog" category_id="0" category_name="all"%}?collection=All" class="dropdown-links">{% trans "All" %}</a>
                         <a href="{% url "param_catalog" category_id="0" category_name="all"%}?collection=Gaudi" class="dropdown-links">Gaudi</a>

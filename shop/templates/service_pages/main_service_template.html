@@ -63,37 +63,37 @@
 <link rel="stylesheet" href="{% static 'css/profile/profile_information.css' %}">
 <body>
 {% include 'widgets/navigation_bar.html' %}
+<section class="main-service-section">
+    {% if service_page == "13-contact-us" %}
+        {% include 'service_pages/contact_us.html' %}
+    {% elif service_page == "6-frequently-asked-questions" %}
+        {% include 'service_pages/faq.html' %}
+    {% elif service_page == "7-customer-service-and-repair" %}
+        {% include 'service_pages/customer_service_and_repair.html' %}
+    {% elif service_page == "8-shipping-information" %}
+        {% include 'service_pages/shipping_information.html' %}
+    {% elif service_page == "9-returns-and-exchanges" %}
+        {% include 'service_pages/returns_and_exchanges.html' %}
+    {% elif service_page == "11-payment-information" %}
+        {% include 'service_pages/payment_information.html' %}
+    {% elif service_page == "12-b2b-customers" %}
+        {% include 'service_pages/b2b_customers.html' %}
+    {% elif service_page == "14-oliver-weber-s-world" %}
+        {% include 'service_pages/Olivers_Weber_World.html' %}
+    {% elif service_page == "15-oliver-weber-for-press" %}
+        {% include 'service_pages/Oliver_Weber_for_Press.html' %}
+    {% elif service_page == "17-terms-and-conditions" %}
+        {% include 'service_pages/Terms_and_conditions.html' %}
+    {% elif service_page == "20-impressum" %}
+        {% include 'service_pages/Impressum.html' %}
+    {% elif service_page == "21-website-privacy-policy" %}
+        {% include 'service_pages/Privacy_policy.html' %}
+    {% elif service_page == "stores" %}
+        {% include 'service_pages/stores.html' %}
+    {% elif service_page == "news_subscription" %}
 
-{% if service_page == "13-contact-us" %}
-    {% include 'service_pages/contact_us.html' %}
-{% elif service_page == "6-frequently-asked-questions" %}
-    {% include 'service_pages/faq.html' %}
-{% elif service_page == "7-customer-service-and-repair" %}
-    {% include 'service_pages/customer_service_and_repair.html' %}
-{% elif service_page == "8-shipping-information" %}
-    {% include 'service_pages/shipping_information.html' %}
-{% elif service_page == "9-returns-and-exchanges" %}
-    {% include 'service_pages/returns_and_exchanges.html' %}
-{% elif service_page == "11-payment-information" %}
-    {% include 'service_pages/payment_information.html' %}
-{% elif service_page == "12-b2b-customers" %}
-    {% include 'service_pages/b2b_customers.html' %}
-{% elif service_page == "14-oliver-weber-s-world" %}
-    {% include 'service_pages/Olivers_Weber_World.html' %}
-{% elif service_page == "15-oliver-weber-for-press" %}
-    {% include 'service_pages/Oliver_Weber_for_Press.html' %}
-{% elif service_page == "17-terms-and-conditions" %}
-    {% include 'service_pages/Terms_and_conditions.html' %}
-{% elif service_page == "20-impressum" %}
-    {% include 'service_pages/Impressum.html' %}
-{% elif service_page == "21-website-privacy-policy" %}
-    {% include 'service_pages/Privacy_policy.html' %}
-{% elif service_page == "stores" %}
-    {% include 'service_pages/stores.html' %}
-{% elif service_page == "news_subscription" %}
-
-{% endif %}
-
+    {% endif %}
+</section>
 {% include "widgets/footer.html" %}
 </body>
 </html>

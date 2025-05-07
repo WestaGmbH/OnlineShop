@@ -17,13 +17,12 @@
 }
 @media only screen and (min-width: 769px){
     #wrapper{
-        opacity: 1;  width: 60%;
+        width: 60%;
         margin: 120px auto auto;
     }
 }
 @media only screen and (max-width: 768px){
     #wrapper{
-        opacity: 1;
         margin-top: 120px
     }
     #main{

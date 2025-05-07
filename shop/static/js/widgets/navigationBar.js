@@ -7,20 +7,49 @@ const currency = getMetaContent("currency");
 let isCheckout = false;
 
 document.addEventListener("DOMContentLoaded", function () {
-  const toggle = document.getElementById("collections-toggle");
-  const menu = document.getElementById("collections-menu");
-  if (toggle && menu) {
-    toggle.addEventListener("click", function (e) {
-      e.preventDefault();
-      menu.style.display = menu.style.display === "flex" ? "none" : "flex";
+  // const toggle = document.getElementById("collections-toggle");
+  // const menu = document.getElementById("collections-menu");
+  // if (toggle && menu) {
+  //   toggle.addEventListener("click", function (e) {
+  //     e.preventDefault();
+  //     menu.style.display = menu.style.display === "flex" ? "none" : "flex";
+  //   });
+  //   // Closing a menu when clicking outside of it
+  //   document.addEventListener("click", function (e) {
+  //     if (!toggle.contains(e.target) && !menu.contains(e.target)) {
+  //       menu.style.display = "none";
+  //     }
+  //   });
+  // }
+
+  const dropdown_toggles = document.querySelectorAll('.dropdown-toggle');
+  const dropdown_menus = document.querySelectorAll('.dropdown-menu');
+
+  dropdown_toggles.forEach((toggle, index) => {
+    const menu = dropdown_menus[index];
+
+    if (toggle && menu) {
+        toggle.addEventListener('click', function(e) {
+            e.preventDefault();
+            dropdown_menus.forEach(otherMenu => {
+                if (otherMenu !== menu && otherMenu.style.display === 'flex') {
+                    otherMenu.style.display = 'none';
+                }
+            });
+            menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
+        });
+    }
+});
+
+document.addEventListener('click', function(e) {
+    dropdown_menus.forEach((menu, index) => {
+        const toggle = dropdown_toggles[index];
+        if (toggle && menu && menu.style.display === 'flex' && !toggle.contains(e.target) && !menu.contains(e.target)) {
+            menu.style.display = 'none';
+        }
     });
-    // Closing a menu when clicking outside of it
-    document.addEventListener("click", function (e) {
-      if (!toggle.contains(e.target) && !menu.contains(e.target)) {
-        menu.style.display = "none";
-      }
-    });
-  }
+});
+
 
   window.addEventListener('scroll', function () {
     let toolbar = document.querySelector('.toolbar');

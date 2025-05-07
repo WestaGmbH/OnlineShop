@@ -1,9 +1,84 @@
-@media only screen and (min-width: 769px)  {
-
+.pc-view {
+    display: none;
 }
-@media only screen and (max-width: 768px) {
 
+.mobile-view {
+    display: none;
 }
+.visible-above-1200 {
+    display: none;
+}
+.hidden-above-1200 {
+    display: block;
+}
+@media (min-width: 1221px) {
+    .pc-view {
+        display: block;
+    }
+
+    .visible-above-1200 {
+        display: inline-block;
+        margin-right: 15px;
+    }
+
+    .hidden-above-1200 {
+        display: none;
+    }
+}
+@media (min-width: 769px) and (max-width: 1220px) {
+    .pc-view {
+        display: block;
+    }
+
+    .toolbar.large .toolbar-icons-container {
+        display: flex;
+        justify-content: flex-start;
+    }
+
+    .toolbar.large .toolbar-icons-container .hidden-above-1200 {
+        position: relative;
+        margin-right: 10px;
+    }
+
+    .toolbar.large .toolbar-icons-container .dropdown-toggle-intermediate {
+        display: block;
+        cursor: pointer;
+        padding: 10px 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+        text-decoration: none;
+        color: #333;
+    }
+
+    .toolbar.large .toolbar-icons-container .dropdown-intermediate {
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        min-width: 150px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 2;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    .toolbar.large .toolbar-icons-container .dropdown-intermediate a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+
+    .toolbar.large .toolbar-icons-container .dropdown-intermediate a:hover {
+        background-color: #ddd;
+    }
+}
+@media (max-width: 768px) {
+    .mobile-view {
+        display: block;
+    }
+}
+
 .toolbar {
     background-color: #003765;
     padding: 6px;
@@ -44,7 +119,6 @@
     text-decoration: none;
     padding: 5px;
     position: relative;
-    display: inline-block;
 }
 .toolbar .link{
     font-size: 12px;
@@ -65,11 +139,13 @@
     left: 0;
     bottom: 5px;
     width: 0%;
-    height: 1.5px;
+    height: 2px;
     background-color: #ffffff;
     transition: width 0.3s ease;
 }
-
+.dropdown-toggle::after{
+    border: none;
+}
 .link:hover {
     color: #ffffff !important;
 }

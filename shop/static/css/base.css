@@ -6,6 +6,10 @@
 }
 @import url('https://fonts.googleapis.com/css2?family=Didact+Gothic&display=swap');
 @import url('https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css');
+
+.page-container{
+    margin-top: 100px;
+}
 .container-column{
     display: flex;
     flex-direction: column;
@@ -14,22 +18,13 @@
 @media only screen and (min-width: 769px)  {
     .pc-view {
         display: flex;
+        margin-bottom: 110px;
     }
 
     .mobile-view{
         display: none;
     }
 }
-@media only screen and (max-width: 768px) {
-    .pc-view{
-        display: none;
-    }
-    .mobile-view {
-        /*display: flex;*/
-    }
-
-}
-
 body{
     display: flex;
     flex-direction: column;
@@ -186,27 +181,10 @@ body{
     position: relative;
 
 }
-.dropdown-link::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: 5px;
-    width: 0%;
-    height: 1.5px;
-    transition: width 0.3s ease;
-}
-.dropdown-link:hover::after {
-    width: 100%;
-}
 
-.dropdown-link:hover {
-    color: #000000 !important;
-}
 .dropdown-link {
     display: block;
     padding: 10px;
-
-
 }
 .dropdown-links{
     width: 100%;

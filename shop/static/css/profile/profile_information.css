@@ -10558,17 +10558,17 @@ tbody.collapse.in {
 .dropdown {
   position:relative
 }
-.dropdown-toggle::after {
-  display:inline-block;
-  width:0;
-  height:0;
-  margin-left:.3em;
-  vertical-align:middle;
-  content:"";
-  border-top:.3em solid;
-  border-right:.3em solid transparent;
-  border-left:.3em solid transparent
-}
+/*.dropdown-toggle::after {*/
+/*  display:inline-block;*/
+/*  width:0;*/
+/*  height:0;*/
+/*  margin-left:.3em;*/
+/*  vertical-align:middle;*/
+/*  content:"";*/
+/*  border-top:.3em solid;*/
+/*  border-right:.3em solid transparent;*/
+/*  border-left:.3em solid transparent*/
+/*}*/
 .dropdown-toggle:focus {
   outline:0
 }
@@ -13626,6 +13626,10 @@ a.bg-inverse:hover {
 .text-white {
   color:#fff!important
 }
+.text-black-muted{
+    color:#1a1a1a!important;
+}
+
 .text-muted {
   color:#7A7A7A!important
 }
@@ -13820,6 +13824,7 @@ p {
 .dropdown-item:hover {
   background:none
 }
+
 .color,
 .custom-checkbox input[type="checkbox"]+span.color {
   width:42px;
@@ -14389,6 +14394,9 @@ body select.form-control:not([size]):not([multiple]) {
   text-align:left;
   font-size:.875rem;
   margin-bottom:0
+}
+.main-service-section {
+    margin-top:60px;
 }
 .custom-checkbox em {
   font-style:normal;
@@ -18348,6 +18356,32 @@ h1.product-title {
 .tabs .nav-tabs .nav-link:hover {
   opacity:1
 }
+.headers-service {
+    margin-top: 0px;
+    margin-bottom: .5rem;
+    font-weight: 500;
+    line-height: 1.2;
+    font-size: 1.4rem;
+    color: #676a6c;
+    font-family: Roboto, sans-serif;
+    background-color: #ffffff;
+}
+.elements-service {
+  margin-top: 0px;
+  margin-bottom: 1rem;
+  color: #676a6c;
+  font-family: Roboto, sans-serif;
+  font-size: 16px;
+  background-color: #ffffff;
+}
+.link-inside-privacy-policy{
+    color: black;
+    transition: all 0.4s cubic-bezier(.36,.76,0,.88);
+}
+.link-inside-privacy-policy:hover{
+    opacity: 0.6;
+    text-decoration: none;
+}
 .elementor-widget-roy_product_tabs .tab-content.pl_spa3 {
   padding-top:2.25rem
 }
@@ -21961,9 +21995,6 @@ body#index #top_column {
   margin-left:-.375rem;
   display:none
 }
-#wrapper {
-  opacity:0
-}
 #wrapper .banner {
   margin-bottom:12px;
   display:inline-block
@@ -22346,6 +22377,20 @@ body .flickity-prev-next-button.next {
     overflow-y:hidden
   }
 }
+@media (max-width:768px) {
+    .service-page-header h1 {
+       display: block!important;
+       font-size: 28px;
+       text-align: center;
+    }
+}
+@media (min-width:769px) {
+    .service-page-header h1 {
+       display: block!important;
+       font-size: 24px;
+    }
+}
+
 @media (max-width:991px) {
   body {
     padding-top:90px
@@ -62817,6 +62862,16 @@ footer#footer h3 {
   margin-bottom:20px;
   text-align:center
 }
+.b2b-page h4>a:hover{
+    text-decoration: none!important;
+    color: black!important;
+    opacity: 0.5;
+}
+.b2b-page h4>a{
+    text-decoration: none!important;
+    color: black!important;
+    transition: all 0.4s cubic-bezier(.36,.76,0,.88);
+}
 .newsletterAlertDanger {
   color:#a94442;
   background-color:#f2dede;
@@ -63072,6 +63127,9 @@ footer#footer h3 {
 }
 .bread_wrapper .breadcrumb li a {
   text-transform:capitalize!important
+}
+.text-centered{
+    text-align:center;
 }
 .impressum-contact-us,
 .impressum-title {
@@ -63622,13 +63680,7 @@ body#authentication .bread_wrapper {
   .header-top {
     display:none!important
   }
-  #wrapper {
-    padding-top:70px!important
-  }
-  body#index #main,
-  body:not(#index) #main {
-    padding-top:100px
-  }
+  
   body#index #main {
     padding-top:0px!important
   }
