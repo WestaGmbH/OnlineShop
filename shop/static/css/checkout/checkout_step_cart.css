@@ -140,9 +140,6 @@ input[type="range"].zoom-slider{
     }
 }
 
-.hidden {
-    display: none;
-}
 
 .overlay-cart {
     position: fixed;

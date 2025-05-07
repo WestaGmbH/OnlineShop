@@ -68,7 +68,6 @@ $(function() {
             amount: parseInt($('#amount').val()),
             currency: $('#currency').val()
         };
-        console.log(window.config.createInvoiceUrl);
         $.ajax({
             url: window.config.createInvoiceUrl,
             type: 'POST',

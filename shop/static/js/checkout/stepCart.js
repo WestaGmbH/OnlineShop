@@ -47,7 +47,6 @@ import(window.config.firebaseFunctionScriptUrl)
         const show_quantities = window.config.show_quantities;
         function init() {
             product_documents = window.config.documents;
-            console.log("WE BEGIN");
             calculate_final(0, 0, currency, product_documents);
         }
         async function initializeContent(){
@@ -260,11 +259,9 @@ import(window.config.firebaseFunctionScriptUrl)
                 if (data.status === 'success') {
                     let documents = product_documents.filter(doc => doc.name !== documentId);
                     product_documents = product_documents.filter(doc => doc.name !== documentId);
-                    console.log('Document deleted successfully');
                     documentContainer.remove();
 
                     data.updated_documents.forEach(doc => {
-                        console.log(`${doc.id}`);
                         let docElement = document.querySelector(`[data-document-id="${doc.id}"]`);
                         console.log(docElement);
                     });
@@ -300,7 +297,6 @@ import(window.config.firebaseFunctionScriptUrl)
             const submitButton = document.getElementById('submit-promocode');
             const promocode = document.getElementById('promocode-input').value;
             const errorMessage = document.getElementById('error-message');
-            console.log(promocode);
             submitButton.setAttribute('disabled', 'true');
             fetch(window.config.checkPromocodeUrl, {
                 method: 'POST',

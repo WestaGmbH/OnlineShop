@@ -1136,6 +1136,13 @@ def serialize_firestore_document(doc):
     return doc_dict
 
 
+def get_currency_symbol(currency_code):
+    if currency_code == "Euro":
+        return "€"
+    elif currency_code == "Dollar":
+        return "$"
+    return currency_code
+
 
 def is_admin(user):
     """

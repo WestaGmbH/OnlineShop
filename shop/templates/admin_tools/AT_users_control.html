@@ -719,7 +719,6 @@ async function performBulkAction(bulk_url, userIds, actionType) {
 
         // Assuming JSON response for simplicity
         const data = await response.json();
-        {#console.log(data.message); // Log or handle the server response#}
 
         if (actionType === 'delete') {
             allUsers = allUsers.filter(user => !userIds.includes(user.userId.toString()));

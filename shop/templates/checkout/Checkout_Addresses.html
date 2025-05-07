@@ -634,7 +634,6 @@ document.getElementById('toggleAddress').addEventListener('click', function() {
             if (address.checked) {
                 if(address.parentElement.parentElement.parentElement.style.display === "none"){
                     address.removeAttribute('checked');
-                    console.log(address);
                 }
                 else{
                     selectedBillingAddressId = address.getAttribute('id');
@@ -699,7 +698,6 @@ document.addEventListener("DOMContentLoaded", function() {
         // Check if the element has the 'checked' attribute or property
         if (address.checked) {
             selectedShippingAddressId = address.getAttribute('id');
-            console.log("Shipping address: "+ selectedShippingAddressId);
             inputShippingChangeEvent();
         }
     });
@@ -850,7 +848,6 @@ document.getElementById('continueCheckoutBtn').addEventListener('click', functio
                      })
                      .then(response => response.json())
                      .then(data => {
-                         console.log(data);
                          if (data.status === 'success') {
                              // Redirect to the home URL
                              window.location.href = '{% url 'home' %}';

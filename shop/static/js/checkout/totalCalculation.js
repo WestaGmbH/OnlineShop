@@ -12,9 +12,7 @@ function calculate_final(vat, shipping_value, currency, documents){
      const quantity_items = totalItems%10===1 ? "item" : "items";
      const totalSumFinal =  totalSum;
      const included_vat = ((totalSumFinal + shipping_value) * vat/100);
-     const sum_with_vat = totalSumFinal + shipping_value;//(included_vat + totalSumFinal);
-     console.log(included_vat);
-     console.log(shipping_value);
+     const sum_with_vat = totalSumFinal + shipping_value;
      document.querySelector('.final-unique-quantity').innerText =  totalItems + " " + quantity_items;
      document.getElementById('final-sum').innerText = currency + totalSumFinal.toFixed(2);
      const totalEl = document.querySelector('.value-total');

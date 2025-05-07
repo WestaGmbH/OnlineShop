@@ -553,7 +553,6 @@ async function setUpChats() {
                     }
                 }
 
-                console.log("It reached here");
                 const chatElement = document.createElement('li');
                 chatElement.classList.add('li-select');
                 chatElement.setAttribute('id', chat.chat_id);
@@ -586,7 +585,6 @@ async function setUpChats() {
 
 function updateChatBorderColor(state, type="viewed") {
     const selectedItem = document.querySelector(`.chat-list .selected`);
-    console.log("Once here");
     if (selectedItem) {
         selectedItem.classList.remove('chat-sent', 'chat-viewed', 'chat-answered');
         switch (state) {

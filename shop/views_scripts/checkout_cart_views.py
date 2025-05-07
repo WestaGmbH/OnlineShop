@@ -35,7 +35,7 @@ from shop.views import db, orders_ref, get_cart, cart_ref, single_order_ref, \
     get_user_category, get_user_session_type, metadata_ref, users_ref, update_email_in_db, get_user_prices, \
     get_user_info, get_address_info, get_order_items, \
     active_promocodes_ref, active_cart_coupon, get_active_coupon, delete_user_coupons, used_promocodes_ref, \
-    mark_user_coupons_as_used, get_user_sale, get_vocabulary_product_card
+    mark_user_coupons_as_used, get_user_sale, get_vocabulary_product_card, get_currency_symbol
 from shop.views_scripts.auth_views import get_new_user_id, get_all_errors
 from shop.views_scripts.profile_views import get_user_addresses, make_json_serializable
 
@@ -55,14 +55,12 @@ def generate_unique_order_id():
         if not existing_orders:
             return order_id
 
+
 @login_required_or_session
 def cart_page(request):
     email = get_user_session_type(request)
-    category, currency = get_user_prices(request, email)
-    if currency == "Euro":
-        currency = "€"
-    elif currency == "Dollar":
-        currency = "$"
+    category, currency_code = get_user_prices(request, email)
+    currency_symbol = get_currency_symbol(currency_code)
 
     info = get_user_info(email) or {}
     active_coupon = get_active_coupon(email)
@@ -76,12 +74,254 @@ def cart_page(request):
         'price_category': category,
         'vocabulary': get_vocabulary_product_card(),
         'documents': cart_products,
-        'currency': currency,
+        'currency': currency_symbol,
         'active_coupon': active_coupon if len(active_coupon.keys()) != 0 else False,
         'config': config_data
     }
 
     return render(request, 'cart.html', context=context)
+
+
+@login_required_or_session
+def cart_page(request):
+    email = get_user_session_type(request)
+    category, currency_code = get_user_prices(request, email)
+    currency_symbol = "€" if currency_code == "Euro" else "$" if currency_code == "Dollar" else currency_code
+
+    info = get_user_info(email) or {}
+    active_coupon = get_active_coupon(email)
+
+    cart_products = sorted(get_cart(email), key=lambda x: x['number'])
+    config = {'documents': cart_products}
+    config_data = make_json_serializable(config)
+    context = {
+        'show_quantities': info.get("show_quantities", False),
+        'sale': get_user_sale(info),
+        'price_category': category,
+        'documents': cart_products,
+        'currency': currency_symbol,
+        'active_coupon': bool(active_coupon),
+        'config': config_data
+    }
+
+    return render(request, 'cart.html', context=context)
+
+
+@logout_required
+def anonym_cart_info(request):
+
+    email = get_user_session_type(request)
+    category, currency_code = get_user_prices(request,email)
+    currency_symbol = get_currency_symbol(currency_code)
+
+    form_register = UserRegisterForm()
+    form_login = AuthenticationForm()
+
+    cart_products = sorted(get_cart(email), key=lambda x: x['number'])
+    config = {'documents': cart_products}
+    config_data = make_json_serializable(config)
+    context = {
+        'documents': cart_products,
+        'currency': currency_symbol,
+        'form_register':form_register,
+        'form_login':form_login,
+        'error_messages': [],
+        'RECAPTCHA_SITE_KEY': settings.RECAPTCHA_SITE_KEY,
+        'config': config_data,
+    }
+
+    return render(request, 'checkout/Checkout_Account_Auth.html', context=context)
+
+
+@not_logged_in
+def login_anonym_cart_info(request):
+    email_anon = get_user_session_type(request)
+    documents = sorted(get_cart(email_anon), key=lambda x: x['number'])
+    category, currency_code = get_user_prices(request, email_anon)
+    currency_symbol = get_currency_symbol(currency_code)
+
+    form_login = AuthenticationForm(request)
+    form_register = UserRegisterForm()
+
+    if request.method == 'POST':
+        form_login = AuthenticationForm(request, request.POST)
+        if form_login.is_valid():
+            username = form_login.cleaned_data['username']
+            password = form_login.cleaned_data['password']
+            user = authenticate(request, username=username, password=password)
+            if user:
+                locked_until = request.session.get('axes_locked_until')
+                if locked_until and time.time() < locked_until:
+                    unlock_time = datetime.fromtimestamp(locked_until).strftime('%H:%M:%S')
+                    form_login.add_error(
+                        None,
+                        f"Your account is locked due to too many failed login attempts. "
+                        f"Please try again after {unlock_time}."
+                    )
+                    return render(request, 'checkout/Checkout_Account_Auth.html', {
+                        'documents': documents,
+                        'currency': currency_symbol,
+                        'form_login': form_login,
+                        'form_register': form_register,
+                        'error_messages': get_all_errors([form_login, form_register]),
+                        'RECAPTCHA_SITE_KEY': settings.RECAPTCHA_SITE_KEY,
+                    })
+                else:
+                    request.session.pop('axes_locked_until', None)
+                docs = users_ref.where('email', '==', user.email).limit(1).get()
+                if docs and not docs[0].to_dict().get('Enabled', True):
+                    form_login.add_error(None, "Your account has been disabled.")
+                else:
+                    login(request, user)
+                    update_email_in_db(email_anon, user.email)
+                    return redirect('checkout_addresses')
+            else:
+                form_login.add_error(None, "Invalid username or password.")
+
+    return render(request, 'checkout/Checkout_Account_Auth.html', {
+        'documents': documents,
+        'currency': currency_symbol,
+        'form_login': form_login,
+        'form_register': form_register,
+        'error_messages': get_all_errors([form_login, form_register]),
+        'RECAPTCHA_SITE_KEY': settings.RECAPTCHA_SITE_KEY,
+    })
+
+
+@not_logged_in
+@ratelimit_with_logging(key='ip', rate='5/m', block=True)
+def register_anonym_cart_info(request):
+    email_before = get_user_session_type(request)
+    documents = sorted(get_cart(email_before), key=lambda x: x['number'])
+    category, currency_code = get_user_prices(request, email_before)
+    currency_symbol = get_currency_symbol(currency_code)
+
+    # 2) Initializing forms
+    form_register = UserRegisterForm(request.POST or None)
+    form_login = AuthenticationForm()
+
+    # 3) POST request processing (registration)
+    if request.method == 'POST':
+        recaptcha_response = request.POST.get('g-recaptcha-response')
+        if not verify_recaptcha(recaptcha_response):
+            form_register.add_error(None, 'Invalid reCAPTCHA. Please try again.')
+            logger.error(
+                "Registration failed: invalid reCAPTCHA. Errors: %s",
+                form_register.errors.as_json()
+            )
+        elif form_register.is_valid():
+            email_after = form_register.cleaned_data['email']
+            existing = users_ref.where('email', '==', email_after).limit(1).get()
+            if existing:
+                form_register.add_error('email', 'User with this email already exists.')
+            else:
+                # 3.3 Create an entry in Firestore
+                user_id    = get_new_user_id()
+                now_str    = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+                social     = "Mr" if form_register.cleaned_data.get('social_title') == "1" else "Mrs"
+                offers     = form_register.cleaned_data['offers']
+                newsletter = form_register.cleaned_data['receive_newsletter']
+                cat, curr  = get_user_prices(request, email_after)
+                new_user = {
+                    'Enabled': True,
+                    'display_name': 'undefined',
+                    'social_title': social,
+                    'first_name': form_register.cleaned_data['first_name'],
+                    'last_name':  form_register.cleaned_data['last_name'],
+                    'email':      email_after,
+                    'birthday':   form_register.cleaned_data.get('birthdate'),
+                    'price_category': cat,
+                    'currency':       curr,
+                    'receive_offers': offers,
+                    'receive_newsletter': newsletter,
+                    'registrationDate': now_str,
+                    'userId':      user_id,
+                    'sale':        0,
+                    'customer_type': 'Customer',
+                    'show_quantities': False,
+                }
+                users_ref.add(new_user)
+
+                # 3.4 Create and save Django user
+                user = form_register.save(commit=False)
+                # Generate a unique username based on email
+                user.username = email_after
+                # Set the password (UserCreationForm already hashes it)
+                user.set_password(form_register.cleaned_data['password1'])
+                user.save()
+
+                # 3.5 Authenticating and clearing the old shopping cart
+                user = authenticate(request, username=user.username,
+                                    password=form_register.cleaned_data['password1'])
+                if user:
+                    clear_all_cart(email_after)
+                    login(request, user)
+                    update_email_in_db(email_before, email_after)
+                    return redirect('checkout_addresses')
+
+    # 4) The overall context and rendering of a single template
+    context = {
+        'documents':      documents,
+        'currency':       currency_symbol,
+        'form_login':     form_login,
+        'form_register':  form_register,
+        'error_messages': get_all_errors([form_register, form_login]),
+        'RECAPTCHA_SITE_KEY': settings.RECAPTCHA_SITE_KEY,
+    }
+    return render(request, 'checkout/Checkout_Account_Auth.html', context)
+
+
+def checkout_addresses(request):
+    email = get_user_session_type(request)
+    addresses, addresses_dict = get_user_addresses(email)
+
+    category, currency_code = get_user_category(email) or ("Default", "Euro")
+    currency_symbol = get_currency_symbol(currency_code)
+
+    info = get_user_info(email) or {}
+    customer_type = info.get('customer_type', "Customer")
+    form_register = UserRegisterForm()
+    form_login = AuthenticationForm()
+    active_coupon_data = get_active_coupon(email)
+    active_coupon = active_coupon_data.copy()
+    active_coupon.pop('single_use', None)
+    cart_products = sorted(get_cart(email), key=lambda x: x['number'])
+    config = {'documents': cart_products}
+    config_data = make_json_serializable(config)
+    context = {
+        'documents': cart_products,
+        'currency': currency_symbol,
+        'form_register': form_register,
+        'form_login': form_login,
+        'my_addresses': addresses,
+        'addresses_dict': addresses_dict,
+        'customer_type': customer_type,
+        'STRIPE_PUBLISHABLE_KEY': settings.STRIPE_PUBLISHABLE_KEY,
+        'activeCoupon': active_coupon_data,
+        'config': config_data,
+    }
+    return render(request, 'checkout/Checkout_Addresses.html', context=context)
+
+
+def checkout_payment_type(request):
+    email = get_user_session_type(request)
+
+    category, currency_code = get_user_category(email) or ("Default", "Euro")
+    currency_symbol = get_currency_symbol(currency_code)
+    addresses_properties_json = request.POST.get('addresses_properties')
+    addresses_properties = json.loads(addresses_properties_json) if addresses_properties_json else {}
+    cart_products = sorted(get_cart(email), key=lambda x: x['number'])
+    config = {'documents': cart_products}
+    config_data = make_json_serializable(config)
+    context = {
+        'documents': cart_products,
+        'currency': currency_symbol,
+        'STRIPE_PUBLISHABLE_KEY': settings.STRIPE_PUBLISHABLE_KEY,
+        'addresses_properties': addresses_properties,
+        'config': config_data,
+    }
+
+    return render(request, 'checkout/Checkout_Payment_Type.html', context=context)
 
 
 def sort_documents(request):
@@ -114,13 +354,9 @@ def send_email(request):
         billingAddress = data.get('billingAddress', 0)
         if billingAddress == 0:
             billingAddress = shippingAddress
-
         user_email = request.user.email
-
         category, currency = get_user_category(user_email) or ("Default", "Euro")
-
         active_coupon = get_active_coupon(user_email)
-        print(active_coupon)
         checkout_admins_message = ""
         if active_coupon:
             checkout_admins_message = f"A customer with price category {category} ordered with promo code {active_coupon['coupon_code']} and discount {active_coupon['discount']}%"
@@ -281,8 +517,8 @@ def receipt_generator(order):
 def make_pdf(order, buffer, isWithImgs):
 
     orders = get_order_items(order.get('order_id'))
-    currency = order.get('currency', "Euro")
-    currency = "€" if currency == "Euro" else "$"
+    currency_code = order.get('currency', "Euro")
+    currency_symbol = get_currency_symbol(currency_code)
 
     shipping_address = get_address_info(order.get('shippingAddressId', dict()))
     billing_address = get_address_info(order.get('billingAddressId', dict()))
@@ -446,12 +682,12 @@ def make_pdf(order, buffer, isWithImgs):
             image.drawHeight = 50  # Example height in points
             image.drawWidth = 50
             row = [item_order['name'], image, item_order['description'], item_order['quantity'],
-                   currency + f"{(item_order['price']):.2f}",
-                   currency + f"{(round(item_order['price'] * item_order['quantity'], 2)):.2f}"]
+                   currency_symbol + f"{(item_order['price']):.2f}",
+                   currency_symbol + f"{(round(item_order['price'] * item_order['quantity'], 2)):.2f}"]
         else:
             row = [item_order['name'], item_order['description'], item_order['quantity'],
-                   currency + f"{item_order['price']:.2f}",
-                   currency + f"{(round(item_order['price'] * item_order['quantity'], 2)):.2f}"]
+                   currency_symbol + f"{item_order['price']:.2f}",
+                   currency_symbol + f"{(round(item_order['price'] * item_order['quantity'], 2)):.2f}"]
         product_data.append(row)
     product_table = Table(product_data)
     product_table.setStyle(TableStyle([('BACKGROUND', (0, 0), (-1, 0), colors.HexColor("#003765")),
@@ -479,11 +715,11 @@ def make_pdf(order, buffer, isWithImgs):
     bold_style1.fontSize = 10  # Font size
     bold_style1.textColor = colors.black
     summary_data = [
-        [Paragraph('<b>' + _('Subtotal') + '</b>', bold_style1), f"{currency}{formatted_total_price}"],
-        [Paragraph("<b>" + _('Shipping price') + "</b>", bold_style1), f"{currency}{formatted_shipping_price}"],
-        [Paragraph("<b>" + _('Shipping VAT') + "</b>", bold_style1), f"{currency}{formatted_shipping_price_vat}"],
-        [Paragraph("<b>VAT</b>", bold_style1), f"{currency}{formatted_vat_price}"],
-        [Paragraph("<b>" + _("TOTAL") + "</b>", bold_style1), f"{currency}{formatted_full_price}"],
+        [Paragraph('<b>' + _('Subtotal') + '</b>', bold_style1), f"{currency_symbol}{formatted_total_price}"],
+        [Paragraph("<b>" + _('Shipping price') + "</b>", bold_style1), f"{currency_symbol}{formatted_shipping_price}"],
+        [Paragraph("<b>" + _('Shipping VAT') + "</b>", bold_style1), f"{currency_symbol}{formatted_shipping_price_vat}"],
+        [Paragraph("<b>VAT</b>", bold_style1), f"{currency_symbol}{formatted_vat_price}"],
+        [Paragraph("<b>" + _("TOTAL") + "</b>", bold_style1), f"{currency_symbol}{formatted_full_price}"],
     ]
 
     # Create a table
@@ -526,221 +762,6 @@ def get_check_id():
     transaction = db.transaction()
     new_check_id = increment_check_id(transaction, check_counter_ref)
     return new_check_id
-
-
-@logout_required
-def anonym_cart_info(request):
-
-    email = get_user_session_type(request)
-    category, currency = get_user_prices(request,email)
-    if currency == "Euro":
-        currency = "€"
-    elif currency == "Dollar":
-        currency = "$"
-    form_register = UserRegisterForm()
-    form_login = AuthenticationForm()
-    print(form_register)
-    context = {
-        'documents': sorted(get_cart(email), key=lambda x: x['number']),
-        'currency': currency,
-        'form_register':form_register,
-        'form_login':form_login,
-        'error_messages': [],
-        'RECAPTCHA_SITE_KEY': settings.RECAPTCHA_SITE_KEY,
-    }
-
-    return render(request, 'checkout/Checkout_Account_Auth.html', context=context)
-
-
-@not_logged_in
-def login_anonym_cart_info(request):
-    email1 = get_user_session_type(request)
-    documents = sorted(get_cart(email1), key=lambda x: x['number'])
-    category, currency = get_user_prices(request, email1)
-    if currency == "Euro":
-        currency_symbol = "€"
-    elif currency == "Dollar":
-        currency_symbol = "$"
-    else:
-        currency_symbol = currency
-
-    if request.method == 'POST':
-        form_login = AuthenticationForm(request, request.POST)
-
-        locked_until = request.session.get('axes_locked_until')
-        if locked_until:
-            now = time.time()
-            if now < locked_until:
-                unlock_time = datetime.fromtimestamp(locked_until).strftime('%H:%M:%S')
-                form_login.add_error(
-                    None,
-                    f"Your account is locked due to too many failed login attempts. "
-                    f"Please try again after {unlock_time}."
-                )
-            else:
-                request.session.pop('axes_locked_until', None)
-
-        if form_login.is_valid():
-            username = form_login.cleaned_data['username']
-            password = form_login.cleaned_data['password']
-            user = authenticate(request, username=username, password=password)
-            if user:
-                email2 = user.email
-
-                docs = users_ref.where('email', '==', email2).limit(1).get()
-                if docs and not docs[0].to_dict().get('Enabled', True):
-                    form_login.add_error(None, "Your account has been disabled.")
-                else:
-                    login(request, user)
-                    update_email_in_db(email1, email2)
-                    return redirect('checkout_addresses')
-    else:
-        form_login = AuthenticationForm()
-
-    form_register = UserRegisterForm()
-
-    return render(request, 'checkout/Checkout_Account_Auth.html', {
-        'documents': documents,
-        'currency': currency_symbol,
-        'form_login': form_login,
-        'form_register': form_register,
-        'error_messages': get_all_errors([form_login, form_register]),
-        'RECAPTCHA_SITE_KEY': settings.RECAPTCHA_SITE_KEY,
-    })
-
-@not_logged_in
-@ratelimit_with_logging(key='ip', rate='5/m', block=True)
-def register_anonym_cart_info(request):
-    email_before = get_user_session_type(request)
-    documents = sorted(get_cart(email_before), key=lambda x: x['number'])
-    category, currency = get_user_prices(request, email_before)
-    currency_symbol = {'Euro': '€', 'Dollar': '$'}.get(currency, currency)
-
-    # 2) Initializing forms
-    form_register = UserRegisterForm(request.POST or None)
-    form_login = AuthenticationForm()
-
-    # 3) POST request processing (registration)
-    if request.method == 'POST':
-        # 3.1 Checking reCAPTCHA
-        recaptcha_response = request.POST.get('g-recaptcha-response')
-        if not verify_recaptcha(recaptcha_response):
-            form_register.add_error(None, 'Invalid reCAPTCHA. Please try again.')
-            logger.error(
-                "Registration failed: invalid reCAPTCHA. Errors: %s",
-                form_register.errors.as_json()
-            )
-        # 3.2 If reCAPTCHA is ok and the form is valid - check email uniqueness
-        elif form_register.is_valid():
-            email_after = form_register.cleaned_data['email']
-            existing = users_ref.where('email', '==', email_after).limit(1).get()
-            if existing:
-                form_register.add_error('email', 'User with this email already exists.')
-            else:
-                # 3.3 Create an entry in Firestore
-                user_id    = get_new_user_id()
-                now_str    = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-                social     = "Mr" if form_register.cleaned_data.get('social_title') == "1" else "Mrs"
-                offers     = form_register.cleaned_data['offers']
-                newsletter = form_register.cleaned_data['receive_newsletter']
-                cat, curr  = get_user_prices(request, email_after)
-                new_user = {
-                    'Enabled': True,
-                    'display_name': 'undefined',
-                    'social_title': social,
-                    'first_name': form_register.cleaned_data['first_name'],
-                    'last_name':  form_register.cleaned_data['last_name'],
-                    'email':      email_after,
-                    'birthday':   form_register.cleaned_data.get('birthdate'),
-                    'price_category': cat,
-                    'currency':       curr,
-                    'receive_offers': offers,
-                    'receive_newsletter': newsletter,
-                    'registrationDate': now_str,
-                    'userId':      user_id,
-                    'sale':        0,
-                    'customer_type': 'Customer',
-                    'show_quantities': False,
-                }
-                users_ref.add(new_user)
-
-                # 3.4 Create and save Django user
-                user = form_register.save(commit=False)
-                # Generate a unique username based on email
-                user.username = email_after
-                # Set the password (UserCreationForm already hashes it)
-                user.set_password(form_register.cleaned_data['password1'])
-                user.save()
-
-                # 3.5 Authenticating and clearing the old shopping cart
-                user = authenticate(request, username=user.username,
-                                    password=form_register.cleaned_data['password1'])
-                if user:
-                    clear_all_cart(email_after)
-                    login(request, user)
-                    update_email_in_db(email_before, email_after)
-                    return redirect('checkout_addresses')
-
-    # 4) The overall context and rendering of a single template
-    context = {
-        'documents':      documents,
-        'currency':       currency_symbol,
-        'form_login':     form_login,
-        'form_register':  form_register,
-        'error_messages': get_all_errors([form_register, form_login]),
-        'RECAPTCHA_SITE_KEY': settings.RECAPTCHA_SITE_KEY,
-    }
-    print(context["RECAPTCHA_SITE_KEY"])
-    return render(request, 'checkout/Checkout_Account_Auth.html', context)
-
-
-def checkout_addresses(request):
-    email = get_user_session_type(request)
-    addresses, addresses_dict = get_user_addresses(email)
-
-    category, currency = get_user_category(email) or ("Default", "Euro")
-    if currency == "Euro":
-        currency = "€"
-    elif currency == "Dollar":
-        currency = "$"
-    info = get_user_info(email) or {}
-    customer_type = info.get('customer_type', "Customer")
-    form_register = UserRegisterForm()
-    form_login = AuthenticationForm()
-    active_coupon_data = get_active_coupon(email)
-    active_coupon_data.pop('single_use', None)
-    context = {
-        'documents': sorted(get_cart(email), key=lambda x: x['number']),
-        'currency': currency,
-        'form_register': form_register,
-        'form_login': form_login,
-        'my_addresses': addresses,
-        'addresses_dict': addresses_dict,
-        'customer_type': customer_type,
-        'STRIPE_PUBLISHABLE_KEY': settings.STRIPE_PUBLISHABLE_KEY,
-        'activeCoupon': active_coupon_data,
-    }
-    return render(request, 'checkout/Checkout_Addresses.html', context=context)
-
-
-def checkout_payment_type(request):
-    email = get_user_session_type(request)
-
-    category, currency = get_user_category(email) or ("Default", "Euro")
-    if currency == "Euro":
-        currency = "€"
-    elif currency == "Dollar":
-        currency = "$"
-    addresses_properties_json = request.POST.get('addresses_properties')
-    addresses_properties = json.loads(addresses_properties_json) if addresses_properties_json else {}
-    context = {
-        'documents': sorted(get_cart(email), key=lambda x: x['number']),
-        'currency': currency,
-        'STRIPE_PUBLISHABLE_KEY': settings.STRIPE_PUBLISHABLE_KEY,
-        'addresses_properties': addresses_properties,
-    }
-
-    return render(request, 'checkout/Checkout_Payment_Type.html', context=context)
 
 
 def check_promo_code(request):

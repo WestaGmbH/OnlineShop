@@ -241,3 +241,25 @@ body{
     pointer-events: none; /* Allows mouse events to pass through the tooltip */
     box-shadow: 0 4px 6px rgba(0,0,0,0.2); /* Shadow added here */
 }
+
+.no-padding{
+    padding:0;
+}
+.display-none{
+    display: none!important;
+}
+.hidden {
+    display: none;
+}
+.section-hidden{
+    display: none!important;
+}
+.display-active{
+    display: none!important;
+}
+.text-gray-muted{
+    color: #626262;
+}
+.btn-confirm{
+    width: 100%;
+}

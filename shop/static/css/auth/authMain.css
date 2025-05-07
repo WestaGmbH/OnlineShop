@@ -42,10 +42,6 @@
   }
 }
 
-.btn-confirm{
-    width: 100%;
-}
-
 /*PASSWORD RESTORE*/
 .forgot-password a:hover {
     text-decoration: none;

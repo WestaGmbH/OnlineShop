@@ -307,14 +307,12 @@
         let input = document.getElementById('input-quantity');
         console.log(product_dict);
         if(!product_dict.pre_order) {
-            console.log("Here");
             if (input.value < product_dict.quantity) {
                 let currentValue = Number(input.value === "" ? 1 : input.value);
                 input.value = currentValue + 1;
             }
         }
         else{
-            console.log("Here2");
             if (input.value < 20) {
                 let currentValue = Number(input.value === "" ? 1 : input.value);
                 input.value = currentValue + 1;
