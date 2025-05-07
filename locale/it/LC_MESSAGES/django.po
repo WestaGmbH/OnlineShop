@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-05-06 11:46+0000\n"
+"POT-Creation-Date: 2025-05-07 18:55+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -42,7 +42,7 @@ msgstr "Spagnolo"
 msgid "Russian"
 msgstr "Russo"
 
-#: shop/forms.py:114 shop/templates/checkout/Checkout_Account_Auth.html:188
+#: shop/forms.py:114 shop/templates/checkout/Checkout_Account_Auth.html:163
 #: shop/templates/registration/register.html:161
 msgid ""
 "I consent to the processing and use of my personal data in accordance with "
@@ -77,27 +77,90 @@ msgstr "e gestire"
 msgid "users' accounts"
 msgstr "account degli utenti"
 
-#: shop/templates/admin_tools/AT_stores.html:22
-#: shop/templates/admin_tools/AT_stores.html:43
-#: shop/templates/admin_tools/AT_stores.html:56
-#: shop/templates/checkout/Checkout_Addresses.html:195
-#: shop/templates/profile/profile_create_address.html:50
-#: shop/templates/profile/profile_update_address.html:51 shop/views.py:720
-msgid "Address"
-msgstr "Indirizzo"
+#: shop/templates/admin_tools/AT_invoices.html:7
+msgid "Invoice Management"
+msgstr "Gestione delle fatture"
 
-#: shop/templates/admin_tools/AT_stores.html:23 shop/views.py:717
-msgid "Latitude"
-msgstr "Latitudine"
+#: shop/templates/admin_tools/AT_invoices.html:10
+#| msgid "Create new address"
+msgid "Create New Invoice"
+msgstr "Crea una nuova fattura"
 
-#: shop/templates/admin_tools/AT_stores.html:24 shop/views.py:718
-msgid "Longitude"
-msgstr "Longitudine"
+#: shop/templates/admin_tools/AT_invoices.html:14
+msgid "User UID or Email"
+msgstr "Utente o e -mail"
 
+#: shop/templates/admin_tools/AT_invoices.html:18
+msgid "Amount (in cents)"
+msgstr "Importo (in centesimi)"
+
+#: shop/templates/admin_tools/AT_invoices.html:22
+msgid "Currency (ISO code)"
+msgstr "Valuta (codice ISO)"
+
+#: shop/templates/admin_tools/AT_invoices.html:25
+#| msgid "Create an account"
+msgid "Create and Send"
+msgstr "Crea e invia"
+
+#: shop/templates/admin_tools/AT_invoices.html:31
+msgid "All Invoices"
+msgstr "Tutte le fatture"
+
+#: shop/templates/admin_tools/AT_invoices.html:35
+msgid "Invoice ID"
+msgstr "ID fattura"
+
+#: shop/templates/admin_tools/AT_invoices.html:36
+#| msgid "View User"
+msgid "User"
+msgstr "Utente"
+
+#: shop/templates/admin_tools/AT_invoices.html:37
+#: shop/templates/profile/profile_my_invoices.html:22
+#: shop/templates/profile/profile_my_invoices.html:38
+#| msgid "Account"
+msgid "Amount"
+msgstr "Quantità"
+
+#: shop/templates/admin_tools/AT_invoices.html:38
+#: shop/templates/profile/profile_my_invoices.html:23
+#: shop/templates/profile/profile_my_invoices.html:39
+#| msgid "Currently"
+msgid "Currency"
+msgstr "Valuta"
+
+#: shop/templates/admin_tools/AT_invoices.html:39
+#: shop/templates/profile/profile_orders.html:21
+msgid "Status"
+msgstr "Stato"
+
+#: shop/templates/admin_tools/AT_invoices.html:40
+msgid "Created At"
+msgstr "Creato a"
+
+#: shop/templates/admin_tools/AT_invoices.html:41
 #: shop/templates/admin_tools/AT_stores.html:25
 #: shop/templates/admin_tools/AT_users_control.html:38
 msgid "Actions"
 msgstr "Azioni"
+
+#: shop/templates/admin_tools/AT_stores.html:22
+#: shop/templates/admin_tools/AT_stores.html:43
+#: shop/templates/admin_tools/AT_stores.html:56
+#: shop/templates/checkout/Checkout_Addresses.html:196
+#: shop/templates/profile/profile_create_address.html:50
+#: shop/templates/profile/profile_update_address.html:51 shop/views.py:721
+msgid "Address"
+msgstr "Indirizzo"
+
+#: shop/templates/admin_tools/AT_stores.html:23 shop/views.py:718
+msgid "Latitude"
+msgstr "Latitudine"
+
+#: shop/templates/admin_tools/AT_stores.html:24 shop/views.py:719
+msgid "Longitude"
+msgstr "Longitudine"
 
 #: shop/templates/admin_tools/AT_stores.html:33
 #: shop/templates/admin_tools/AT_stores.html:39
@@ -177,75 +240,75 @@ msgstr "Visualizza utente"
 msgid "Delete User"
 msgstr "Elimina utente"
 
-#: shop/templates/cart.html:52
+#: shop/templates/cart.html:53
 msgid "Shopping cart"
 msgstr "Carrello della spesa"
 
-#: shop/templates/cart.html:67 shop/views.py:732
+#: shop/templates/cart.html:68 shop/views.py:733
 msgid "In cart"
 msgstr "Nel carrello"
 
-#: shop/templates/cart.html:74
+#: shop/templates/cart.html:75
 msgid "Less than 5 items left"
 msgstr "Meno di 5 articoli rimasti"
 
-#: shop/templates/cart.html:75 shop/views.py:726
+#: shop/templates/cart.html:76 shop/views.py:727
 msgid "Confirm"
 msgstr "Confermare"
 
-#: shop/templates/cart.html:92 shop/views.py:664
+#: shop/templates/cart.html:93 shop/views.py:665
 msgid "Continue shopping"
 msgstr "Continua a fare acquisti"
 
-#: shop/templates/cart.html:97
+#: shop/templates/cart.html:98
 msgid "Recommended based on items in your cart"
 msgstr "Consigliato in base agli articoli nel carrello"
 
-#: shop/templates/cart.html:118 shop/templates/checkout/checkout_widget.html:9
-#: shop/views.py:663 shop/views_scripts/checkout_cart_views.py:482
+#: shop/templates/cart.html:119 shop/templates/checkout/checkout_widget.html:9
+#: shop/views.py:664 shop/views_scripts/checkout_cart_views.py:718
 msgid "Subtotal"
 msgstr "Totale parziale"
 
-#: shop/templates/cart.html:121
+#: shop/templates/cart.html:122
 #: shop/templates/checkout/checkout_widget.html:12
 msgid "items"
 msgstr "elementi"
 
-#: shop/templates/cart.html:129
+#: shop/templates/cart.html:130
 msgid "Have a promo code?"
 msgstr "Hai un codice promozionale?"
 
-#: shop/templates/cart.html:133
+#: shop/templates/cart.html:134
 msgid "Active promo code"
 msgstr "Codice promozionale attivo"
 
-#: shop/templates/cart.html:134
+#: shop/templates/cart.html:135
 msgid "discount"
 msgstr "sconto"
 
-#: shop/templates/cart.html:140
-#: shop/templates/checkout/Checkout_Payment_Type.html:322
+#: shop/templates/cart.html:141
+#: shop/templates/checkout/Checkout_Payment_Type.html:323
 #: shop/templates/checkout/checkout_widget.html:26
-#: shop/views_scripts/checkout_cart_views.py:439
-#: shop/views_scripts/checkout_cart_views.py:441
+#: shop/views_scripts/checkout_cart_views.py:675
+#: shop/views_scripts/checkout_cart_views.py:677
 msgid "Total"
 msgstr "Totale"
 
-#: shop/templates/cart.html:140
-#: shop/templates/checkout/Checkout_Payment_Type.html:322
+#: shop/templates/cart.html:141
+#: shop/templates/checkout/Checkout_Payment_Type.html:323
 #: shop/templates/checkout/checkout_widget.html:26
 msgid "VAT Incl."
 msgstr "IVA incl."
 
-#: shop/templates/cart.html:146 shop/views.py:665
+#: shop/templates/cart.html:147 shop/views.py:666
 msgid "Proceed to checkout"
 msgstr "Procedere al checkout"
 
-#: shop/templates/cart.html:158 shop/templates/cart.html:162
+#: shop/templates/cart.html:159 shop/templates/cart.html:163
 msgid "Enter promo code"
 msgstr "Inserisci il codice promozionale"
 
-#: shop/templates/cart.html:163
+#: shop/templates/cart.html:164
 msgid "Promo code is invalid"
 msgstr "Il codice promozionale non è valido"
 
@@ -254,12 +317,12 @@ msgid "Order by"
 msgstr "Ordina per"
 
 #: shop/templates/catalog.html:203 shop/templates/catalog.html:204
-#: shop/views.py:689
+#: shop/views.py:690
 msgid "Name"
 msgstr "Nome"
 
 #: shop/templates/catalog.html:205 shop/templates/catalog.html:206
-#: shop/templates/widgets/filters_section.html:22 shop/views.py:692
+#: shop/templates/widgets/filters_section.html:22 shop/views.py:693
 msgid "Price"
 msgstr "Prezzo"
 
@@ -275,17 +338,17 @@ msgstr "Prossimo"
 msgid "Jump"
 msgstr "Salto"
 
-#: shop/templates/checkout/Checkout_Account_Auth.html:27
-#: shop/templates/checkout/Checkout_Addresses.html:27
-#: shop/templates/checkout/Checkout_Payment_Type.html:27
+#: shop/templates/checkout/Checkout_Account_Auth.html:30
+#: shop/templates/checkout/Checkout_Addresses.html:28
+#: shop/templates/checkout/Checkout_Payment_Type.html:28
 msgid "Personal Information"
 msgstr "Informazioni personali"
 
-#: shop/templates/checkout/Checkout_Account_Auth.html:30
+#: shop/templates/checkout/Checkout_Account_Auth.html:33
 msgid "Order as a guest"
 msgstr "Ordina come ospite"
 
-#: shop/templates/checkout/Checkout_Account_Auth.html:32
+#: shop/templates/checkout/Checkout_Account_Auth.html:35
 #: shop/templates/registration/login.html:69
 msgid "Sign in"
 msgstr "Registrazione"
@@ -295,14 +358,14 @@ msgstr "Registrazione"
 msgid "Create an account"
 msgstr "Creare un account"
 
-#: shop/templates/checkout/Checkout_Account_Auth.html:61
+#: shop/templates/checkout/Checkout_Account_Auth.html:57
 #: shop/templates/profile/profile_information.html:15
 #: shop/templates/registration/register.html:48
 msgid "Social title"
 msgstr "Titolo sociale"
 
-#: shop/templates/checkout/Checkout_Account_Auth.html:80
-#: shop/templates/checkout/Checkout_Addresses.html:167
+#: shop/templates/checkout/Checkout_Account_Auth.html:75
+#: shop/templates/checkout/Checkout_Addresses.html:168
 #: shop/templates/profile/profile_create_address.html:24
 #: shop/templates/profile/profile_information.html:37
 #: shop/templates/profile/profile_update_address.html:25
@@ -310,8 +373,8 @@ msgstr "Titolo sociale"
 msgid "First name"
 msgstr "Nome di battesimo"
 
-#: shop/templates/checkout/Checkout_Account_Auth.html:91
-#: shop/templates/checkout/Checkout_Addresses.html:177
+#: shop/templates/checkout/Checkout_Account_Auth.html:84
+#: shop/templates/checkout/Checkout_Addresses.html:178
 #: shop/templates/profile/profile_create_address.html:33
 #: shop/templates/profile/profile_information.html:46
 #: shop/templates/profile/profile_update_address.html:34
@@ -319,8 +382,8 @@ msgstr "Nome di battesimo"
 msgid "Last name"
 msgstr "Cognome"
 
-#: shop/templates/checkout/Checkout_Account_Auth.html:111
-#: shop/templates/checkout/Checkout_Account_Auth.html:252
+#: shop/templates/checkout/Checkout_Account_Auth.html:102
+#: shop/templates/checkout/Checkout_Account_Auth.html:218
 #: shop/templates/profile/profile_information.html:63
 #: shop/templates/registration/login.html:54
 #: shop/templates/registration/password_reset_confirm.html:34
@@ -328,30 +391,30 @@ msgstr "Cognome"
 msgid "Password"
 msgstr "Password"
 
-#: shop/templates/checkout/Checkout_Account_Auth.html:130
+#: shop/templates/checkout/Checkout_Account_Auth.html:114
 #: shop/templates/registration/register.html:109
 msgid "Confirm you password"
 msgstr "Conferma la tua password"
 
-#: shop/templates/checkout/Checkout_Account_Auth.html:145
+#: shop/templates/checkout/Checkout_Account_Auth.html:123
 #: shop/templates/profile/profile_information.html:99
 #: shop/templates/registration/register.html:118
 msgid "Birthdate"
 msgstr "Data di nascita"
 
-#: shop/templates/checkout/Checkout_Account_Auth.html:159
+#: shop/templates/checkout/Checkout_Account_Auth.html:136
 #: shop/templates/profile/profile_information.html:115
 #: shop/templates/registration/register.html:132
 msgid "Receive offers from our partners"
 msgstr "Ricevi offerte dai nostri partner"
 
-#: shop/templates/checkout/Checkout_Account_Auth.html:173
+#: shop/templates/checkout/Checkout_Account_Auth.html:149
 #: shop/templates/profile/profile_information.html:130
 #: shop/templates/registration/register.html:146
 msgid "Sign up for our newsletter"
 msgstr "Iscriviti alla nostra newsletter"
 
-#: shop/templates/checkout/Checkout_Account_Auth.html:173
+#: shop/templates/checkout/Checkout_Account_Auth.html:149
 msgid ""
 "You may unsubscribe at any moment. For that purpose, please find our contact"
 " info in the legal notice."
@@ -359,151 +422,151 @@ msgstr ""
 "Puoi annullare l'iscrizione in qualsiasi momento. A tal fine, trovi le "
 "nostre informazioni di contatto nelle note legali."
 
-#: shop/templates/checkout/Checkout_Account_Auth.html:199
+#: shop/templates/checkout/Checkout_Account_Auth.html:173
 #: shop/templates/registration/register.html:175
 msgid "If you want to register as a B2B customer, please contact us."
 msgstr "Se desideri registrarti come cliente B2B, contattaci."
 
-#: shop/templates/checkout/Checkout_Account_Auth.html:207
-#: shop/templates/checkout/Checkout_Account_Auth.html:268
-#: shop/templates/checkout/Checkout_Addresses.html:260
-#: shop/templates/checkout/Checkout_Payment_Type.html:53
+#: shop/templates/checkout/Checkout_Account_Auth.html:180
+#: shop/templates/checkout/Checkout_Account_Auth.html:228
+#: shop/templates/checkout/Checkout_Addresses.html:261
+#: shop/templates/checkout/Checkout_Payment_Type.html:54
 msgid "Continue"
 msgstr "Continuare"
 
-#: shop/templates/checkout/Checkout_Account_Auth.html:229
-#: shop/templates/widgets/account_panel.html:131
+#: shop/templates/checkout/Checkout_Account_Auth.html:196
+#: shop/templates/widgets/account_panel.html:138
 #: shop/templates/widgets/mobile_links_panel.html:47
-#: shop/templates/widgets/navigation_bar.html:82
+#: shop/templates/widgets/navigation_bar.html:94
 msgid "Login"
 msgstr "Login"
 
-#: shop/templates/checkout/Checkout_Addresses.html:28
-#: shop/templates/checkout/Checkout_Payment_Type.html:28
+#: shop/templates/checkout/Checkout_Addresses.html:29
+#: shop/templates/checkout/Checkout_Payment_Type.html:29
 #: shop/templates/profile/profile_side_menu.html:30
 #: shop/templates/widgets/account_panel.html:72
 msgid "Addresses"
 msgstr "Indirizzi"
 
-#: shop/templates/checkout/Checkout_Addresses.html:33
+#: shop/templates/checkout/Checkout_Addresses.html:34
 msgid "Shipping address"
 msgstr "Indirizzo di spedizione"
 
-#: shop/templates/checkout/Checkout_Addresses.html:61
-#: shop/templates/checkout/Checkout_Addresses.html:120
-#: shop/templates/profile/profile_addresses.html:33 shop/views.py:721
+#: shop/templates/checkout/Checkout_Addresses.html:62
+#: shop/templates/checkout/Checkout_Addresses.html:121
+#: shop/templates/profile/profile_addresses.html:33 shop/views.py:722
 msgid "Update"
 msgstr "Aggiornamento"
 
-#: shop/templates/checkout/Checkout_Addresses.html:67
-#: shop/templates/checkout/Checkout_Addresses.html:126
-#: shop/templates/profile/profile_addresses.html:39 shop/views.py:722
+#: shop/templates/checkout/Checkout_Addresses.html:68
+#: shop/templates/checkout/Checkout_Addresses.html:127
+#: shop/templates/profile/profile_addresses.html:39 shop/views.py:723
 msgid "Delete"
 msgstr "Eliminare"
 
-#: shop/templates/checkout/Checkout_Addresses.html:78
-#: shop/templates/checkout/Checkout_Addresses.html:137
+#: shop/templates/checkout/Checkout_Addresses.html:79
+#: shop/templates/checkout/Checkout_Addresses.html:138
 msgid "Add new address"
 msgstr "Aggiungi nuovo indirizzo"
 
-#: shop/templates/checkout/Checkout_Addresses.html:82
+#: shop/templates/checkout/Checkout_Addresses.html:83
 msgid "Billing address differs from shipping address"
 msgstr "L'indirizzo di fatturazione è diverso dall'indirizzo di spedizione"
 
-#: shop/templates/checkout/Checkout_Addresses.html:92
+#: shop/templates/checkout/Checkout_Addresses.html:93
 msgid "Billing address"
 msgstr "Indirizzo di fatturazione"
 
-#: shop/templates/checkout/Checkout_Addresses.html:141
+#: shop/templates/checkout/Checkout_Addresses.html:142
 msgid "Billing address is the same as shipping address"
 msgstr "L'indirizzo di fatturazione è lo stesso dell'indirizzo di spedizione"
 
-#: shop/templates/checkout/Checkout_Addresses.html:184
+#: shop/templates/checkout/Checkout_Addresses.html:185
 #: shop/templates/profile/profile_create_address.html:42
 #: shop/templates/profile/profile_update_address.html:43
 msgid "Company"
 msgstr "Azienda"
 
-#: shop/templates/checkout/Checkout_Addresses.html:202
+#: shop/templates/checkout/Checkout_Addresses.html:203
 #: shop/templates/profile/profile_create_address.html:59
 #: shop/templates/profile/profile_update_address.html:60
 msgid "Address Complement"
 msgstr "Complemento di indirizzo"
 
-#: shop/templates/checkout/Checkout_Addresses.html:212
+#: shop/templates/checkout/Checkout_Addresses.html:213
 #: shop/templates/profile/profile_create_address.html:66
 #: shop/templates/profile/profile_update_address.html:67
 msgid "Postal Code"
 msgstr "Codice Postale"
 
-#: shop/templates/checkout/Checkout_Addresses.html:222
+#: shop/templates/checkout/Checkout_Addresses.html:223
 #: shop/templates/profile/profile_create_address.html:75
 #: shop/templates/profile/profile_update_address.html:76
 msgid "City"
 msgstr "Città"
 
-#: shop/templates/checkout/Checkout_Addresses.html:232
+#: shop/templates/checkout/Checkout_Addresses.html:233
 #: shop/templates/profile/profile_create_address.html:84
 #: shop/templates/profile/profile_update_address.html:85
 msgid "Country"
 msgstr "Paese"
 
-#: shop/templates/checkout/Checkout_Addresses.html:246
+#: shop/templates/checkout/Checkout_Addresses.html:247
 #: shop/templates/profile/profile_create_address.html:97
 #: shop/templates/profile/profile_update_address.html:98
-#: shop/templates/service_pages/Privacy_policy.html:58
+#: shop/templates/service_pages/Privacy_policy.html:29
 msgid "Phone"
 msgstr "Telefono"
 
-#: shop/templates/checkout/Checkout_Addresses.html:253
+#: shop/templates/checkout/Checkout_Addresses.html:254
 msgid "Cancel"
 msgstr "Cancellare"
 
-#: shop/templates/checkout/Checkout_Addresses.html:254
+#: shop/templates/checkout/Checkout_Addresses.html:255
 #: shop/templates/profile/profile_information.html:140
 #: shop/templates/profile/profile_update_address.html:108
 #: shop/templates/registration/register.html:185
 msgid "Save"
 msgstr "Salva"
 
-#: shop/templates/checkout/Checkout_Addresses.html:620
+#: shop/templates/checkout/Checkout_Addresses.html:621
 msgid "Please select a shipping address first"
 msgstr "Seleziona prima un indirizzo di spedizione"
 
-#: shop/templates/checkout/Checkout_Addresses.html:740 shop/views.py:695
+#: shop/templates/checkout/Checkout_Addresses.html:739 shop/views.py:696
 msgid "The address has been successfully added!"
 msgstr "L'indirizzo è stato aggiunto con successo!"
 
-#: shop/templates/checkout/Checkout_Addresses.html:754 shop/views.py:694
+#: shop/templates/checkout/Checkout_Addresses.html:753 shop/views.py:695
 msgid "Are you sure you want to delete this address?"
 msgstr "Sei sicuro di voler eliminare questo indirizzo?"
 
-#: shop/templates/checkout/Checkout_Addresses.html:840
+#: shop/templates/checkout/Checkout_Addresses.html:839
 msgid "Order will be delivered to your email"
 msgstr "L'ordine verrà consegnato alla tua email"
 
-#: shop/templates/checkout/Checkout_Addresses.html:871
-#: shop/templates/checkout/Checkout_Payment_Type.html:369
+#: shop/templates/checkout/Checkout_Addresses.html:869
+#: shop/templates/checkout/Checkout_Payment_Type.html:370
 msgid "You have to add at least 1 item to finish order"
 msgstr "Devi aggiungere almeno 1 articolo per completare l'ordine"
 
-#: shop/templates/checkout/Checkout_Addresses.html:875
+#: shop/templates/checkout/Checkout_Addresses.html:873
 msgid "You didn't provide billing address"
 msgstr "Non hai fornito l'indirizzo di fatturazione"
 
-#: shop/templates/checkout/Checkout_Addresses.html:879
+#: shop/templates/checkout/Checkout_Addresses.html:877
 msgid "You didn't provide shipping address"
 msgstr "Non hai fornito l'indirizzo di spedizione"
 
-#: shop/templates/checkout/Checkout_Payment_Type.html:29
+#: shop/templates/checkout/Checkout_Payment_Type.html:30
 msgid "Payment type"
 msgstr "Tipo di pagamento"
 
-#: shop/templates/checkout/Checkout_Payment_Type.html:35
+#: shop/templates/checkout/Checkout_Payment_Type.html:36
 msgid "Choose payment type"
 msgstr "Scegli il tipo di pagamento"
 
-#: shop/templates/checkout/Checkout_Payment_Type.html:42
+#: shop/templates/checkout/Checkout_Payment_Type.html:43
 msgid "Pay with Credit Card via Stripe"
 msgstr "Paga con carta di credito tramite Stripe"
 
@@ -520,6 +583,7 @@ msgstr "Spedizione inclusa"
 #: shop/templates/dedicated_templates/translation_vocabulary.html:42
 #: shop/templates/widgets/mobile_links_panel.html:35
 #: shop/templates/widgets/navigation_bar.html:57
+#: shop/templates/widgets/navigation_bar.html:67
 msgid "Earrings"
 msgstr "Orecchini"
 
@@ -643,7 +707,7 @@ msgstr "Argento"
 
 #: shop/templates/dedicated_templates/translation_vocabulary.html:39
 #: shop/templates/dedicated_templates/translation_vocabulary.html:158
-#: shop/templates/widgets/navigation_bar.html:64
+#: shop/templates/widgets/navigation_bar.html:76
 msgid "All"
 msgstr "Tutto"
 
@@ -651,6 +715,7 @@ msgstr "Tutto"
 #: shop/templates/dedicated_templates/translation_vocabulary.html:49
 #: shop/templates/widgets/mobile_links_panel.html:34
 #: shop/templates/widgets/navigation_bar.html:56
+#: shop/templates/widgets/navigation_bar.html:66
 msgid "Necklaces"
 msgstr "Collane"
 
@@ -658,12 +723,14 @@ msgstr "Collane"
 #: shop/templates/dedicated_templates/translation_vocabulary.html:55
 #: shop/templates/widgets/mobile_links_panel.html:37
 #: shop/templates/widgets/navigation_bar.html:59
+#: shop/templates/widgets/navigation_bar.html:69
 msgid "Bracelets"
 msgstr "Bracciali"
 
 #: shop/templates/dedicated_templates/translation_vocabulary.html:44
 #: shop/templates/widgets/mobile_links_panel.html:38
 #: shop/templates/widgets/navigation_bar.html:60
+#: shop/templates/widgets/navigation_bar.html:70
 msgid "Accessories"
 msgstr "Accessori"
 
@@ -710,6 +777,7 @@ msgstr "Cavigliere"
 #: shop/templates/dedicated_templates/translation_vocabulary.html:58
 #: shop/templates/widgets/mobile_links_panel.html:36
 #: shop/templates/widgets/navigation_bar.html:58
+#: shop/templates/widgets/navigation_bar.html:68
 msgid "Rings"
 msgstr "Anelli"
 
@@ -771,7 +839,7 @@ msgid "Catalogs"
 msgstr "Cataloghi"
 
 #: shop/templates/profile/profile_chat.html:15
-#: shop/views_scripts/checkout_cart_views.py:337
+#: shop/views_scripts/checkout_cart_views.py:573
 msgid "Order"
 msgstr "Ordine"
 
@@ -845,12 +913,12 @@ msgid "Favorite products"
 msgstr "Prodotti preferiti"
 
 #: shop/templates/profile/profile_favourites.html:126
-#: shop/templates/profile/profile_favourites.html:312 shop/views.py:675
+#: shop/templates/profile/profile_favourites.html:312 shop/views.py:676
 msgid "Remove from favorites"
 msgstr "Rimuovi dai preferiti"
 
 #: shop/templates/profile/profile_favourites.html:126
-#: shop/templates/profile/profile_favourites.html:313 shop/views.py:672
+#: shop/templates/profile/profile_favourites.html:313 shop/views.py:673
 msgid "Add to favorites"
 msgstr "Aggiungi ai preferiti"
 
@@ -903,6 +971,46 @@ msgstr ""
 msgid "The information has been successfully updated!"
 msgstr "Le informazioni sono state aggiornate con successo!"
 
+#: shop/templates/profile/profile_my_invoices.html:8
+msgid "My Invoices"
+msgstr "Le mie fatture"
+
+#: shop/templates/profile/profile_my_invoices.html:12
+#| msgid "Pendant"
+msgid "Pending"
+msgstr "In attesa di"
+
+#: shop/templates/profile/profile_my_invoices.html:13
+#| msgid "directory"
+msgid "History"
+msgstr "Storia"
+
+#: shop/templates/profile/profile_my_invoices.html:17
+msgid "Invoices to Pay"
+msgstr "Fatture da pagare"
+
+#: shop/templates/profile/profile_my_invoices.html:21
+#: shop/templates/profile/profile_my_invoices.html:37
+msgid "ID"
+msgstr "ID"
+
+#: shop/templates/profile/profile_my_invoices.html:24
+msgid "Created"
+msgstr "Creato"
+
+#: shop/templates/profile/profile_my_invoices.html:25
+#| msgid "Actions"
+msgid "Action"
+msgstr "Azione"
+
+#: shop/templates/profile/profile_my_invoices.html:33
+msgid "Paid Invoices"
+msgstr "Fatture a pagamento"
+
+#: shop/templates/profile/profile_my_invoices.html:40
+msgid "Paid At"
+msgstr "Pagato a"
+
 #: shop/templates/profile/profile_order_import.html:8
 #: shop/templates/widgets/account_panel.html:89
 msgid "Order import"
@@ -946,7 +1054,7 @@ msgid "Order ID"
 msgstr "ID dell'ordine"
 
 #: shop/templates/profile/profile_orders.html:16
-#: shop/views_scripts/checkout_cart_views.py:342
+#: shop/views_scripts/checkout_cart_views.py:578
 msgid "Date"
 msgstr "Data"
 
@@ -955,7 +1063,7 @@ msgid "Total price"
 msgstr "Prezzo totale"
 
 #: shop/templates/profile/profile_orders.html:18
-#: shop/views_scripts/checkout_cart_views.py:483
+#: shop/views_scripts/checkout_cart_views.py:719
 msgid "Shipping price"
 msgstr "Prezzo di spedizione"
 
@@ -966,10 +1074,6 @@ msgstr "Tracker"
 #: shop/templates/profile/profile_orders.html:20
 msgid "Payment"
 msgstr "Pagamento"
-
-#: shop/templates/profile/profile_orders.html:21
-msgid "Status"
-msgstr "Stato"
 
 #: shop/templates/profile/profile_orders.html:38
 msgid "Show Details"
@@ -1035,21 +1139,27 @@ msgstr "Informazioni"
 msgid "Favorites"
 msgstr "Preferiti"
 
-#: shop/templates/profile/profile_side_menu.html:52
+#: shop/templates/profile/profile_side_menu.html:44
+#: shop/templates/stripe/successInvoice.html:29
+#: shop/templates/widgets/account_panel.html:122
+msgid "My invoices"
+msgstr "Le mie fatture"
+
+#: shop/templates/profile/profile_side_menu.html:60
 msgid "Order Import"
 msgstr "Importazione ordini"
 
-#: shop/templates/profile/profile_side_menu.html:63
+#: shop/templates/profile/profile_side_menu.html:71
 msgid "Archive Search"
 msgstr "Ricerca nell'archivio"
 
-#: shop/templates/profile/profile_side_menu.html:70
+#: shop/templates/profile/profile_side_menu.html:78
 #: shop/templates/widgets/account_panel.html:116
 msgid "Support"
 msgstr "Supporto"
 
-#: shop/templates/profile/profile_side_menu.html:75
-#: shop/templates/widgets/account_panel.html:125
+#: shop/templates/profile/profile_side_menu.html:83
+#: shop/templates/widgets/account_panel.html:132
 msgid "Sign out"
 msgstr "Disconnessione"
 
@@ -1141,11 +1251,11 @@ msgstr "Hai già un account?"
 msgid "Log in instead!"
 msgstr "Accedi invece!"
 
-#: shop/templates/service_pages/Impressum.html:50
+#: shop/templates/service_pages/Impressum.html:31
 msgid "Value added tax registration number(s)"
 msgstr "Numero/i di registrazione dell'imposta sul valore aggiunto"
 
-#: shop/templates/service_pages/Impressum.html:51
+#: shop/templates/service_pages/Impressum.html:32
 msgid ""
 "Professional indemnity insurance:<br>R V Allgemeine Versicherung "
 "AG<br>Raiffeisenplatz 1<br>65189 Wiesbaden<br>The territorial scope of the "
@@ -1164,7 +1274,7 @@ msgstr ""
 "danni fisici e materiali verificatisi durante il periodo di validità "
 "dell'assicurazione."
 
-#: shop/templates/service_pages/Impressum.html:52
+#: shop/templates/service_pages/Impressum.html:33
 msgid ""
 "The European Commission provides a platform for online dispute resolutions "
 "(ODR) which can be accessed at"
@@ -1172,7 +1282,7 @@ msgstr ""
 "La Commissione Europea fornisce una piattaforma per la risoluzione delle "
 "controversie online (ODR) a cui è possibile accedere all'indirizzo"
 
-#: shop/templates/service_pages/Impressum.html:52
+#: shop/templates/service_pages/Impressum.html:33
 msgid ""
 "We are ready to participate in extra-judicial dispute settlement proceedings"
 " before a consumer dispute resolution body. The competent body in this "
@@ -1182,20 +1292,20 @@ msgstr ""
 "delle controversie dinanzi a un organismo di risoluzione delle controversie "
 "dei consumatori. L'organo competente in materia è"
 
-#: shop/templates/service_pages/Impressum.html:54
+#: shop/templates/service_pages/Impressum.html:35
 msgid "CONTACT US"
 msgstr "CONTATTACI"
 
-#: shop/templates/service_pages/Impressum.html:62
-#: shop/templates/service_pages/contact_us.html:53
+#: shop/templates/service_pages/Impressum.html:43
+#: shop/templates/service_pages/contact_us.html:34
 msgid "Call us at"
 msgstr "Chiamaci al"
 
-#: shop/templates/service_pages/Impressum.html:66
+#: shop/templates/service_pages/Impressum.html:47
 msgid "Office Hours"
 msgstr "Orari d'ufficio"
 
-#: shop/templates/service_pages/Impressum.html:67
+#: shop/templates/service_pages/Impressum.html:48
 msgid ""
 "Monday&nbsp;to Thursday from 08:00 to 17:00,&nbsp;and Friday "
 "from&nbsp;08:00&nbsp;to 13:00, except bank holidays."
@@ -1203,20 +1313,20 @@ msgstr ""
 "Dal lunedì al giovedì dalle 08:00 alle 17:00 e il venerdì dalle 08:00 alle "
 "13:00, esclusi i giorni festivi."
 
-#: shop/templates/service_pages/Oliver_Weber_for_Press.html:31
+#: shop/templates/service_pages/Oliver_Weber_for_Press.html:12
 #: shop/templates/widgets/footer.html:31
 msgid "Oliver Weber for Press"
 msgstr "Oliver Weber per la stampa"
 
-#: shop/templates/service_pages/Oliver_Weber_for_Press.html:47
+#: shop/templates/service_pages/Oliver_Weber_for_Press.html:28
 msgid "PRESS RELEASES&nbsp;FOR MEDIA AND JOURNALIST"
 msgstr "COMUNICATI STAMPA PER MEDIA E GIORNALISTI"
 
-#: shop/templates/service_pages/Oliver_Weber_for_Press.html:49
+#: shop/templates/service_pages/Oliver_Weber_for_Press.html:30
 msgid "Here you will find our contact details for the company Oliver Weber."
 msgstr "Qui troverete i nostri dati di contatto dell'azienda Oliver Weber."
 
-#: shop/templates/service_pages/Oliver_Weber_for_Press.html:51
+#: shop/templates/service_pages/Oliver_Weber_for_Press.html:32
 msgid ""
 "Do you have requests for magazines or magazines?<br><br>We will inform you "
 "about news and activities of our company.<br><br>Do you search for "
@@ -1232,7 +1342,7 @@ msgstr ""
 "Stampa Oliver Weber:<br><br>Tel.: +43 (0) 5223 41 881<br>Fax.: +43 (0) 5223 "
 "41 881 -3<br><br>E-mail: office@oliverweber.at<br><br> <br><br>"
 
-#: shop/templates/service_pages/Oliver_Weber_for_Press.html:53
+#: shop/templates/service_pages/Oliver_Weber_for_Press.html:34
 msgid ""
 "General information about Oliver Weber: Wide range of affordable luxury "
 "available worldwide"
@@ -1240,7 +1350,7 @@ msgstr ""
 "Informazioni generali su Oliver Weber: ampia gamma di lusso accessibile "
 "disponibile in tutto il mondo"
 
-#: shop/templates/service_pages/Oliver_Weber_for_Press.html:55
+#: shop/templates/service_pages/Oliver_Weber_for_Press.html:36
 msgid ""
 "'Oliver Weber' has become a trusted and known and also a sought-after "
 "jewellery brand in more than 50 countries around the world.<br><br>All the "
@@ -1292,11 +1402,11 @@ msgstr ""
 "trovare noi anche in mostre, fiere in tutto il mondo con consegne in tutto "
 "il mondo e rappresentanti locali."
 
-#: shop/templates/service_pages/Olivers_Weber_World.html:31
+#: shop/templates/service_pages/Olivers_Weber_World.html:12
 msgid "Oliver Weber's World "
 msgstr "Il mondo di Oliver Weber"
 
-#: shop/templates/service_pages/Olivers_Weber_World.html:47
+#: shop/templates/service_pages/Olivers_Weber_World.html:28
 msgid ""
 "The jewelry of Oliver Weber is made exclusively with precision cut, crystals"
 " of the highest quality on the market. Every piece of jewelry undergoes an "
@@ -1311,11 +1421,11 @@ msgstr ""
 " l'infinita creatività dei cristalli e li unisce in magiche combinazioni di "
 "luce e colore."
 
-#: shop/templates/service_pages/Olivers_Weber_World.html:52
+#: shop/templates/service_pages/Olivers_Weber_World.html:33
 msgid "The founder"
 msgstr "Il fondatore"
 
-#: shop/templates/service_pages/Olivers_Weber_World.html:53
+#: shop/templates/service_pages/Olivers_Weber_World.html:34
 msgid ""
 "Oliver Weber was founded in 1994 in Mils, in the heart of Austria, the home "
 "of the most famous cut crystals. The brand bears the name of one of the two "
@@ -1329,11 +1439,11 @@ msgstr ""
 "azienda Swarovski. L'azienda Westa unisce la qualità con un design perfetto "
 "e convince il cliente consapevole in tutto il mondo."
 
-#: shop/templates/service_pages/Olivers_Weber_World.html:58
+#: shop/templates/service_pages/Olivers_Weber_World.html:39
 msgid "The Company"
 msgstr "La Compagnia"
 
-#: shop/templates/service_pages/Olivers_Weber_World.html:59
+#: shop/templates/service_pages/Olivers_Weber_World.html:40
 msgid ""
 "From the beginning, the aim of the Oliver Weber brand was to develop a "
 "jewelry collection that enriches the crystal jewelry market with a high "
@@ -1350,16 +1460,16 @@ msgstr ""
 "stile molto particolare: un lusso accessibile che si adatta ad ogni "
 "occasione e ai gusti più svariati."
 
-#: shop/templates/service_pages/Privacy_policy.html:41
+#: shop/templates/service_pages/Privacy_policy.html:12
 #: shop/templates/widgets/footer.html:34
 msgid "Website Privacy Policy"
 msgstr "Informativa sulla privacy del sito web"
 
-#: shop/templates/service_pages/Privacy_policy.html:56
+#: shop/templates/service_pages/Privacy_policy.html:27
 msgid "Responsible for the processing of data is:"
 msgstr "Responsabile del trattamento dei dati è:"
 
-#: shop/templates/service_pages/Privacy_policy.html:59
+#: shop/templates/service_pages/Privacy_policy.html:30
 msgid ""
 "Thank you for visiting our online shop. Protection of your privacy is very "
 "important to us. Below you will find extensive information about how we "
@@ -1369,11 +1479,11 @@ msgstr ""
 "privacy è molto importante per noi. Di seguito troverai informazioni "
 "dettagliate su come gestiamo i tuoi dati."
 
-#: shop/templates/service_pages/Privacy_policy.html:60
+#: shop/templates/service_pages/Privacy_policy.html:31
 msgid "Access data and hosting"
 msgstr "Accedi ai dati e all'hosting"
 
-#: shop/templates/service_pages/Privacy_policy.html:61
+#: shop/templates/service_pages/Privacy_policy.html:32
 msgid ""
 "You may visit our website without revealing any personal information. With "
 "every visit on the website, the web server stores automatically only a so-"
@@ -1401,7 +1511,7 @@ msgstr ""
 "entro e non oltre sette giorni dalla fine della vostra visita sul nostro "
 "sito web."
 
-#: shop/templates/service_pages/Privacy_policy.html:63
+#: shop/templates/service_pages/Privacy_policy.html:34
 msgid ""
 "The services for hosting and displaying the website are partly provided by "
 "our service providers on the basis of processing on our behalf. Unless "
@@ -1420,11 +1530,11 @@ msgstr ""
 "collaborazione con loro, utilizzare l'opzione di contatto descritta nella "
 "presente informativa sulla privacy."
 
-#: shop/templates/service_pages/Privacy_policy.html:64
+#: shop/templates/service_pages/Privacy_policy.html:35
 msgid "Content Delivery Network"
 msgstr "Rete per la distribuzione dei contenuti"
 
-#: shop/templates/service_pages/Privacy_policy.html:65
+#: shop/templates/service_pages/Privacy_policy.html:36
 msgid ""
 "For the purpose of a shorter loading time, we use for some offers a so-"
 "called Content Delivery Network ('CDN') . This service provides content, "
@@ -1445,7 +1555,7 @@ msgstr ""
 " servizi e sulle basi della nostra collaborazione con loro, utilizzare "
 "l'opzione di contatto descritta nella presente informativa sulla privacy."
 
-#: shop/templates/service_pages/Privacy_policy.html:66
+#: shop/templates/service_pages/Privacy_policy.html:37
 msgid ""
 "Data processing for the purposes of processing the contract, establishing "
 "contact"
@@ -1453,11 +1563,11 @@ msgstr ""
 "Trattamento dei dati ai fini dell'elaborazione del contratto, della "
 "creazione di un contatto"
 
-#: shop/templates/service_pages/Privacy_policy.html:67
+#: shop/templates/service_pages/Privacy_policy.html:38
 msgid "Data processing for the purposes of performing the contract"
 msgstr "Trattamento dei dati ai fini dell'esecuzione del contratto"
 
-#: shop/templates/service_pages/Privacy_policy.html:68
+#: shop/templates/service_pages/Privacy_policy.html:39
 msgid ""
 "For the purpose of performing the contract in accordance with Art. 6 (1) (b)"
 " GDPR, we collect personal data if you provide it to us voluntarily as part "
@@ -1474,7 +1584,7 @@ msgstr ""
 "Quali dati vengono raccolti possono essere visualizzati nei rispettivi "
 "moduli di input."
 
-#: shop/templates/service_pages/Privacy_policy.html:69
+#: shop/templates/service_pages/Privacy_policy.html:40
 msgid ""
 "Further information on the processing of your data, in particular on the "
 "forwarding of the data to our service providers for the purpose of order, "
@@ -1499,11 +1609,11 @@ msgstr ""
 "utilizzare i dati oltre ciò, che è consentito dalla legge e di cui vi "
 "informiamo nella presente informativa sulla privacy."
 
-#: shop/templates/service_pages/Privacy_policy.html:70
+#: shop/templates/service_pages/Privacy_policy.html:41
 msgid "Customer account"
 msgstr "Conto cliente"
 
-#: shop/templates/service_pages/Privacy_policy.html:71
+#: shop/templates/service_pages/Privacy_policy.html:42
 msgid ""
 "Insofar as you have given your consent to this in accordance with Art. 6 (1)"
 " (a) GDPR by deciding to open a customer account, we will use and store your"
@@ -1530,11 +1640,11 @@ msgstr ""
 "diritto di utilizzare i dati oltre ciò, che è consentito dalla legge e di "
 "cui vi informiamo nella presente informativa sulla privacy."
 
-#: shop/templates/service_pages/Privacy_policy.html:72
+#: shop/templates/service_pages/Privacy_policy.html:43
 msgid "Establishing contact"
 msgstr "Stabilire un contatto"
 
-#: shop/templates/service_pages/Privacy_policy.html:73
+#: shop/templates/service_pages/Privacy_policy.html:44
 msgid ""
 "As part of our customer communication, we collect personal data in order to "
 "process your enquiries in accordance with Art. 6 (1) (b) GDPR if you "
@@ -1560,11 +1670,11 @@ msgstr ""
 "utilizzare i dati oltre ciò, che è consentito dalla legge e di cui vi "
 "informiamo nella presente informativa sulla privacy."
 
-#: shop/templates/service_pages/Privacy_policy.html:74
+#: shop/templates/service_pages/Privacy_policy.html:45
 msgid "Live-Chat-Tool Zendesk"
 msgstr "Strumento di chat dal vivo Zendesk"
 
-#: shop/templates/service_pages/Privacy_policy.html:75
+#: shop/templates/service_pages/Privacy_policy.html:46
 msgid ""
 "For the purposes of customer communication, we use the live chat tool "
 "of&nbsp;"
@@ -1572,7 +1682,7 @@ msgstr ""
 "Ai fini della comunicazione con i clienti, utilizziamo lo strumento di chat "
 "dal vivo di "
 
-#: shop/templates/service_pages/Privacy_policy.html:75
+#: shop/templates/service_pages/Privacy_policy.html:46
 msgid ""
 "This serves to protect our legitimate interests in effective and improved "
 "customer communication, which prevail in the context of a balancing of "
@@ -1589,11 +1699,11 @@ msgstr ""
 "nostra cooperazione si basa su clausole standard di protezione dei dati "
 "adottate dalla Commissione Europea."
 
-#: shop/templates/service_pages/Privacy_policy.html:76
+#: shop/templates/service_pages/Privacy_policy.html:47
 msgid "Data processing for the purposes of shipment"
 msgstr "Trattamento dei dati ai fini della spedizione"
 
-#: shop/templates/service_pages/Privacy_policy.html:77
+#: shop/templates/service_pages/Privacy_policy.html:48
 msgid ""
 "We forward your data to the shipping company within the scope required for "
 "the delivery of the ordered goods according to Art. 6 (1) (b) GDPR."
@@ -1601,7 +1711,7 @@ msgstr ""
 "Trasmettiamo i vostri dati allo spedizioniere nell'ambito necessario per la "
 "consegna della merce ordinata ai sensi dell'art. 6 (1) (b) GDPR."
 
-#: shop/templates/service_pages/Privacy_policy.html:78
+#: shop/templates/service_pages/Privacy_policy.html:49
 msgid ""
 "Data transmission to a shipping provider for the purpose of shipment "
 "notification"
@@ -1609,7 +1719,7 @@ msgstr ""
 "Trasmissione dei dati a un fornitore di spedizioni ai fini della notifica di"
 " spedizione"
 
-#: shop/templates/service_pages/Privacy_policy.html:79
+#: shop/templates/service_pages/Privacy_policy.html:50
 msgid ""
 "Provided that you have given us your explicit consent, during or after your "
 "order, we will forward your e-mail address and phone number in accordance "
@@ -1639,11 +1749,11 @@ msgstr ""
 "informiamo nella presente informativa sulla privacy. "
 "&ZeroWidthSpace;&ZeroWidthSpace;"
 
-#: shop/templates/service_pages/Privacy_policy.html:85
+#: shop/templates/service_pages/Privacy_policy.html:56
 msgid "Data processing for the purposes of payment"
 msgstr "Trattamento dati per finalità di pagamento"
 
-#: shop/templates/service_pages/Privacy_policy.html:86
+#: shop/templates/service_pages/Privacy_policy.html:57
 msgid ""
 "As part of the payment process in our online shop, we work together with "
 "these partners: technical service provider, credit institution, payment "
@@ -1653,11 +1763,11 @@ msgstr ""
 " con questi partner: fornitore di servizi tecnici, istituto di credito, "
 "fornitore di servizi di pagamento."
 
-#: shop/templates/service_pages/Privacy_policy.html:87
+#: shop/templates/service_pages/Privacy_policy.html:58
 msgid "Data processing for the purposes of transaction processing"
 msgstr "Elaborazione dei dati ai fini dell'elaborazione delle transazioni"
 
-#: shop/templates/service_pages/Privacy_policy.html:88
+#: shop/templates/service_pages/Privacy_policy.html:59
 msgid ""
 "Depending on the selected payment method, we forward the data necessary for "
 "processing the payment transaction to our technical service providers, who "
@@ -1688,7 +1798,7 @@ msgstr ""
 "di utilizzare l'opzione di contatto descritta nella presente informativa "
 "sulla privacy."
 
-#: shop/templates/service_pages/Privacy_policy.html:89
+#: shop/templates/service_pages/Privacy_policy.html:60
 msgid ""
 "Data processing for the purposes of fraud prevention and optimisation of our"
 " payment processes"
@@ -1696,7 +1806,7 @@ msgstr ""
 "Trattamento dei dati ai fini della prevenzione delle frodi e "
 "dell'ottimizzazione dei nostri processi di pagamento"
 
-#: shop/templates/service_pages/Privacy_policy.html:90
+#: shop/templates/service_pages/Privacy_policy.html:61
 msgid ""
 "We may forward other data to our service providers, which they use for the "
 "purpose of fraud prevention and to optimise our payment processes (e.g. "
@@ -1715,15 +1825,15 @@ msgstr ""
 "efficiente dei pagamenti ai sensi dell'art. 6 (1) (f) GDPR che prevalgono "
 "nel processo di bilanciamento degli interessi."
 
-#: shop/templates/service_pages/Privacy_policy.html:91
+#: shop/templates/service_pages/Privacy_policy.html:62
 msgid "Marketing via e-mail, mail, telephone"
 msgstr "Marketing via e-mail, posta, telefono"
 
-#: shop/templates/service_pages/Privacy_policy.html:92
+#: shop/templates/service_pages/Privacy_policy.html:63
 msgid "E-mail advertising upon subscription to the newsletter"
 msgstr "Pubblicità via e-mail al momento dell'iscrizione alla newsletter"
 
-#: shop/templates/service_pages/Privacy_policy.html:93
+#: shop/templates/service_pages/Privacy_policy.html:64
 msgid ""
 "If you subscribe to our newsletter, we will regularly send you our email "
 "newsletter based on your consent according to Art. 6 (1) (a) GDPR, using the"
@@ -1751,11 +1861,11 @@ msgstr ""
 "​​diritto di utilizzare i tuoi dati per altri scopi consentiti dalla legge e"
 " sui quali ti informiamo nella presente informativa sulla privacy."
 
-#: shop/templates/service_pages/Privacy_policy.html:94
+#: shop/templates/service_pages/Privacy_policy.html:65
 msgid "Newsletter mailing"
 msgstr "Invio di newsletter"
 
-#: shop/templates/service_pages/Privacy_policy.html:95
+#: shop/templates/service_pages/Privacy_policy.html:66
 msgid ""
 "The newsletter is sent to you by our service provider who processes data on "
 "our behalf and to whom we disclose your email address. "
@@ -1771,7 +1881,7 @@ msgstr ""
 "collaborazione con loro, utilizza l'opzione di contatto descritta nella "
 "presente informativa sulla privacy."
 
-#: shop/templates/service_pages/Privacy_policy.html:96
+#: shop/templates/service_pages/Privacy_policy.html:67
 msgid ""
 "Our service providers are located and/or use servers in the USA and in other"
 " countries outside the EU and the EEA. For these countries, there is no "
@@ -1784,11 +1894,11 @@ msgstr ""
 "nostra cooperazione si basa su clausole standard di protezione dei dati "
 "adottate dalla Commissione Europea."
 
-#: shop/templates/service_pages/Privacy_policy.html:97
+#: shop/templates/service_pages/Privacy_policy.html:68
 msgid "Postal advertising and your right to opt out"
 msgstr "Pubblicità postale e diritto di recesso"
 
-#: shop/templates/service_pages/Privacy_policy.html:98
+#: shop/templates/service_pages/Privacy_policy.html:69
 msgid ""
 "Furthermore, we reserve the right to use your first and last name and your "
 "postal address for our advertising purposes, e.g. for sending interesting "
@@ -1809,11 +1919,11 @@ msgstr ""
 "qualsiasi momento inviando un messaggio all'opzione di contatto specificata "
 "di seguito."
 
-#: shop/templates/service_pages/Privacy_policy.html:99
+#: shop/templates/service_pages/Privacy_policy.html:70
 msgid "Phone advertising"
 msgstr "Pubblicità telefonica"
 
-#: shop/templates/service_pages/Privacy_policy.html:100
+#: shop/templates/service_pages/Privacy_policy.html:71
 msgid ""
 "If you have given your consent in accordance with Art. 6 (1) (a) GDPR, we "
 "will use the data required for this purpose or provided separately by you "
@@ -1838,15 +1948,15 @@ msgstr ""
 "utilizzare i tuoi dati per altri scopi consentiti dalla legge e di cui ti "
 "informiamo nella presente informativa sulla privacy."
 
-#: shop/templates/service_pages/Privacy_policy.html:101
+#: shop/templates/service_pages/Privacy_policy.html:72
 msgid "Cookies and further technologies"
 msgstr "Cookie e ulteriori tecnologie"
 
-#: shop/templates/service_pages/Privacy_policy.html:102
+#: shop/templates/service_pages/Privacy_policy.html:73
 msgid "General information"
 msgstr "Informazioni generali"
 
-#: shop/templates/service_pages/Privacy_policy.html:103
+#: shop/templates/service_pages/Privacy_policy.html:74
 msgid ""
 "In order to make visiting our website attractive and to enable the use of "
 "certain functions, to display suitable products or for market research, we "
@@ -1882,7 +1992,7 @@ msgstr ""
 "presentazione ottimizzata della nostra offerta ai sensi dell'art. 6 (1) (f) "
 "GDPR che prevalgono nel processo di bilanciamento degli interessi."
 
-#: shop/templates/service_pages/Privacy_policy.html:104
+#: shop/templates/service_pages/Privacy_policy.html:75
 msgid ""
 "In addition, we use technologies to fulfil the legal obligations, which we "
 "are subject to (e.g. to be able to prove consent to the processing of your "
@@ -1897,7 +2007,7 @@ msgstr ""
 " il trattamento dei dati, sono disponibili nelle seguenti sezioni della "
 "presente informativa sulla privacy."
 
-#: shop/templates/service_pages/Privacy_policy.html:105
+#: shop/templates/service_pages/Privacy_policy.html:76
 msgid ""
 "On our website we may use other technologies, which are not listed "
 "individually in this privacy policy. Further information on these "
@@ -1910,7 +2020,7 @@ msgstr ""
 "essere trovate sulla piattaforma del nostro servizio di gestione del "
 "consenso Usercentrics."
 
-#: shop/templates/service_pages/Privacy_policy.html:106
+#: shop/templates/service_pages/Privacy_policy.html:77
 msgid ""
 "You can access the plattform by clicking on the fingerprint button in the "
 "bottom right or left corner of the page."
@@ -1918,7 +2028,7 @@ msgstr ""
 "Puoi accedere alla piattaforma facendo clic sul pulsante dell'impronta "
 "digitale nell'angolo in basso a destra o a sinistra della pagina."
 
-#: shop/templates/service_pages/Privacy_policy.html:107
+#: shop/templates/service_pages/Privacy_policy.html:78
 msgid ""
 "You can find the cookies settings for your browser by clicking on the "
 "following links:&nbsp;"
@@ -1926,7 +2036,7 @@ msgstr ""
 "Puoi trovare le impostazioni dei cookie per il tuo browser cliccando sui "
 "seguenti link: "
 
-#: shop/templates/service_pages/Privacy_policy.html:108
+#: shop/templates/service_pages/Privacy_policy.html:79
 msgid ""
 "If you have consented to the use of the technologies in accordance with Art."
 " 6 (1) (a) GDPR, you can withdraw your consent at any time by sending a "
@@ -1943,7 +2053,7 @@ msgstr ""
 "vengono accettati, la funzionalità del nostro sito web potrebbe essere "
 "limitata."
 
-#: shop/templates/service_pages/Privacy_policy.html:109
+#: shop/templates/service_pages/Privacy_policy.html:80
 msgid ""
 "Use of Usercentrics Consent Management Platform for obtaining and managing "
 "consent"
@@ -1951,11 +2061,11 @@ msgstr ""
 "Utilizzo della piattaforma di gestione del consenso Usercentrics per "
 "ottenere e gestire il consenso"
 
-#: shop/templates/service_pages/Privacy_policy.html:110
+#: shop/templates/service_pages/Privacy_policy.html:81
 msgid "On our website we use the&nbsp;"
 msgstr "Sul nostro sito web utilizziamo il "
 
-#: shop/templates/service_pages/Privacy_policy.html:110
+#: shop/templates/service_pages/Privacy_policy.html:81
 msgid ""
 "to inform you about the cookies and the technologies we use on our website "
 "and to obtain, manage and document your consent to the processing of your "
@@ -1991,14 +2101,14 @@ msgstr ""
 "utilizzare i vostri dati in un modo che va oltre ciò che è consentito dalla "
 "legge e di cui vi informiamo nella presente informativa sulla privacy."
 
-#: shop/templates/service_pages/Privacy_policy.html:111
+#: shop/templates/service_pages/Privacy_policy.html:82
 msgid ""
 "Use of cookies and other technologies for web analytics and advertising "
 "purposes"
 msgstr ""
 "Utilizzo di cookie e altre tecnologie per analisi web e scopi pubblicitari"
 
-#: shop/templates/service_pages/Privacy_policy.html:112
+#: shop/templates/service_pages/Privacy_policy.html:83
 msgid ""
 "If you have given your consent in accordance with Art. 6 (1) (a) GDPR, we "
 "use the following cookies and other third-party technologies on our website."
@@ -2025,11 +2135,11 @@ msgstr ""
 "loro, utilizzare l'opzione di contatto descritta nella presente informativa "
 "sulla privacy."
 
-#: shop/templates/service_pages/Privacy_policy.html:113
+#: shop/templates/service_pages/Privacy_policy.html:84
 msgid "Use of Adobe services for webanalysis and advertising purposes"
 msgstr "Utilizzo dei servizi Adobe per analisi web e scopi pubblicitari"
 
-#: shop/templates/service_pages/Privacy_policy.html:114
+#: shop/templates/service_pages/Privacy_policy.html:85
 msgid ""
 "We use the technologies described below from Adobe Systems, Software Ireland"
 " Limited, Ireland, 4-6 Riverwalk, Citywest Business Campus, Dublin 24, "
@@ -2054,11 +2164,11 @@ msgstr ""
 "abbreviato o completamente sostituito da un indirizzo IP generico prima di "
 "essere archiviato sui server Adobe attivando le apposite impostazioni."
 
-#: shop/templates/service_pages/Privacy_policy.html:115
+#: shop/templates/service_pages/Privacy_policy.html:86
 msgid "Adobe Fonts"
 msgstr "Font Adobe"
 
-#: shop/templates/service_pages/Privacy_policy.html:116
+#: shop/templates/service_pages/Privacy_policy.html:87
 msgid ""
 "In order to provide a uniform presentation of the content on our website, "
 "the script code 'Adobe Fonts' collects data (IP address, time of visit, "
@@ -2075,11 +2185,11 @@ msgstr ""
 "successivo trattamento dei dati.  Il trattamento dei dati avviene sulla base"
 " di un accordo tra i co-responsabili ai sensi dell'art. 26 GDPR."
 
-#: shop/templates/service_pages/Privacy_policy.html:117
+#: shop/templates/service_pages/Privacy_policy.html:88
 msgid "Use of Google services for web analysis and advertising purposes"
 msgstr "Utilizzo dei servizi Google per analisi web e scopi pubblicitari"
 
-#: shop/templates/service_pages/Privacy_policy.html:118
+#: shop/templates/service_pages/Privacy_policy.html:89
 msgid ""
 "We use the following technologies of Google Ireland Ltd, Gordon House, "
 "Barrow Street, Dublin 4, Ireland ('Google'). The information automatically "
@@ -2114,11 +2224,11 @@ msgstr ""
 "GDPR. Ulteriori informazioni sul trattamento dei dati da parte di Google "
 "sono disponibili in "
 
-#: shop/templates/service_pages/Privacy_policy.html:119
+#: shop/templates/service_pages/Privacy_policy.html:90
 msgid "Google Analytics"
 msgstr "Google Analytics"
 
-#: shop/templates/service_pages/Privacy_policy.html:120
+#: shop/templates/service_pages/Privacy_policy.html:91
 msgid ""
 "For the purpose of website analytics, Google Analytics automatically "
 "collects and stores data (IP address, time of visit, device and browser "
@@ -2135,7 +2245,7 @@ msgstr ""
 "verrà unito ad altri dati di Google. Il trattamento dei dati si basa su un "
 "accordo di elaborazione dei dati con Google."
 
-#: shop/templates/service_pages/Privacy_policy.html:121
+#: shop/templates/service_pages/Privacy_policy.html:92
 msgid ""
 "In order to optimize the marketing of our website, we have activated "
 "the&nbsp;data sharing settings for 'Google products and services'. This "
@@ -2154,7 +2264,7 @@ msgstr ""
 "trattamento. Non abbiamo alcuna influenza sul successivo trattamento dei "
 "dati da parte di Google."
 
-#: shop/templates/service_pages/Privacy_policy.html:122
+#: shop/templates/service_pages/Privacy_policy.html:93
 msgid ""
 "We also use the extension function of Google Analytics&nbsp;Google "
 "Optimize&nbsp;to create and run tests."
@@ -2162,7 +2272,7 @@ msgstr ""
 "Utilizziamo anche la funzione di estensione di Google Analytics Google "
 "Optimize per creare ed eseguire test."
 
-#: shop/templates/service_pages/Privacy_policy.html:123
+#: shop/templates/service_pages/Privacy_policy.html:94
 msgid ""
 "For the purposes of optimized marketing of our website, we use the so-"
 "called&nbsp;user ID function. With the help of this function, we can assign "
@@ -2176,7 +2286,7 @@ msgstr ""
 " per una o più sessioni sui nostri siti web e quindi analizzare il vostro "
 "comportamento utente su tutti i dispositivi e le sessioni."
 
-#: shop/templates/service_pages/Privacy_policy.html:124
+#: shop/templates/service_pages/Privacy_policy.html:95
 msgid ""
 "For web analytics purposes, the extension function of Google "
 "Analytics&nbsp;Google Signals&nbsp;enables so-called 'cross-device "
@@ -2196,7 +2306,7 @@ msgstr ""
 "tuo dispositivo. Non trattiamo dati personali a questo riguardo; riceviamo "
 "solo statistiche basate su Google Signals."
 
-#: shop/templates/service_pages/Privacy_policy.html:125
+#: shop/templates/service_pages/Privacy_policy.html:96
 msgid ""
 "For web analytics and advertising purposes, the extension function of Google"
 " Analytics enables the so-called&nbsp;DoubleClick cookie&nbsp;to recognize "
@@ -2210,7 +2320,7 @@ msgstr ""
 "per compilare report sulle attività del tuo sito web e per fornire altri "
 "servizi relativi all'utilizzo del sito web."
 
-#: shop/templates/service_pages/Privacy_policy.html:127
+#: shop/templates/service_pages/Privacy_policy.html:98
 msgid ""
 "Our Website markets advertising space to third party service providers and "
 "advertising networks via Google AdSense. Those advertisements will be shown "
@@ -2231,7 +2341,7 @@ msgstr ""
 "pseudonimo, utilizzato per determinare gli interessi in base alle visite a "
 "questo e ad altri siti web."
 
-#: shop/templates/service_pages/Privacy_policy.html:129
+#: shop/templates/service_pages/Privacy_policy.html:100
 msgid ""
 "For advertising purposes in the Google search results as well as on the "
 "websites of third parties, the so-called Google&nbsp;Remarketing&nbsp;Cookie"
@@ -2258,7 +2368,7 @@ msgstr ""
 "utilizzerà i tuoi dati insieme ai dati di Google Analytics per creare e "
 "definire elenchi di gruppi target per il remarketing cross-device."
 
-#: shop/templates/service_pages/Privacy_policy.html:130
+#: shop/templates/service_pages/Privacy_policy.html:101
 msgid ""
 "For website analysis and event tracking, we use Google Ads&nbsp;Conversion "
 "Tracking&nbsp;to measure your subsequent usage behavior when you arrive on "
@@ -2278,7 +2388,7 @@ msgstr ""
 "newsletter) possono essere raccolti profili di utilizzo da cui vengono "
 "creati profili di utilizzo utilizzando pseudonimi."
 
-#: shop/templates/service_pages/Privacy_policy.html:132
+#: shop/templates/service_pages/Privacy_policy.html:103
 msgid ""
 "For the visual representation of geographical information, Google Maps "
 "collects data on your use of the Maps functions, in particular the IP "
@@ -2292,7 +2402,7 @@ msgstr ""
 "poi li elabora da Google. Non abbiamo alcuna influenza su questo successivo "
 "trattamento dei dati."
 
-#: shop/templates/service_pages/Privacy_policy.html:134
+#: shop/templates/service_pages/Privacy_policy.html:105
 msgid ""
 "For the purpose of protection against misuse of our web forms as well as "
 "against spam by automated software (so-called bots), Google reCAPTCHA "
@@ -2312,7 +2422,7 @@ msgstr ""
 "servizi Google nel vostro browser. I dati personali non vengono letti o "
 "memorizzati dai campi di input del rispettivo modulo."
 
-#: shop/templates/service_pages/Privacy_policy.html:136
+#: shop/templates/service_pages/Privacy_policy.html:107
 msgid ""
 "For the purpose of a uniform presentation of the contents on our website, "
 "data (IP address, time of visit, device and browser information) are "
@@ -2326,7 +2436,7 @@ msgstr ""
 "Google e poi elaborati da Google. Non abbiamo alcuna influenza su questo "
 "successivo trattamento dei dati."
 
-#: shop/templates/service_pages/Privacy_policy.html:138
+#: shop/templates/service_pages/Privacy_policy.html:109
 msgid ""
 "In order to integrate third party content, data (IP address, time of visit, "
 "device and browser information) are collected via the YouTube Video Plugin "
@@ -2339,16 +2449,16 @@ msgstr ""
 " utilizzata, trasmessi a Google e poi elaborati da Google solo quando "
 "l'utente riprodurre un video."
 
-#: shop/templates/service_pages/Privacy_policy.html:140
+#: shop/templates/service_pages/Privacy_policy.html:111
 msgid "Use of Facebook Pixel"
 msgstr "Utilizzo del pixel di Facebook"
 
-#: shop/templates/service_pages/Privacy_policy.html:141
+#: shop/templates/service_pages/Privacy_policy.html:112
 msgid ""
 "We use the Facebook pixel within the framework of the technologies of&nbsp;"
 msgstr "Utilizziamo il pixel di Facebook nell'ambito delle tecnologie di "
 
-#: shop/templates/service_pages/Privacy_policy.html:141
+#: shop/templates/service_pages/Privacy_policy.html:112
 msgid ""
 "as described below. The Facebook pixel is used to automatically collect and "
 "store data (IP address, time of visit, device and browser information as "
@@ -2402,7 +2512,7 @@ msgstr ""
 "informazioni sul trattamento dei dati da parte di Facebook sono disponibili "
 "in "
 
-#: shop/templates/service_pages/Privacy_policy.html:143
+#: shop/templates/service_pages/Privacy_policy.html:114
 msgid ""
 "As part of Facebook Analytics, the statistics created via Facebook pixels "
 "about your use of our website enable us to analyse visitor activity on the "
@@ -2416,7 +2526,7 @@ msgstr ""
 "un accordo di elaborazione dei dati con Facebook. L'analisi serve alla "
 "presentazione e al marketing ottimali del nostro sito web."
 
-#: shop/templates/service_pages/Privacy_policy.html:145
+#: shop/templates/service_pages/Privacy_policy.html:116
 msgid ""
 "We use Facebook Ads to promote this website on Facebook and other platforms."
 " We determine the parameters of the respective advertising campaign. "
@@ -2439,7 +2549,7 @@ msgstr ""
 " Il successivo trattamento dei dati da parte di Facebook Ireland non è "
 "coperto da questo accordo."
 
-#: shop/templates/service_pages/Privacy_policy.html:146
+#: shop/templates/service_pages/Privacy_policy.html:117
 msgid ""
 "Based on the statistics about visitor activity on our website created via "
 "Facebook pixels, we operate group-based advertising on Facebook via "
@@ -2455,7 +2565,7 @@ msgstr ""
 "avanzato (vedi sopra) che avviene per determinare il rispettivo gruppo "
 "target, Facebook funge da nostro responsabile del trattamento dei dati."
 
-#: shop/templates/service_pages/Privacy_policy.html:147
+#: shop/templates/service_pages/Privacy_policy.html:118
 msgid ""
 "On the basis of the pseudonym cookie ID used by the Facebook pixel and the "
 "collected data about your usage behavior on our website, we operate "
@@ -2465,7 +2575,7 @@ msgstr ""
 " dati raccolti sul vostro comportamento di utilizzo sul nostro sito web, "
 "gestiamo pubblicità personalizzata tramite Facebook Pixel Remarketing."
 
-#: shop/templates/service_pages/Privacy_policy.html:148
+#: shop/templates/service_pages/Privacy_policy.html:119
 msgid ""
 "Via Facebook Pixel&nbsp;Conversions&nbsp;we measure your subsequent usage "
 "behavior for web analytics and event tracking purposes if you have reached "
@@ -2478,15 +2588,15 @@ msgstr ""
 "Il trattamento dei dati si basa su un accordo di elaborazione dei dati con "
 "Facebook."
 
-#: shop/templates/service_pages/Privacy_policy.html:149
+#: shop/templates/service_pages/Privacy_policy.html:120
 msgid "Social Media"
 msgstr "Mezzi sociali"
 
-#: shop/templates/service_pages/Privacy_policy.html:150
+#: shop/templates/service_pages/Privacy_policy.html:121
 msgid "Social Plugins by Facebook, Instagram, Pinterest"
 msgstr "Plugin social di Facebook, Instagram, Pinterest"
 
-#: shop/templates/service_pages/Privacy_policy.html:151
+#: shop/templates/service_pages/Privacy_policy.html:122
 msgid ""
 "Social buttons by social networks are used on our website. These are only "
 "integrated into the page as HTML links, so that no connection to the servers"
@@ -2502,7 +2612,7 @@ msgstr ""
 " del rispettivo social network si aprirà in una nuova finestra del tuo "
 "browser. Lì puoi fare clic ad es. il pulsante Mi piace o Condividi."
 
-#: shop/templates/service_pages/Privacy_policy.html:152
+#: shop/templates/service_pages/Privacy_policy.html:123
 msgid ""
 "Our online presence on Facebook, Youtube, Instagram, Pinterest, Xing, "
 "LinkedIn"
@@ -2510,7 +2620,7 @@ msgstr ""
 "La nostra presenza online su Facebook, Youtube, Instagram, Pinterest, Xing, "
 "LinkedIn"
 
-#: shop/templates/service_pages/Privacy_policy.html:153
+#: shop/templates/service_pages/Privacy_policy.html:124
 msgid ""
 "If you have given your consent to the respective social media provider in "
 "accordance with Art. 6 (1) (a) GDPR, when you visit our online presence on "
@@ -2540,7 +2650,7 @@ msgstr ""
 "collegate di seguito. Se hai ancora bisogno di assistenza in questo senso, "
 "contattaci."
 
-#: shop/templates/service_pages/Privacy_policy.html:154
+#: shop/templates/service_pages/Privacy_policy.html:125
 msgid ""
 "The information automatically collected by Facebook Ireland about your use "
 "of our online presence on Facebook is usually transferred to a server of "
@@ -2563,12 +2673,12 @@ msgstr ""
 "dell'art. 26 GDPR. Ulteriori informazioni (informazioni sui dati Insights) "
 "possono essere trovate "
 
-#: shop/templates/service_pages/Privacy_policy.html:154
-#: shop/templates/service_pages/Privacy_policy.html:155
+#: shop/templates/service_pages/Privacy_policy.html:125
+#: shop/templates/service_pages/Privacy_policy.html:126
 msgid "here"
 msgstr "Qui"
 
-#: shop/templates/service_pages/Privacy_policy.html:155
+#: shop/templates/service_pages/Privacy_policy.html:126
 msgid ""
 "The information automatically collected by Facebook Ireland about your use "
 "of our online presence on Instagram is typically transferred to and stored "
@@ -2591,7 +2701,7 @@ msgstr ""
 "dell'art. 26 DSGVO. Ulteriori informazioni (informazioni sui dati Insights) "
 "possono essere trovate "
 
-#: shop/templates/service_pages/Privacy_policy.html:156
+#: shop/templates/service_pages/Privacy_policy.html:127
 msgid ""
 "The information automatically collected by Google about your use of our "
 "online presence on YouTube is generally transferred to a server of Google "
@@ -2607,7 +2717,7 @@ msgstr ""
 " parte della Commissione Europea. La nostra cooperazione si basa su clausole"
 " standard di protezione dei dati adottate dalla Commissione Europea."
 
-#: shop/templates/service_pages/Privacy_policy.html:157
+#: shop/templates/service_pages/Privacy_policy.html:128
 msgid ""
 "The information automatically collected by Pinterest about your use of our "
 "online presence on Pinterest is usually transferred to and stored on a "
@@ -2623,7 +2733,7 @@ msgstr ""
 "parte della Commissione Europea. La nostra cooperazione si basa su clausole "
 "standard di protezione dei dati adottate dalla Commissione Europea."
 
-#: shop/templates/service_pages/Privacy_policy.html:158
+#: shop/templates/service_pages/Privacy_policy.html:129
 msgid ""
 "The information LinkedIn automatically collects about your use of our online"
 " presence on LinkedIn is generally sent to a server at LinkedIn Corporation,"
@@ -2639,19 +2749,19 @@ msgstr ""
 "Uniti da parte della Commissione Europea. La nostra cooperazione si basa su "
 "clausole standard di protezione dei dati adottate dalla Commissione Europea."
 
-#: shop/templates/service_pages/Privacy_policy.html:160
+#: shop/templates/service_pages/Privacy_policy.html:131
 msgid "Contact options and your rights"
 msgstr "Opzioni di contatto e i tuoi diritti"
 
-#: shop/templates/service_pages/Privacy_policy.html:161
+#: shop/templates/service_pages/Privacy_policy.html:132
 msgid "Your rights"
 msgstr "I tuoi diritti"
 
-#: shop/templates/service_pages/Privacy_policy.html:162
+#: shop/templates/service_pages/Privacy_policy.html:133
 msgid "Being the data subject, you have the following rights according to:"
 msgstr "In qualità di interessato, hai i seguenti diritti in base a:"
 
-#: shop/templates/service_pages/Privacy_policy.html:164
+#: shop/templates/service_pages/Privacy_policy.html:135
 msgid ""
 "the right to obtain information about your personal data which we process, "
 "within the scope described therein;"
@@ -2659,7 +2769,7 @@ msgstr ""
 "il diritto di ottenere informazioni sui tuoi dati personali che trattiamo, "
 "nell'ambito ivi descritto;"
 
-#: shop/templates/service_pages/Privacy_policy.html:165
+#: shop/templates/service_pages/Privacy_policy.html:136
 msgid ""
 "the right to immediately demand rectification of incorrect or completion of "
 "your personal data stored by us;"
@@ -2667,7 +2777,7 @@ msgstr ""
 "il diritto di richiedere immediatamente la rettifica di errori o il "
 "completamento dei dati personali da noi memorizzati;"
 
-#: shop/templates/service_pages/Privacy_policy.html:167
+#: shop/templates/service_pages/Privacy_policy.html:138
 msgid ""
 "the right to request erasure of your personal data stored with us, unless "
 "further processing is required"
@@ -2675,23 +2785,23 @@ msgstr ""
 "il diritto di richiedere la cancellazione dei tuoi dati personali archiviati"
 " presso di noi, a meno che non sia necessario un ulteriore trattamento"
 
-#: shop/templates/service_pages/Privacy_policy.html:169
+#: shop/templates/service_pages/Privacy_policy.html:140
 msgid "to exercise the right of freedom of expression and information;"
 msgstr "esercitare il diritto alla libertà di espressione e di informazione;"
 
-#: shop/templates/service_pages/Privacy_policy.html:170
+#: shop/templates/service_pages/Privacy_policy.html:141
 msgid "for compliance with a legal obligation;"
 msgstr "per l'adempimento di un obbligo legale;"
 
-#: shop/templates/service_pages/Privacy_policy.html:171
+#: shop/templates/service_pages/Privacy_policy.html:142
 msgid "for reasons of public interest or"
 msgstr "per motivi di interesse pubblico o"
 
-#: shop/templates/service_pages/Privacy_policy.html:172
+#: shop/templates/service_pages/Privacy_policy.html:143
 msgid "for establishing, exercising or defending legal claims;"
 msgstr "per accertare, esercitare o difendere diritti legali;"
 
-#: shop/templates/service_pages/Privacy_policy.html:176
+#: shop/templates/service_pages/Privacy_policy.html:147
 msgid ""
 "the right to request restriction of processing of your personal data, "
 "insofar as"
@@ -2699,15 +2809,15 @@ msgstr ""
 "il diritto di richiedere la limitazione del trattamento dei propri dati "
 "personali, nella misura in cui"
 
-#: shop/templates/service_pages/Privacy_policy.html:178
+#: shop/templates/service_pages/Privacy_policy.html:149
 msgid "the accuracy of the data is contested by you;"
 msgstr "l'esattezza dei dati è da te contestata;"
 
-#: shop/templates/service_pages/Privacy_policy.html:179
+#: shop/templates/service_pages/Privacy_policy.html:150
 msgid "the processing is unlawful, but you refuse their erasure;"
 msgstr "il trattamento è illecito, ma ti rifiuti di cancellarli;"
 
-#: shop/templates/service_pages/Privacy_policy.html:180
+#: shop/templates/service_pages/Privacy_policy.html:151
 msgid ""
 "we no longer need the data, but you need it to establish, exercise or defend"
 " legal claims, or"
@@ -2715,13 +2825,13 @@ msgstr ""
 "non abbiamo più bisogno dei dati, ma tu ne hai bisogno per stabilire, "
 "esercitare o difendere diritti legali, o"
 
-#: shop/templates/service_pages/Privacy_policy.html:181
+#: shop/templates/service_pages/Privacy_policy.html:152
 msgid ""
 "you have lodged an objection to the processing in accordance with art. 21 "
 "GDPR;"
 msgstr "Lei si è opposto al trattamento ai sensi dell'art. 21 GDPR;"
 
-#: shop/templates/service_pages/Privacy_policy.html:184
+#: shop/templates/service_pages/Privacy_policy.html:155
 msgid ""
 "the right to receive your personal data that you have provided to us in a "
 "structured, commonly used and machine-readable format or to request its "
@@ -2731,7 +2841,7 @@ msgstr ""
 "strutturato, di uso comune e leggibile da dispositivo automatico o di "
 "richiederne la trasmissione ad un altro titolare del trattamento;"
 
-#: shop/templates/service_pages/Privacy_policy.html:185
+#: shop/templates/service_pages/Privacy_policy.html:156
 msgid ""
 "the right to complain to a supervisory authority . As a rule, you can "
 "contact the supervisory authority at your habitual place of residence or "
@@ -2741,7 +2851,7 @@ msgstr ""
 "rivolgervi all'autorità di vigilanza presso il vostro luogo di residenza o "
 "di lavoro abituale oppure presso la sede della nostra azienda."
 
-#: shop/templates/service_pages/Privacy_policy.html:187
+#: shop/templates/service_pages/Privacy_policy.html:158
 msgid ""
 "Right to object<br>If we process personal data as described above to protect"
 " our legitimate interests that are overriding in the process of balancing of"
@@ -2759,7 +2869,7 @@ msgstr ""
 "sopra descritto. Se i tuoi dati vengono trattati per altri scopi, hai il "
 "diritto di opporti solo per motivi relativi alla tua situazione particolare."
 
-#: shop/templates/service_pages/Privacy_policy.html:188
+#: shop/templates/service_pages/Privacy_policy.html:159
 msgid ""
 "After you have exercised your right to object, we will no longer process "
 "your personal data for such purposes unless we can demonstrate compelling "
@@ -2772,7 +2882,7 @@ msgstr ""
 "diritti e libertà o per l'accertamento, l'esercizio o la difesa di "
 "rivendicazioni legali."
 
-#: shop/templates/service_pages/Privacy_policy.html:189
+#: shop/templates/service_pages/Privacy_policy.html:160
 msgid ""
 "This does not apply to the processing of personal data for direct marketing "
 "purposes. In such a case we will no longer process your personal data for "
@@ -2782,11 +2892,11 @@ msgstr ""
 "diretto. In tal caso non tratteremo più i tuoi dati personali per tali "
 "scopi."
 
-#: shop/templates/service_pages/Privacy_policy.html:190
+#: shop/templates/service_pages/Privacy_policy.html:161
 msgid "Contact options"
 msgstr "Opzioni di contatto"
 
-#: shop/templates/service_pages/Privacy_policy.html:191
+#: shop/templates/service_pages/Privacy_policy.html:162
 msgid ""
 "If you have any questions about how we collect, process or use your personal"
 " data, want to enquire about, correct, restrict or delete your data, or "
@@ -2801,16 +2911,16 @@ msgstr ""
 "direttamente utilizzando i dati di contatto forniti nell'identificazione del"
 " nostro fornitore."
 
-#: shop/templates/service_pages/Terms_and_conditions.html:31
+#: shop/templates/service_pages/Terms_and_conditions.html:12
 #: shop/templates/widgets/footer.html:32
 msgid "Terms and Conditions"
 msgstr "Termini e Condizioni"
 
-#: shop/templates/service_pages/Terms_and_conditions.html:46
+#: shop/templates/service_pages/Terms_and_conditions.html:27
 msgid "SCOPE"
 msgstr "AMBITO"
 
-#: shop/templates/service_pages/Terms_and_conditions.html:47
+#: shop/templates/service_pages/Terms_and_conditions.html:28
 msgid ""
 "The following Terms and Conditions (Terms) apply to all orders placed via "
 "our online shop."
@@ -2818,7 +2928,7 @@ msgstr ""
 "I seguenti Termini e Condizioni (Termini) si applicano a tutti gli ordini "
 "effettuati tramite il nostro negozio online."
 
-#: shop/templates/service_pages/Terms_and_conditions.html:48
+#: shop/templates/service_pages/Terms_and_conditions.html:29
 msgid ""
 "These Terms also apply to businesses for future commercial relations without"
 " the need for any formal expression thereof. Unless expressly approved by us"
@@ -2832,16 +2942,16 @@ msgstr ""
 "accettare la validità contrattuale di eventuali termini e condizioni "
 "generali contrastanti o complementari utilizzati da qualsiasi azienda."
 
-#: shop/templates/service_pages/Terms_and_conditions.html:50
+#: shop/templates/service_pages/Terms_and_conditions.html:31
 msgid "CONTRACTUAL PARTNER, FORMATION OF CONTRACT, OPTIONS FOR CORRECTIONS"
 msgstr ""
 "PARTNER CONTRATTUALE, FORMAZIONE DEL CONTRATTO, POSSIBILITÀ DI CORREZIONI"
 
-#: shop/templates/service_pages/Terms_and_conditions.html:51
+#: shop/templates/service_pages/Terms_and_conditions.html:32
 msgid "The contract is concluded with Westa GmbH."
 msgstr "Il contratto viene concluso con Westa GmbH."
 
-#: shop/templates/service_pages/Terms_and_conditions.html:52
+#: shop/templates/service_pages/Terms_and_conditions.html:33
 msgid ""
 "By placing the products in the online shop, we make a binding offer on our "
 "part to enter into a contract regarding those items. You may place our "
@@ -2863,11 +2973,11 @@ msgstr ""
 " offerta relativa alla merce contenuta nel carrello. Una volta inviato il "
 "tuo ordine riceverai immediatamente una conferma via e-mail."
 
-#: shop/templates/service_pages/Terms_and_conditions.html:54
+#: shop/templates/service_pages/Terms_and_conditions.html:35
 msgid "CONTRACT LANGUAGE, SAVING OF&nbsp;THE CONTRACT TEXT"
 msgstr "LINGUA DEL CONTRATTO, SALVATAGGIO DEL TESTO DEL CONTRATTO"
 
-#: shop/templates/service_pages/Terms_and_conditions.html:55
+#: shop/templates/service_pages/Terms_and_conditions.html:36
 msgid ""
 "The language(s) available for concluding the contract: German, English, "
 "French, Spanish, Italian"
@@ -2875,7 +2985,7 @@ msgstr ""
 "La lingua(e) a disposizione per concludere il contratto: tedesco, inglese, "
 "francese, spagnolo, italiano"
 
-#: shop/templates/service_pages/Terms_and_conditions.html:56
+#: shop/templates/service_pages/Terms_and_conditions.html:37
 msgid ""
 "We save the text of the contract and forward the order data and our Terms "
 "and Conditions to you on a durable medium. You may also view the text of the"
@@ -2885,11 +2995,11 @@ msgstr ""
 "nostre Condizioni Generali su un supporto durevole. Puoi anche visualizzare "
 "il testo del contratto nella nostra area di accesso cliente."
 
-#: shop/templates/service_pages/Terms_and_conditions.html:58
+#: shop/templates/service_pages/Terms_and_conditions.html:39
 msgid "DELIVERY CONDITIONS"
 msgstr "CONDIZIONI DI CONSEGNA"
 
-#: shop/templates/service_pages/Terms_and_conditions.html:59
+#: shop/templates/service_pages/Terms_and_conditions.html:40
 msgid ""
 "Delivery costs are added to the product prices as displayed. Delivery "
 "charges are explained within individual product offers."
@@ -2898,29 +3008,29 @@ msgstr ""
 "visualizzati. Le spese di spedizione sono spiegate nelle offerte dei singoli"
 " prodotti."
 
-#: shop/templates/service_pages/Terms_and_conditions.html:60
+#: shop/templates/service_pages/Terms_and_conditions.html:41
 msgid ""
 "We only dispatch goods gb route; pick up by the customer is not possible."
 msgstr ""
 "Spediamo solo merci in viaggio; il ritiro da parte del cliente non è "
 "possibile."
 
-#: shop/templates/service_pages/Terms_and_conditions.html:62
+#: shop/templates/service_pages/Terms_and_conditions.html:43
 msgid "PAYMENT"
 msgstr "PAGAMENTO"
 
-#: shop/templates/service_pages/Terms_and_conditions.html:63
+#: shop/templates/service_pages/Terms_and_conditions.html:44
 msgid ""
 "The following payment methods are basically available in our online shop."
 msgstr ""
 "Nel nostro negozio online sono fondamentalmente disponibili i seguenti "
 "metodi di pagamento."
 
-#: shop/templates/service_pages/Terms_and_conditions.html:64
+#: shop/templates/service_pages/Terms_and_conditions.html:45
 msgid "Advance payment"
 msgstr "Pagamento anticipato"
 
-#: shop/templates/service_pages/Terms_and_conditions.html:65
+#: shop/templates/service_pages/Terms_and_conditions.html:46
 msgid ""
 "If you select advance payment we provide you with our bank details in a "
 "separate e-mail and deliver the goods on receipt of funds."
@@ -2929,11 +3039,11 @@ msgstr ""
 "bancarie in un'e-mail separata e consegneremo la merce al ricevimento dei "
 "fondi."
 
-#: shop/templates/service_pages/Terms_and_conditions.html:66
+#: shop/templates/service_pages/Terms_and_conditions.html:47
 msgid "Credit Card"
 msgstr "Carta di credito"
 
-#: shop/templates/service_pages/Terms_and_conditions.html:67
+#: shop/templates/service_pages/Terms_and_conditions.html:48
 msgid ""
 "With the submission of the order, you provide your credit card details. "
 "After your identification as the legal cardholder, the payment transaction "
@@ -2943,11 +3053,11 @@ msgstr ""
 "tua identificazione come titolare legale della carta, la transazione di "
 "pagamento viene eseguita automaticamente e addebitata sulla tua carta."
 
-#: shop/templates/service_pages/Terms_and_conditions.html:68
+#: shop/templates/service_pages/Terms_and_conditions.html:49
 msgid "SEPA direct debit"
 msgstr "Addebito diretto SEPA"
 
-#: shop/templates/service_pages/Terms_and_conditions.html:69
+#: shop/templates/service_pages/Terms_and_conditions.html:50
 msgid ""
 "With the placement of the order, you are granting us a direct debit mandate."
 " We will inform you separately about the date of debiting the account in an "
@@ -2967,7 +3077,7 @@ msgstr ""
 "spedizione della merce. Il termine di pre-notifica relativo alla data di "
 "addebito sul conto (periodo di pre-notifica), è di 0 giorni."
 
-#: shop/templates/service_pages/Terms_and_conditions.html:71
+#: shop/templates/service_pages/Terms_and_conditions.html:52
 msgid ""
 "During the ordering process you will be forwarded to PayPal's website. To "
 "pay the invoice amount via PayPal, you must be registered there or register "
@@ -2985,7 +3095,7 @@ msgstr ""
 "dopo la transazione di pagamento viene effettuata automaticamente da PayPal."
 " Riceverai ulteriori informazioni durante il processo di ordinazione."
 
-#: shop/templates/service_pages/Terms_and_conditions.html:73
+#: shop/templates/service_pages/Terms_and_conditions.html:54
 msgid ""
 "After submitting the order, you will be forwarded to the website of your "
 "bank. In order to pay the invoice amount via Giropay, you must be in "
@@ -3003,7 +3113,7 @@ msgstr ""
 " transazione di pagamento viene eseguita automaticamente e l'importo viene "
 "addebitato sul tuo conto."
 
-#: shop/templates/service_pages/Terms_and_conditions.html:75
+#: shop/templates/service_pages/Terms_and_conditions.html:56
 msgid ""
 "In order to pay the invoice amount via Apple Pay, you have to use the "
 "„Safari“ browser, be registered with the service provider Apple, must have "
@@ -3019,7 +3129,7 @@ msgstr ""
 "verrà effettuata direttamente dopo l'invio dell'ordine. Ulteriori "
 "informazioni possono essere trovate durante il processo di ordinazione."
 
-#: shop/templates/service_pages/Terms_and_conditions.html:77
+#: shop/templates/service_pages/Terms_and_conditions.html:58
 msgid ""
 "In order to pay the invoice amount via Google Pay, you have to be registered"
 " with the service provider Google, must have activated the Google Pay "
@@ -3035,7 +3145,7 @@ msgstr ""
 "direttamente dopo l'invio dell'ordine. Ulteriori informazioni possono essere"
 " trovate durante il processo di ordinazione."
 
-#: shop/templates/service_pages/Terms_and_conditions.html:79
+#: shop/templates/service_pages/Terms_and_conditions.html:60
 msgid ""
 "During the ordering process you will be forwarded to the online provider "
 "Amazon's website before completing the ordering process in our online shop. "
@@ -3062,7 +3172,7 @@ msgstr ""
 "pagamento. La transazione di pagamento viene effettuata automaticamente da "
 "Amazon. Riceverai ulteriori informazioni durante il processo di ordinazione."
 
-#: shop/templates/service_pages/Terms_and_conditions.html:81
+#: shop/templates/service_pages/Terms_and_conditions.html:62
 msgid ""
 "You may pay for your purchase by means of bank transfer after you have "
 "received the goods together with the invoice. We reserve the right to allow "
@@ -3072,11 +3182,11 @@ msgstr ""
 "la merce insieme alla fattura. Ci riserviamo il diritto di consentire il "
 "pagamento tramite fattura solo dopo aver verificato la tua solvibilità."
 
-#: shop/templates/service_pages/Terms_and_conditions.html:84
+#: shop/templates/service_pages/Terms_and_conditions.html:65
 msgid "RIGHT TO CANCEL"
 msgstr "DIRITTO DI CANCELLAZIONE"
 
-#: shop/templates/service_pages/Terms_and_conditions.html:85
+#: shop/templates/service_pages/Terms_and_conditions.html:66
 msgid ""
 "Consumers are entitled to the statutory right to cancel, as described in the"
 " instructions on the right to cancel. Businesses are not granted any "
@@ -3086,11 +3196,11 @@ msgstr ""
 "descritto nelle istruzioni sul diritto di recesso. Alle imprese non è "
 "concesso alcun diritto di recesso volontario."
 
-#: shop/templates/service_pages/Terms_and_conditions.html:88
+#: shop/templates/service_pages/Terms_and_conditions.html:69
 msgid "The goods shall remain our property until full payment is made."
 msgstr "La merce rimarrà di nostra proprietà fino al completo pagamento."
 
-#: shop/templates/service_pages/Terms_and_conditions.html:89
+#: shop/templates/service_pages/Terms_and_conditions.html:70
 msgid ""
 "For businesses, the following applies additionally: We reserve ownership of "
 "the goods until complete settlement of all claims arising from a current "
@@ -3113,7 +3223,7 @@ msgstr ""
 "stessi i crediti, nel caso in cui tu non adempia ai tuoi obblighi di "
 "pagamento."
 
-#: shop/templates/service_pages/Terms_and_conditions.html:92
+#: shop/templates/service_pages/Terms_and_conditions.html:73
 msgid ""
 "For consumer the following applies: If the goods are delivered with obvious "
 "damage caused during delivery, please report the defect to the carrier and "
@@ -3130,7 +3240,7 @@ msgstr ""
 "garanzia. In questo modo ci aiutate tuttavia a far valere i nostri diritti "
 "nei confronti del trasportatore o dell'assicuratore del trasporto."
 
-#: shop/templates/service_pages/Terms_and_conditions.html:93
+#: shop/templates/service_pages/Terms_and_conditions.html:74
 msgid ""
 "Applicable to businesses: The risks of accidental loss or deterioration of "
 "the goods will transfer to you once we have submitted the item to the "
@@ -3158,7 +3268,7 @@ msgstr ""
 "difetto non fosse rilevabile all'ispezione. Ciò non si applica se un "
 "determinato difetto è stato da noi nascosto in modo ingannevole."
 
-#: shop/templates/service_pages/Terms_and_conditions.html:96
+#: shop/templates/service_pages/Terms_and_conditions.html:77
 msgid ""
 "We are under a legal duty to supply products that are in conformity with "
 "this contract. For consumers, statutory warranty rights governed by the law "
@@ -3177,7 +3287,7 @@ msgstr ""
 "le imprese possono presentare reclami ai nostri recapiti indicati "
 "nell'identificazione del fornitore."
 
-#: shop/templates/service_pages/Terms_and_conditions.html:97
+#: shop/templates/service_pages/Terms_and_conditions.html:78
 msgid ""
 "When you exercise your warranty rights and we deem it necessary to receive "
 "the goods back in order to examine your complaint, you must send back the "
@@ -3191,7 +3301,7 @@ msgstr ""
 "reclamo immediatamente, ma entro e non oltre 14 giorni dalla sua "
 "presentazione."
 
-#: shop/templates/service_pages/Terms_and_conditions.html:98
+#: shop/templates/service_pages/Terms_and_conditions.html:79
 msgid ""
 "Customer service: Our customer service is available for questions, "
 "complaints and claims on weekdays from TO By e-mail at "
@@ -3201,7 +3311,7 @@ msgstr ""
 "reclami e reclami nei giorni feriali da TO tramite e-mail all'indirizzo "
 "office@oliverweber.com."
 
-#: shop/templates/service_pages/Terms_and_conditions.html:101
+#: shop/templates/service_pages/Terms_and_conditions.html:82
 msgid ""
 "We shall in any case be liable without limitation for claims due to damages "
 "that have been caused by us, our legal representatives or legal agents."
@@ -3209,23 +3319,23 @@ msgstr ""
 "In ogni caso saremo responsabili senza limitazioni per le pretese dovute a "
 "danni causati da noi, dai nostri rappresentanti legali o agenti legali."
 
-#: shop/templates/service_pages/Terms_and_conditions.html:103
+#: shop/templates/service_pages/Terms_and_conditions.html:84
 msgid "for injury to life, limb or health"
 msgstr "per lesioni alla vita, al corpo o alla salute"
 
-#: shop/templates/service_pages/Terms_and_conditions.html:104
+#: shop/templates/service_pages/Terms_and_conditions.html:85
 msgid "for deliberate or grossly negligent breach of duty"
 msgstr "per violazione intenzionale o gravemente negligente dei doveri"
 
-#: shop/templates/service_pages/Terms_and_conditions.html:105
+#: shop/templates/service_pages/Terms_and_conditions.html:86
 msgid "for guarantee commitments, where agreed"
 msgstr "per impegni di garanzia, ove pattuiti"
 
-#: shop/templates/service_pages/Terms_and_conditions.html:106
+#: shop/templates/service_pages/Terms_and_conditions.html:87
 msgid "towards consumer."
 msgstr "nei confronti del consumatore."
 
-#: shop/templates/service_pages/Terms_and_conditions.html:108
+#: shop/templates/service_pages/Terms_and_conditions.html:89
 msgid ""
 "Except these cases, our civil law liability is limited to the foreseeable "
 "and direct damages at the time of contract conclusion."
@@ -3233,11 +3343,11 @@ msgstr ""
 "Fatti salvi questi casi, la nostra responsabilità civile è limitata ai danni"
 " prevedibili e diretti al momento della conclusione del contratto."
 
-#: shop/templates/service_pages/Terms_and_conditions.html:110
+#: shop/templates/service_pages/Terms_and_conditions.html:91
 msgid "ONLINE DISPUTE RESOLUTION"
 msgstr "RISOLUZIONE DELLE CONTROVERSIE ONLINE"
 
-#: shop/templates/service_pages/Terms_and_conditions.html:111
+#: shop/templates/service_pages/Terms_and_conditions.html:92
 msgid ""
 "The European Commission provides a platform for online dispute resolutions "
 "(ODR) which can be accessed at https://ec.europa.eu/consumers/odr/ "
@@ -3253,11 +3363,11 @@ msgstr ""
 "Zentrum für Schlichtung e.V., Straßburger Straße 8, 77694 Kehl am Rhein, "
 "www.verbraucher-schlichter.de [http://www.verbraucher-schlichter.de ]."
 
-#: shop/templates/service_pages/Terms_and_conditions.html:113
+#: shop/templates/service_pages/Terms_and_conditions.html:94
 msgid "PROTECTION OF MINORS"
 msgstr "TUTELA DEI MINORI"
 
-#: shop/templates/service_pages/Terms_and_conditions.html:114
+#: shop/templates/service_pages/Terms_and_conditions.html:95
 msgid ""
 "Insofar as your order is comprised of goods, whose sale is subject to age "
 "restrictions, through the use of a reliable procedure, including a personal "
@@ -3272,11 +3382,11 @@ msgstr ""
 "consegnerà la merce solo dopo il controllo dell'età e solo all'acquirente in"
 " persona."
 
-#: shop/templates/service_pages/Terms_and_conditions.html:116
+#: shop/templates/service_pages/Terms_and_conditions.html:97
 msgid "FINAL PROVISIONS"
 msgstr "DISPOSIZIONI FINALI"
 
-#: shop/templates/service_pages/Terms_and_conditions.html:117
+#: shop/templates/service_pages/Terms_and_conditions.html:98
 msgid ""
 "If you are a business, German law applies, to the exclusion of the UN Sales "
 "Convention."
@@ -3284,14 +3394,12 @@ msgstr ""
 "Se sei un'azienda, si applica la legge tedesca, ad esclusione della "
 "Convenzione delle Nazioni Unite sulle vendite."
 
-#: shop/templates/service_pages/b2b_customers.html:24
-#: shop/templates/service_pages/b2b_customers.html:27
-#: shop/templates/service_pages/b2b_customers.html:43
+#: shop/templates/service_pages/b2b_customers.html:12
 #: shop/templates/widgets/footer.html:21
 msgid "B2B Customers"
 msgstr "Clienti B2B"
 
-#: shop/templates/service_pages/b2b_customers.html:60
+#: shop/templates/service_pages/b2b_customers.html:29
 msgid ""
 "As a registered customer you may find our entire product range, stock "
 "position, and price information on our B2B eCommerce Platform."
@@ -3300,30 +3408,28 @@ msgstr ""
 " la posizione delle scorte e le informazioni sui prezzi sulla nostra "
 "piattaforma di eCommerce B2B."
 
-#: shop/templates/service_pages/b2b_customers.html:61
+#: shop/templates/service_pages/b2b_customers.html:30
 msgid "Go directly to the B2B Shop"
 msgstr "Vai direttamente al Negozio B2B"
 
-#: shop/templates/service_pages/b2b_customers.html:63
+#: shop/templates/service_pages/b2b_customers.html:32
 msgid "If you do not have an account yet, please"
 msgstr "Se non hai ancora un account, per favore"
 
-#: shop/templates/service_pages/b2b_customers.html:64
+#: shop/templates/service_pages/b2b_customers.html:33
 msgid "Contact our Sales Office"
 msgstr "Contatta il nostro Ufficio Vendite"
 
 #: shop/templates/service_pages/contact_us.html:12
-#: shop/templates/service_pages/contact_us.html:15
-#: shop/templates/service_pages/contact_us.html:31
 #: shop/templates/widgets/footer.html:15
 msgid "Contact us"
 msgstr "Contattaci"
 
-#: shop/templates/service_pages/contact_us.html:57
+#: shop/templates/service_pages/contact_us.html:38
 msgid "Hours of Operation"
 msgstr "Orari di funzionamento"
 
-#: shop/templates/service_pages/contact_us.html:58
+#: shop/templates/service_pages/contact_us.html:39
 msgid ""
 "Monday to Thursday between 08:00 and 17:00, and Friday between 08:00 and "
 "13:00, with the exception of bank holidays"
@@ -3332,17 +3438,15 @@ msgstr ""
 "13:00, esclusi i giorni festivi"
 
 #: shop/templates/service_pages/customer_service_and_repair.html:12
-#: shop/templates/service_pages/customer_service_and_repair.html:15
-#: shop/templates/service_pages/customer_service_and_repair.html:31
 #: shop/templates/widgets/footer.html:17
 msgid "Customer service and repair"
 msgstr "Servizio clienti e riparazione"
 
-#: shop/templates/service_pages/customer_service_and_repair.html:47
+#: shop/templates/service_pages/customer_service_and_repair.html:28
 msgid "CARE FOR YOUR PRODUCT"
 msgstr "CURA DEL TUO PRODOTTO"
 
-#: shop/templates/service_pages/customer_service_and_repair.html:48
+#: shop/templates/service_pages/customer_service_and_repair.html:29
 msgid ""
 "Each of our products is subject to high-quality requirements regarding the "
 "quality of production processes, raw materials and manual production. "
@@ -3353,11 +3457,11 @@ msgstr ""
 "della produzione manuale. Tuttavia, ogni pezzo deve essere maneggiato con "
 "cura."
 
-#: shop/templates/service_pages/customer_service_and_repair.html:49
+#: shop/templates/service_pages/customer_service_and_repair.html:30
 msgid "DAILY CARE"
 msgstr "CURA QUOTIDIANA"
 
-#: shop/templates/service_pages/customer_service_and_repair.html:50
+#: shop/templates/service_pages/customer_service_and_repair.html:31
 msgid ""
 "Treat your jewelry with love so that you enjoy it for a long time. Avoid "
 "prolonged contact with water; remove the jewelry when washing hands or "
@@ -3368,7 +3472,7 @@ msgstr ""
 "lavi le mani o nuoti, poiché sia ​​il sale che l'acqua possono danneggiare "
 "le pietre e il metallo."
 
-#: shop/templates/service_pages/customer_service_and_repair.html:51
+#: shop/templates/service_pages/customer_service_and_repair.html:32
 msgid ""
 "To avoid damage, do not wear jewelry when working in the house or garden, as"
 " cleaning products, chemicals, and hard objects can damage the coating and "
@@ -3386,11 +3490,11 @@ msgstr ""
 "corrosivo, quindi non è consigliabile indossare gioielli durante l'attività "
 "fisica."
 
-#: shop/templates/service_pages/customer_service_and_repair.html:52
+#: shop/templates/service_pages/customer_service_and_repair.html:33
 msgid "RULES OF THUMB"
 msgstr "REGOLE PRATICHE"
 
-#: shop/templates/service_pages/customer_service_and_repair.html:53
+#: shop/templates/service_pages/customer_service_and_repair.html:34
 msgid ""
 "Keep your jewelry separate in its original packaging if possible or in soft "
 "pouches. This will prevent your favorite pieces from scratching one on "
@@ -3400,7 +3504,7 @@ msgstr ""
 "originale o in sacchetti morbidi. Ciò eviterà che i tuoi pezzi preferiti si "
 "graffino l'uno sull'altro."
 
-#: shop/templates/service_pages/customer_service_and_repair.html:54
+#: shop/templates/service_pages/customer_service_and_repair.html:35
 msgid ""
 "Once in a while polish your jewelry with a soft cloth to maintain its "
 "lustrous shine. Silver pieces might oxidize; there is no reason to panic, "
@@ -3410,7 +3514,7 @@ msgstr ""
 " la brillantezza. I pezzi d'argento potrebbero ossidarsi; non c'è motivo di "
 "farsi prendere dal panico, la lucidatura risolverà il problema."
 
-#: shop/templates/service_pages/customer_service_and_repair.html:55
+#: shop/templates/service_pages/customer_service_and_repair.html:36
 msgid ""
 "When donning, be sure to put on your jewelry the last, it helps you to match"
 " it to your outfit, prevent scratches and you will avoid spraying perfume at"
@@ -3422,11 +3526,11 @@ msgstr ""
 " profumo sui tuoi amati gioielli, senza necessità. Quando ti cambi, "
 "assicurati di toglierti prima i gioielli."
 
-#: shop/templates/service_pages/customer_service_and_repair.html:56
+#: shop/templates/service_pages/customer_service_and_repair.html:37
 msgid "PRODUCT WARRANTY"
 msgstr "GARANZIA SUL PRODOTTO"
 
-#: shop/templates/service_pages/customer_service_and_repair.html:57
+#: shop/templates/service_pages/customer_service_and_repair.html:38
 msgid ""
 "Our products are manufactured using carefully selected materials and are "
 "subject to rigorous production standards and quality controls."
@@ -3435,7 +3539,7 @@ msgstr ""
 "selezionati e sono soggetti a rigorosi standard di produzione e controlli di"
 " qualità."
 
-#: shop/templates/service_pages/customer_service_and_repair.html:58
+#: shop/templates/service_pages/customer_service_and_repair.html:39
 msgid ""
 "We want you to be happy with our products, so Westa GmbH offers a 2 years "
 "full statutory warranty covering manufacturing and material issues for "
@@ -3456,7 +3560,7 @@ msgstr ""
 "riparazione, negligenza o mancata osservanza delle nostre istruzioni per la "
 "cura."
 
-#: shop/templates/service_pages/customer_service_and_repair.html:59
+#: shop/templates/service_pages/customer_service_and_repair.html:40
 msgid ""
 "In order to use our warranty service, please send us (or to the shop you "
 "purchased our jewelry from) the jewel in question together with its purchase"
@@ -3472,11 +3576,11 @@ msgstr ""
 "disponibilità dei pezzi di ricambio; sostituire l'articolo con uno identico "
 "(se presente) o sostituirlo con un articolo di valore comparabile."
 
-#: shop/templates/service_pages/customer_service_and_repair.html:60
+#: shop/templates/service_pages/customer_service_and_repair.html:41
 msgid "PRODUCT INFORMATION AND CARE INSTRUCTIONS"
 msgstr "INFORMAZIONI SUL PRODOTTO E ISTRUZIONI PER LA CURA"
 
-#: shop/templates/service_pages/customer_service_and_repair.html:61
+#: shop/templates/service_pages/customer_service_and_repair.html:42
 msgid ""
 "It is our credo and our mission to offer beautiful high-quality jewelry at "
 "an affordable price. In addition to beauty and the latest fashion trends, "
@@ -3486,7 +3590,7 @@ msgstr ""
 "qualità a un prezzo accessibile. Oltre alla bellezza e alle ultime tendenze "
 "della moda, per noi è molto importante anche la qualità dei nostri prodotti."
 
-#: shop/templates/service_pages/customer_service_and_repair.html:62
+#: shop/templates/service_pages/customer_service_and_repair.html:43
 msgid ""
 "We only use carefully selected and finest quality materials and the "
 "production processes are subject to very strict controls, while all stones "
@@ -3496,7 +3600,7 @@ msgstr ""
 "qualità e i processi produttivi sono soggetti a controlli molto severi, "
 "mentre tutte le pietre sono incastonate a mano."
 
-#: shop/templates/service_pages/customer_service_and_repair.html:63
+#: shop/templates/service_pages/customer_service_and_repair.html:44
 msgid ""
 "Although most people wear jewelry on a daily basis, only a few really know "
 "about the products they buy. Unconsciously we only compare the jewelry "
@@ -3511,17 +3615,15 @@ msgstr ""
 "gioielli in generale, leggi le informazioni di seguito."
 
 #: shop/templates/service_pages/faq.html:12
-#: shop/templates/service_pages/faq.html:15
-#: shop/templates/service_pages/faq.html:31
 #: shop/templates/widgets/footer.html:16
 msgid "Frequently Asked Questions"
 msgstr "Domande frequenti"
 
-#: shop/templates/service_pages/faq.html:46
+#: shop/templates/service_pages/faq.html:27
 msgid "How can I order online?"
 msgstr "Come posso ordinare on-line?"
 
-#: shop/templates/service_pages/faq.html:47
+#: shop/templates/service_pages/faq.html:28
 msgid ""
 "What can be more relaxing than browsing and shopping from the comfort of "
 "your home? Make yourself a hot tea, take your favorite blanket and get "
@@ -3537,7 +3639,7 @@ msgstr ""
 "è stata strutturata in categorie e sottogruppi di prodotti e dispone di "
 "diversi filtri per aiutarti a trovare i gioielli perfetti"
 
-#: shop/templates/service_pages/faq.html:48
+#: shop/templates/service_pages/faq.html:29
 msgid ""
 "For example, you can sort according to category (Necklaces, Bracelets etc.) "
 "as well as according to color, price, occasion and so on. Once you find your"
@@ -3549,7 +3651,7 @@ msgstr ""
 "gioiello desiderato, puoi cliccare sull'immagine per scoprire informazioni "
 "più dettagliate sui colori, sui materiali e sulle misure disponibili."
 
-#: shop/templates/service_pages/faq.html:49
+#: shop/templates/service_pages/faq.html:30
 msgid ""
 "If you decide to buy an item, place it in your shopping cart by clicking on "
 "the “Add to shopping bag” button. You can go on browsing and adding products"
@@ -3568,7 +3670,7 @@ msgstr ""
 "prodotti che ti sono piaciuti durante la navigazione, senza dover tornare "
 "sui tuoi passi o iniziare a cercare di nuovo per loro."
 
-#: shop/templates/service_pages/faq.html:50
+#: shop/templates/service_pages/faq.html:31
 msgid ""
 "To see the content of your shopping bag so far, click on the “Shopping bag” "
 "button (on the top-right corner of your screen). If you decide you don’t "
@@ -3583,7 +3685,7 @@ msgstr ""
 "volta facendo clic sul pulsante \"+\" fino a raggiungere l'importo "
 "desiderato."
 
-#: shop/templates/service_pages/faq.html:51
+#: shop/templates/service_pages/faq.html:32
 msgid ""
 "When you have decided, click on the “Check out” button. The paying process "
 "is divided in guided steps."
@@ -3591,12 +3693,12 @@ msgstr ""
 "Quando hai deciso, clicca sul pulsante “Check out”. Il processo di pagamento"
 " è suddiviso in passaggi guidati."
 
-#: shop/templates/service_pages/faq.html:53
+#: shop/templates/service_pages/faq.html:34
 msgid "How do I know my order has been successfully placed?"
 msgstr ""
 "Come faccio a sapere che il mio ordine è stato effettuato con successo?"
 
-#: shop/templates/service_pages/faq.html:54
+#: shop/templates/service_pages/faq.html:35
 msgid ""
 "After receiving your order we will send you an automatic confirmation e-mail"
 " that also contains information about your order number, payment method, "
@@ -3607,11 +3709,11 @@ msgstr ""
 "metodo di pagamento, sul carrello, nonché sull'indirizzo di fatturazione e "
 "di consegna."
 
-#: shop/templates/service_pages/faq.html:56
+#: shop/templates/service_pages/faq.html:37
 msgid "How do I change/cancel my order?"
 msgstr "Come posso modificare/annullare il mio ordine?"
 
-#: shop/templates/service_pages/faq.html:57
+#: shop/templates/service_pages/faq.html:38
 msgid ""
 "After completion of an order, it is not possible to cancel it due to our "
 "automated ordering process. You have the option, however, to return your "
@@ -3629,11 +3731,11 @@ msgstr ""
 "successiva modifica/correzione dell'indirizzo di consegna. Posso effettuare "
 "un ordine telefonicamente? Al momento accettiamo solo ordini online."
 
-#: shop/templates/service_pages/faq.html:59
+#: shop/templates/service_pages/faq.html:40
 msgid "Gift vouchers"
 msgstr "Buoni regalo"
 
-#: shop/templates/service_pages/faq.html:60
+#: shop/templates/service_pages/faq.html:41
 msgid ""
 "You aren’t sure about your gift? A voucher is always a good idea. Your "
 "beloved ones can choose for themselves, this way you are sure they will "
@@ -3643,11 +3745,11 @@ msgstr ""
 "cari potranno scegliere da soli, in questo modo siete sicuri che "
 "indosseranno sempre con piacere i loro gioielli."
 
-#: shop/templates/service_pages/faq.html:62
+#: shop/templates/service_pages/faq.html:43
 msgid "What are the available payment options?"
 msgstr "Quali sono le opzioni di pagamento disponibili?"
 
-#: shop/templates/service_pages/faq.html:63
+#: shop/templates/service_pages/faq.html:44
 msgid ""
 "The prices quoted on the product pages include the legal VAT and other price"
 " components. The legal Austrian VAT will be shown separately."
@@ -3655,7 +3757,7 @@ msgstr ""
 "I prezzi indicati nelle pagine dei prodotti includono l'IVA legale e altri "
 "componenti del prezzo. L'IVA austriaca legale verrà indicata separatamente."
 
-#: shop/templates/service_pages/faq.html:64
+#: shop/templates/service_pages/faq.html:45
 msgid ""
 "Additionally to the stated prices we are invoicing shipping costs. The "
 "shipping costs will be marked separately on the product pages as a link, in "
@@ -3669,7 +3771,7 @@ msgstr ""
 "transnazionali potrebbero derivare altri componenti del prezzo come altre "
 "tasse o dazi doganali. (cessione intracomunitaria)."
 
-#: shop/templates/service_pages/faq.html:65
+#: shop/templates/service_pages/faq.html:46
 msgid ""
 "We accept Credit Card, PayPal, Stripe, Amazon Pay, Online Banking, Bank "
 "Transfer, as well as Oliver Weber gift vouchers."
@@ -3677,11 +3779,11 @@ msgstr ""
 "Accettiamo carte di credito, PayPal, Stripe, Amazon Pay, servizi bancari "
 "online, bonifici bancari e buoni regalo Oliver Weber."
 
-#: shop/templates/service_pages/faq.html:67
+#: shop/templates/service_pages/faq.html:48
 msgid "How high are the shipping costs?"
 msgstr "A quanto ammontano le spese di spedizione?"
 
-#: shop/templates/service_pages/faq.html:68
+#: shop/templates/service_pages/faq.html:49
 msgid ""
 "The goods will be delivered to the delivery address as stated by you and "
 "through a delivery service appointed by our company. We will make every "
@@ -3694,7 +3796,7 @@ msgstr ""
 "ciò non può essere garantito. I costi di spedizione possono variare da "
 "regione a regione."
 
-#: shop/templates/service_pages/faq.html:69
+#: shop/templates/service_pages/faq.html:50
 msgid ""
 "Standard Shipping EU countries– 6,90 €, delivery between 4 and 8 days from "
 "the time you place your order. Express shipping – 18.90 €, delivery times "
@@ -3704,7 +3806,7 @@ msgstr ""
 " dell'ordine. Spedizione express – 18,90 €, tempi di consegna tra 2 e 4 "
 "giorni dal momento dell'ordine."
 
-#: shop/templates/service_pages/faq.html:70
+#: shop/templates/service_pages/faq.html:51
 msgid ""
 "Shipping to United States (except. Alaska, Hawaii) – 18.90 €, delivery times"
 " between 5 and 10 days from the time you place your order."
@@ -3712,11 +3814,11 @@ msgstr ""
 "Spedizione negli Stati Uniti (escluso Alaska, Hawaii) – 18,90 €, tempi di "
 "consegna tra 5 e 10 giorni dal momento dell'ordine."
 
-#: shop/templates/service_pages/faq.html:72
+#: shop/templates/service_pages/faq.html:53
 msgid "Are you available 24/7?"
 msgstr "Sei disponibile 24 ore su 24, 7 giorni su 7?"
 
-#: shop/templates/service_pages/faq.html:73
+#: shop/templates/service_pages/faq.html:54
 msgid ""
 "You can reach us during our office hours: Monday to Thursday between 08:00 "
 "and 17:00, and Friday between 08:00 and 13:00, with the exception of bank "
@@ -3726,11 +3828,11 @@ msgstr ""
 "08:00 alle 17:00 e il venerdì dalle 08:00 alle 13:00, esclusi i giorni "
 "festivi oppure scrivete una e-mail a"
 
-#: shop/templates/service_pages/faq.html:75
+#: shop/templates/service_pages/faq.html:56
 msgid "Can I return a product after I received it?"
 msgstr "Posso restituire un prodotto dopo averlo ricevuto?"
 
-#: shop/templates/service_pages/faq.html:76
+#: shop/templates/service_pages/faq.html:57
 msgid ""
 "We do hope that you are satisfied with our jewels, nevertheless should our "
 "product not meet your expectations just send them back to us. You may cancel"
@@ -3749,7 +3851,7 @@ msgstr ""
 "restituzione, a condizione che gli articoli vengano restituiti in condizioni"
 " mai indossate, non utilizzate e non danneggiate. condizione."
 
-#: shop/templates/service_pages/faq.html:77
+#: shop/templates/service_pages/faq.html:58
 msgid ""
 "In order to cancel the agreement, it is sufficient to send a notice in "
 "writing, or on a permanent data carrier, within two weeks to the address "
@@ -3761,7 +3863,7 @@ msgstr ""
 "indicato al comma 2 oppure rispedire la merce all'indirizzo Westa Gmbh, "
 "Gewerbepark Süd 24, 6068 Mils, Austria."
 
-#: shop/templates/service_pages/faq.html:78
+#: shop/templates/service_pages/faq.html:59
 msgid ""
 "If you cancel the purchase agreement, you must return the goods within "
 "thirty days of the cancellation of the order. The returned goods are "
@@ -3775,26 +3877,26 @@ msgstr ""
 "della merce fino alla spedizione. Puoi scoprire come restituirci la merce "
 "passo dopo passo qui: Reso, cambio e annullamento"
 
-#: shop/templates/service_pages/faq.html:80
+#: shop/templates/service_pages/faq.html:61
 msgid "Chain lengths by Oliver Weber?"
 msgstr "Lunghezze delle catene di Oliver Weber?"
 
-#: shop/templates/service_pages/faq.html:83
+#: shop/templates/service_pages/faq.html:64
 msgid "Which ring size do I need?"
 msgstr "Di quale misura di anello ho bisogno?"
 
-#: shop/templates/service_pages/faq.html:84
+#: shop/templates/service_pages/faq.html:65
 msgid ""
 "The ring size can be determined by ring diameter or ring circumference."
 msgstr ""
 "La dimensione dell'anello può essere determinata dal diametro dell'anello o "
 "dalla circonferenza dell'anello."
 
-#: shop/templates/service_pages/faq.html:86
+#: shop/templates/service_pages/faq.html:67
 msgid "Ring diameter"
 msgstr "Diametro dell'anello"
 
-#: shop/templates/service_pages/faq.html:86
+#: shop/templates/service_pages/faq.html:67
 msgid ""
 "Use a ruler to measure the inside diameter of a matching ring. If you do not"
 " have a ring available, then determine the size with the help of the ring "
@@ -3804,11 +3906,11 @@ msgstr ""
 "non hai un anello a disposizione, determina la misura con l'aiuto della "
 "circonferenza dell'anello."
 
-#: shop/templates/service_pages/faq.html:87
+#: shop/templates/service_pages/faq.html:68
 msgid "Ring circumference"
 msgstr "Circonferenza dell'anello"
 
-#: shop/templates/service_pages/faq.html:87
+#: shop/templates/service_pages/faq.html:68
 msgid ""
 "Take a piece of thread and wrap this thread around the relevant finger. "
 "After loosening the thread measure the length of the thread. Depending on "
@@ -3819,13 +3921,11 @@ msgstr ""
 "della temperatura, la circonferenza del dito varia."
 
 #: shop/templates/service_pages/payment_information.html:12
-#: shop/templates/service_pages/payment_information.html:15
-#: shop/templates/service_pages/payment_information.html:31
 #: shop/templates/widgets/footer.html:20
 msgid "Payment Information"
 msgstr "Informazioni sul pagamento"
 
-#: shop/templates/service_pages/payment_information.html:50
+#: shop/templates/service_pages/payment_information.html:31
 msgid ""
 "If you own a PayPal account you can pay easily and fast selecting PayPal "
 "payment in your ordering process. After submitting your order you will be "
@@ -3836,11 +3936,11 @@ msgstr ""
 "inviato il tuo ordine verrai reindirizzato su PayPal dove potrai completare "
 "il pagamento. "
 
-#: shop/templates/service_pages/payment_information.html:51
+#: shop/templates/service_pages/payment_information.html:32
 msgid "Payment via PayPal is free."
 msgstr "Il pagamento tramite PayPal è gratuito."
 
-#: shop/templates/service_pages/payment_information.html:52
+#: shop/templates/service_pages/payment_information.html:33
 msgid ""
 "No PayPal account yet: Register for Free with PayPal and create your own "
 "account in just a few steps."
@@ -3848,7 +3948,7 @@ msgstr ""
 "Ancora nessun conto PayPal: registrati gratuitamente con PayPal e crea il "
 "tuo conto in pochi passaggi."
 
-#: shop/templates/service_pages/payment_information.html:59
+#: shop/templates/service_pages/payment_information.html:40
 msgid ""
 "Stripe - Easy and direct payments using your Online Banking, Debit or Credit"
 " Card."
@@ -3856,7 +3956,7 @@ msgstr ""
 "Stripe: pagamenti facili e diretti utilizzando la tua banca online, carta di"
 " debito o credito."
 
-#: shop/templates/service_pages/payment_information.html:60
+#: shop/templates/service_pages/payment_information.html:41
 msgid ""
 "Take advantage of Stripe - a secure and direct money transfer platform. Pay "
 "your purchase after your order has been placed with the method you prefer: "
@@ -3866,7 +3966,7 @@ msgstr ""
 "diretta. Paga il tuo acquisto dopo aver effettuato l'ordine con il metodo "
 "che preferisci: Online Banking, Carta di debito o di credito."
 
-#: shop/templates/service_pages/payment_information.html:61
+#: shop/templates/service_pages/payment_information.html:42
 msgid ""
 "You will receive a receipt for your transaction to confirm your order is "
 "complete."
@@ -3874,15 +3974,15 @@ msgstr ""
 "Riceverai una ricevuta della transazione per confermare che l'ordine è stato"
 " completato."
 
-#: shop/templates/service_pages/payment_information.html:62
+#: shop/templates/service_pages/payment_information.html:43
 msgid "The payment via Stripe is free of charge."
 msgstr "Il pagamento tramite Stripe è gratuito."
 
-#: shop/templates/service_pages/payment_information.html:68
+#: shop/templates/service_pages/payment_information.html:49
 msgid "PAYMENT via Bank transfer"
 msgstr "PAGAMENTO tramite bonifico bancario"
 
-#: shop/templates/service_pages/payment_information.html:69
+#: shop/templates/service_pages/payment_information.html:50
 msgid ""
 "For Bank transfer payments or online banking payments please make sure to "
 "enter your invoice number or customer number so that we can correctly "
@@ -3892,7 +3992,7 @@ msgstr ""
 "assicurati di inserire il numero della fattura o il numero cliente in modo "
 "che possiamo attribuire correttamente il pagamento al tuo ordine."
 
-#: shop/templates/service_pages/payment_information.html:70
+#: shop/templates/service_pages/payment_information.html:51
 msgid ""
 "Bank transfers must be made within 10 working days from the order date, "
 "otherwise the order will be deleted automatically from our system."
@@ -3901,11 +4001,11 @@ msgstr ""
 "dalla data dell'ordine, altrimenti l'ordine verrà cancellato automaticamente"
 " dal nostro sistema."
 
-#: shop/templates/service_pages/payment_information.html:71
+#: shop/templates/service_pages/payment_information.html:52
 msgid "OUR BANK DETAILS FOR PREPAYMENT"
 msgstr "LE NOSTRE COORDINATE BANCARIE PER IL PAGAMENTO ANTICIPATO"
 
-#: shop/templates/service_pages/payment_information.html:73
+#: shop/templates/service_pages/payment_information.html:54
 msgid ""
 "For e-banking in the subject 'payment reference', please note your 'order "
 "number', so that we can correctly assign your payment to your order."
@@ -3914,7 +4014,7 @@ msgstr ""
 "\"Numero ordine\", in modo che possiamo associare correttamente il pagamento"
 " al vostro ordine."
 
-#: shop/templates/service_pages/payment_information.html:80
+#: shop/templates/service_pages/payment_information.html:61
 msgid ""
 "Amazon Pay makes online shopping even easier by allowing you to use your "
 "existing Amazon account information to pay for your purchase on our website."
@@ -3926,24 +4026,19 @@ msgstr ""
 "acquisti online in tutta sicurezza."
 
 #: shop/templates/service_pages/returns_and_exchanges.html:12
-msgid "Returns and exchanges "
-msgstr "Resi e cambi"
-
-#: shop/templates/service_pages/returns_and_exchanges.html:15
-#: shop/templates/service_pages/returns_and_exchanges.html:31
 #: shop/templates/widgets/footer.html:19
 msgid "Returns and exchanges"
 msgstr "Resi e cambi"
 
-#: shop/templates/service_pages/returns_and_exchanges.html:46
+#: shop/templates/service_pages/returns_and_exchanges.html:27
 msgid "Consumers have a 14 days right to cancel."
 msgstr "I consumatori hanno 14 giorni di diritto di recesso."
 
-#: shop/templates/service_pages/returns_and_exchanges.html:47
+#: shop/templates/service_pages/returns_and_exchanges.html:28
 msgid "Right to cancel"
 msgstr "Diritto di recesso"
 
-#: shop/templates/service_pages/returns_and_exchanges.html:48
+#: shop/templates/service_pages/returns_and_exchanges.html:29
 msgid ""
 "You have the right to cancel this contract within 14 days without giving any"
 " reason. The cancellation period will expire after 14 days from the day on "
@@ -3955,7 +4050,7 @@ msgstr ""
 "giorno in cui tu o un terzo, diverso dal vettore e da te designato, "
 "acquisisce il possesso fisico dell'ultimo bene."
 
-#: shop/templates/service_pages/returns_and_exchanges.html:49
+#: shop/templates/service_pages/returns_and_exchanges.html:30
 msgid ""
 "To exercise the right to cancel, you must inform us (Westa GmbH, Gewerbepark"
 " 24, 6068 Mils, Austria, office@oliverweber.at, Phone: 43522341881, Fax: "
@@ -3970,7 +4065,7 @@ msgstr ""
 " inviata per posta, fax o e-mail). Può utilizzare il modulo tipo di recesso "
 "allegato, ma non è obbligatorio."
 
-#: shop/templates/service_pages/returns_and_exchanges.html:50
+#: shop/templates/service_pages/returns_and_exchanges.html:31
 msgid ""
 "To meet the cancellation deadline, it is sufficient for you to send your "
 "communication concerning your exercise of the right of cancel before the "
@@ -3980,11 +4075,11 @@ msgstr ""
 "comunicazione relativa all'esercizio del diritto di recesso prima della "
 "scadenza del periodo di recesso."
 
-#: shop/templates/service_pages/returns_and_exchanges.html:51
+#: shop/templates/service_pages/returns_and_exchanges.html:32
 msgid "Effects of cancellation"
 msgstr "Effetti della cancellazione"
 
-#: shop/templates/service_pages/returns_and_exchanges.html:52
+#: shop/templates/service_pages/returns_and_exchanges.html:33
 msgid ""
 "If you cancel this contract, we will reimburse to you all payments received "
 "from you, including the costs of delivery (except for the supplementary "
@@ -4012,7 +4107,7 @@ msgstr ""
 "dimostrato di aver rispedito i beni, a seconda di quale evento si verifichi "
 "per primo."
 
-#: shop/templates/service_pages/returns_and_exchanges.html:53
+#: shop/templates/service_pages/returns_and_exchanges.html:34
 msgid ""
 "You shall send back the goods or hand them over to us, without undue delay "
 "and in any event not later than 14 days from the day on which you "
@@ -4032,11 +4127,11 @@ msgstr ""
 "diversa da quella necessaria per stabilire la natura, le caratteristiche e "
 "il funzionamento dei beni."
 
-#: shop/templates/service_pages/returns_and_exchanges.html:54
+#: shop/templates/service_pages/returns_and_exchanges.html:35
 msgid "Model cancellation form"
 msgstr "Modulo di recesso modello"
 
-#: shop/templates/service_pages/returns_and_exchanges.html:55
+#: shop/templates/service_pages/returns_and_exchanges.html:36
 msgid ""
 "If you want to cancel the contract, please fill out the form below and send "
 "it back to us.)"
@@ -4044,7 +4139,7 @@ msgstr ""
 "Se desideri recedere dal contratto, compila il modulo sottostante e "
 "rispedircelo.)"
 
-#: shop/templates/service_pages/returns_and_exchanges.html:56
+#: shop/templates/service_pages/returns_and_exchanges.html:37
 msgid ""
 "To Westa GmbH, Gewerbepark Sud 24, 6068 Mils, Austria, "
 "office@oliverweber.at, Fax: 43-5223-41881-30<br> — I / We(*) hereby give "
@@ -4063,20 +4158,15 @@ msgstr ""
 "supporto cartaceo)<br> — Data<br> (*) Cancellare la dicitura non pertinente"
 
 #: shop/templates/service_pages/shipping_information.html:12
-msgid "Shipping information "
-msgstr "Informazioni sulla spedizione"
-
-#: shop/templates/service_pages/shipping_information.html:15
-#: shop/templates/service_pages/shipping_information.html:31
 #: shop/templates/widgets/footer.html:18
 msgid "Shipping information"
 msgstr "Informazioni sulla spedizione"
 
-#: shop/templates/service_pages/shipping_information.html:46
+#: shop/templates/service_pages/shipping_information.html:27
 msgid "SHIPPING CONDITIONS"
 msgstr "CONDIZIONI DI SPEDIZIONE"
 
-#: shop/templates/service_pages/shipping_information.html:47
+#: shop/templates/service_pages/shipping_information.html:28
 msgid ""
 "We ship your package with Austrian Post (Austria and Germany) or UPS and "
 "FedEx (EU and International). Packing and insured shipping is included."
@@ -4085,11 +4175,11 @@ msgstr ""
 "FedEx (UE e internazionali). E' compreso l'imballo e la spedizione "
 "assicurata."
 
-#: shop/templates/service_pages/shipping_information.html:48
+#: shop/templates/service_pages/shipping_information.html:29
 msgid "Delivery Time:"
 msgstr "Tempi di consegna:"
 
-#: shop/templates/service_pages/shipping_information.html:49
+#: shop/templates/service_pages/shipping_information.html:30
 msgid ""
 "Standard Shipping: 2-10 business days. <br> Express Shipping: 2-4 business "
 "days."
@@ -4097,7 +4187,7 @@ msgstr ""
 "Spedizione standard: 2-10 giorni lavorativi. <br> Spedizione espressa: 2-4 "
 "giorni lavorativi."
 
-#: shop/templates/service_pages/shipping_information.html:50
+#: shop/templates/service_pages/shipping_information.html:31
 msgid ""
 "Orders received on weekends or public holidays will be processed and shipped"
 " two business days later."
@@ -4105,17 +4195,17 @@ msgstr ""
 "Gli ordini ricevuti nei fine settimana o nei giorni festivi verranno "
 "elaborati e spediti due giorni lavorativi dopo."
 
-#: shop/templates/service_pages/shipping_information.html:51
+#: shop/templates/service_pages/shipping_information.html:32
 msgid "There will be no deliveries on weekends or public holidays."
 msgstr ""
 "Non verranno effettuate consegne nei fine settimana o nei giorni festivi."
 
-#: shop/templates/service_pages/shipping_information.html:52
+#: shop/templates/service_pages/shipping_information.html:33
 msgid "We will automatically send you a link to track your package online."
 msgstr ""
 "Ti invieremo automaticamente un link per tracciare il tuo pacco online."
 
-#: shop/templates/service_pages/shipping_information.html:53
+#: shop/templates/service_pages/shipping_information.html:34
 msgid ""
 "Orders received no later than 17:00 CET on Mondays through Thursdays and "
 "12:00 CET on Fridays will be processed and shipped the following business "
@@ -4125,48 +4215,48 @@ msgstr ""
 "12:00 CET il venerdì verranno elaborati e spediti il ​​giorno lavorativo "
 "successivo."
 
-#: shop/templates/service_pages/shipping_information.html:55
+#: shop/templates/service_pages/shipping_information.html:36
 msgid "ITEMS READY FOR IMMEDIATE SHIPMENT, THE DELIVERY TIME"
 msgstr "ARTICOLI PRONTI PER LA SPEDIZIONE IMMEDIATA, I TEMPI DI CONSEGNA"
 
-#: shop/templates/service_pages/shipping_information.html:56
+#: shop/templates/service_pages/shipping_information.html:37
 msgid "COUNTRIES SHIPPING COSTS DELIVERY TIME"
 msgstr "PAESI COSTI DI SPEDIZIONE TEMPI DI CONSEGNA"
 
-#: shop/templates/service_pages/shipping_information.html:57
+#: shop/templates/service_pages/shipping_information.html:38
 msgid "Austria / Germany: € 5,70 VAT excl. 2-4 business days"
 msgstr "Austria / Germania: € 5,70 IVA escl. 2-4 giorni lavorativi"
 
-#: shop/templates/service_pages/shipping_information.html:58
+#: shop/templates/service_pages/shipping_information.html:39
 msgid "Standard delivery Europe: € 5,70&nbsp;"
 msgstr "Consegna standard Europa: € 5,70 "
 
-#: shop/templates/service_pages/shipping_information.html:58
+#: shop/templates/service_pages/shipping_information.html:39
 msgid "VAT excl."
 msgstr "IVA escl."
 
-#: shop/templates/service_pages/shipping_information.html:58
+#: shop/templates/service_pages/shipping_information.html:39
 msgid "&nbsp;2-10 business days"
 msgstr " 2-10 giorni lavorativi"
 
-#: shop/templates/service_pages/shipping_information.html:59
+#: shop/templates/service_pages/shipping_information.html:40
 msgid "Express delivery: €15,75&nbsp;"
 msgstr "Consegna espressa: €15,75 "
 
-#: shop/templates/service_pages/shipping_information.html:59
-#: shop/templates/service_pages/shipping_information.html:60
+#: shop/templates/service_pages/shipping_information.html:40
+#: shop/templates/service_pages/shipping_information.html:41
 msgid "VAT excl.&nbsp;"
 msgstr "IVA escl. "
 
-#: shop/templates/service_pages/shipping_information.html:59
+#: shop/templates/service_pages/shipping_information.html:40
 msgid "for Europe"
 msgstr "per l'Europa"
 
-#: shop/templates/service_pages/shipping_information.html:60
+#: shop/templates/service_pages/shipping_information.html:41
 msgid "Shipping to the United States (except. Alaska, Hawaii): €29,00&nbsp;"
 msgstr "Spedizione negli Stati Uniti (escluso Alaska, Hawaii): €29,00 "
 
-#: shop/templates/service_pages/shipping_information.html:60
+#: shop/templates/service_pages/shipping_information.html:41
 msgid ""
 "delivery times between 5 and 10 business days from the time you place your "
 "order."
@@ -4174,15 +4264,15 @@ msgstr ""
 "tempi di consegna compresi tra 5 e 10 giorni lavorativi dal momento "
 "dell'ordine."
 
-#: shop/templates/service_pages/shipping_information.html:61
+#: shop/templates/service_pages/shipping_information.html:42
 msgid "Central and South America&nbsp"
 msgstr "America centrale e meridionale"
 
-#: shop/templates/service_pages/shipping_information.html:61
+#: shop/templates/service_pages/shipping_information.html:42
 msgid "and the Rest of the World"
 msgstr "e il Resto del Mondo"
 
-#: shop/templates/service_pages/shipping_information.html:61
+#: shop/templates/service_pages/shipping_information.html:42
 msgid ""
 "€29 VAT excl. delivery times between 5 and 10 business days from the time "
 "you place your order."
@@ -4190,12 +4280,12 @@ msgstr ""
 "€ 29 IVA escl. tempi di consegna compresi tra 5 e 10 giorni lavorativi dal "
 "momento dell'ordine."
 
-#: shop/templates/service_pages/shipping_information.html:62
+#: shop/templates/service_pages/shipping_information.html:43
 msgid "FREE shipping from a purchase value of € 100 to. (AT/ DE and EU only)"
 msgstr ""
 "Spedizione GRATUITA da un valore di acquisto di € 100 a. (Solo AT/DE e UE)"
 
-#: shop/templates/service_pages/shipping_information.html:63
+#: shop/templates/service_pages/shipping_information.html:44
 msgid ""
 "If the order is received in time before the last stated delivery date, the "
 "items will normally be delivered on time. However, unforeseen circumstances "
@@ -4208,7 +4298,7 @@ msgstr ""
 "ritardi nella consegna. In questi casi Westa GmbH non si assume alcuna "
 "responsabilità."
 
-#: shop/templates/service_pages/shipping_information.html:64
+#: shop/templates/service_pages/shipping_information.html:45
 msgid ""
 "Orders will not be shipped or delivered on public holidays. Holidays may "
 "cause your delivery to arrive later than expected."
@@ -4216,11 +4306,11 @@ msgstr ""
 "Gli ordini non verranno spediti o consegnati nei giorni festivi. Le "
 "festività potrebbero far sì che la consegna arrivi più tardi del previsto."
 
-#: shop/templates/service_pages/shipping_information.html:66
+#: shop/templates/service_pages/shipping_information.html:47
 msgid "WHERE IS&nbsp;MY PACKAGE?"
 msgstr "DOVE È IL MIO PACCO?"
 
-#: shop/templates/service_pages/shipping_information.html:67
+#: shop/templates/service_pages/shipping_information.html:48
 msgid ""
 "If tracking a package shows that it has been delivered, please check to see "
 "if it was received by someone else at your address. It is possible that a "
@@ -4230,7 +4320,7 @@ msgstr ""
 " stato ricevuto da qualcun altro al tuo indirizzo. È possibile che un vicino"
 " lo abbia accettato."
 
-#: shop/templates/service_pages/shipping_information.html:68
+#: shop/templates/service_pages/shipping_information.html:49
 msgid ""
 "Check to see if you received a delivery attempt notification card. Please "
 "check your mailbox."
@@ -4238,7 +4328,7 @@ msgstr ""
 "Controlla se hai ricevuto una scheda di notifica del tentativo di consegna. "
 "Per favore controlla la tua casella di posta."
 
-#: shop/templates/service_pages/shipping_information.html:69
+#: shop/templates/service_pages/shipping_information.html:50
 msgid ""
 "If your package cannot be found, please contact our customer service. Please"
 " have your order and tracking number ready."
@@ -4246,11 +4336,11 @@ msgstr ""
 "Se il tuo pacco non viene trovato, contatta il nostro servizio clienti. "
 "Tieni a portata di mano il tuo ordine e il numero di tracciabilità."
 
-#: shop/templates/service_pages/stores.html:12
+#: shop/templates/service_pages/stores.html:11
 msgid "Our stores"
 msgstr "I nostri negozi"
 
-#: shop/templates/service_pages/stores.html:18
+#: shop/templates/service_pages/stores.html:17
 msgid ""
 "Enter a location (e.g. zip/postal code, address, city or country) in order "
 "to find the nearest stores."
@@ -4258,23 +4348,23 @@ msgstr ""
 "Immettere una posizione (ad es. Codice zip/postale, indirizzo, città o "
 "paese) per trovare i negozi più vicini."
 
-#: shop/templates/service_pages/stores.html:23
+#: shop/templates/service_pages/stores.html:22
 msgid "Your location: "
 msgstr "La tua posizione:"
 
-#: shop/templates/service_pages/stores.html:24
+#: shop/templates/service_pages/stores.html:23
 msgid "Address, zip / postal code, city, state or country"
 msgstr "Indirizzo, Codice zip / postale, città, stato o paese"
 
-#: shop/templates/service_pages/stores.html:28
+#: shop/templates/service_pages/stores.html:27
 msgid "Radius: "
 msgstr "Raggio:"
 
-#: shop/templates/service_pages/stores.html:36
+#: shop/templates/service_pages/stores.html:35
 msgid "Search"
 msgstr "Ricerca"
 
-#: shop/templates/shop_page.html:65 shop/views.py:659
+#: shop/templates/shop_page.html:65 shop/views.py:660
 msgid "Plating"
 msgstr "Placcatura"
 
@@ -4283,24 +4373,24 @@ msgid "Stone"
 msgstr "Calcolo"
 
 #: shop/templates/shop_page.html:82
-#: shop/templates/widgets/filters_section.html:103 shop/views.py:652
+#: shop/templates/widgets/filters_section.html:103 shop/views.py:653
 msgid "Size"
 msgstr "Misurare"
 
-#: shop/templates/shop_page.html:93 shop/views.py:669
+#: shop/templates/shop_page.html:93 shop/views.py:670
 msgid "Product width"
 msgstr "Larghezza del prodotto"
 
-#: shop/templates/shop_page.html:103 shop/views.py:670
+#: shop/templates/shop_page.html:103 shop/views.py:671
 msgid "Product height"
 msgstr "Altezza del prodotto"
 
-#: shop/templates/shop_page.html:114 shop/views.py:671
+#: shop/templates/shop_page.html:114 shop/views.py:672
 msgid "Chain length"
 msgstr "Lunghezza della catena"
 
 #: shop/templates/shop_page.html:134 shop/templates/shop_page.html:140
-#: shop/views.py:648
+#: shop/views.py:649
 msgid "In stock"
 msgstr "In magazzino"
 
@@ -4308,11 +4398,11 @@ msgstr "In magazzino"
 msgid "Out of stock"
 msgstr "Esaurito"
 
-#: shop/templates/shop_page.html:142 shop/views.py:649
+#: shop/templates/shop_page.html:142 shop/views.py:650
 msgid "Less than 5 pieces left!"
 msgstr "Meno di 5 pezzi rimasti!"
 
-#: shop/templates/shop_page.html:151 shop/views.py:666
+#: shop/templates/shop_page.html:151 shop/views.py:667
 msgid "Add to cart"
 msgstr "Aggiungi al carrello"
 
@@ -4320,11 +4410,11 @@ msgstr "Aggiungi al carrello"
 msgid "Oops... searched product is not available"
 msgstr "Spiacenti... il prodotto cercato non è disponibile"
 
-#: shop/templates/shop_page.html:273 shop/views.py:656
+#: shop/templates/shop_page.html:273 shop/views.py:657
 msgid "An error occured"
 msgstr "Si è verificato un errore"
 
-#: shop/templates/shop_page.html:286 shop/views.py:654
+#: shop/templates/shop_page.html:286 shop/views.py:655
 msgid ""
 "Quantity number has to be less than or equal to quantity number in stock or "
 "and be greater than 0"
@@ -4332,15 +4422,16 @@ msgstr ""
 "Il numero di quantità deve essere inferiore o uguale al numero di quantità "
 "in magazzino o maggiore di 0"
 
-#: shop/templates/shop_page.html:296 shop/views.py:668
+#: shop/templates/shop_page.html:296 shop/views.py:669
 msgid "Maximum items for pre-order is 20, minimum is 1"
 msgstr "Il numero massimo di articoli preordinabili è 20, il minimo è 1"
 
-#: shop/templates/shop_page.html:341
+#: shop/templates/shop_page.html:339
 msgid "Current quantity"
 msgstr "Quantità attuale"
 
 #: shop/templates/stripe/cancelled.html:19
+#: shop/templates/stripe/cancelledInvoice.html:19
 msgid "Your payment was cancelled."
 msgstr "Il tuo pagamento è stato annullato."
 
@@ -4348,11 +4439,17 @@ msgstr "Il tuo pagamento è stato annullato."
 msgid "Back to checkout"
 msgstr "Ritorna alla cassa"
 
+#: shop/templates/stripe/cancelledInvoice.html:28
+msgid "To my invoices"
+msgstr "Alle mie fatture"
+
 #: shop/templates/stripe/success.html:19
+#: shop/templates/stripe/successInvoice.html:19
 msgid "Your payment succeeded!"
 msgstr "Il tuo pagamento è riuscito!"
 
 #: shop/templates/stripe/success.html:20
+#: shop/templates/stripe/successInvoice.html:20
 msgid ""
 "Within a few minutes you will receive a confirmation of payment via email."
 msgstr ""
@@ -4367,9 +4464,9 @@ msgstr "I miei ordini"
 msgid "Account"
 msgstr "Account"
 
-#: shop/templates/widgets/account_panel.html:135
+#: shop/templates/widgets/account_panel.html:142
 #: shop/templates/widgets/mobile_links_panel.html:48
-#: shop/templates/widgets/navigation_bar.html:83
+#: shop/templates/widgets/navigation_bar.html:95
 msgid "Register"
 msgstr "Registro"
 
@@ -4396,15 +4493,15 @@ msgstr "Materiale di placcatura"
 #: shop/templates/widgets/filters_section.html:61
 #: shop/templates/widgets/filters_section.html:78
 #: shop/templates/widgets/filters_section.html:98
-#: shop/templates/widgets/filters_section.html:124 shop/views.py:678
+#: shop/templates/widgets/filters_section.html:124 shop/views.py:679
 msgid "Reset this group"
 msgstr "Ripristina questo gruppo"
 
-#: shop/templates/widgets/filters_section.html:65 shop/views.py:660
+#: shop/templates/widgets/filters_section.html:65 shop/views.py:661
 msgid "Base material"
 msgstr "Materiale di base"
 
-#: shop/templates/widgets/filters_section.html:81 shop/views.py:658
+#: shop/templates/widgets/filters_section.html:81 shop/views.py:659
 msgid "Crystal color"
 msgstr "Colore cristallo"
 
@@ -4450,103 +4547,113 @@ msgstr "Tutti i prodotti"
 
 #: shop/templates/widgets/mobile_links_panel.html:34
 #: shop/templates/widgets/navigation_bar.html:56
+#: shop/templates/widgets/navigation_bar.html:66
 msgid "NECKLACES"
 msgstr "COLLANE"
 
 #: shop/templates/widgets/mobile_links_panel.html:35
 #: shop/templates/widgets/navigation_bar.html:57
+#: shop/templates/widgets/navigation_bar.html:67
 msgid "EARRINGS"
 msgstr "ORECCHINI"
 
 #: shop/templates/widgets/mobile_links_panel.html:36
 #: shop/templates/widgets/navigation_bar.html:58
+#: shop/templates/widgets/navigation_bar.html:68
 msgid "RINGS"
 msgstr "ANELLI"
 
 #: shop/templates/widgets/mobile_links_panel.html:37
 #: shop/templates/widgets/navigation_bar.html:59
+#: shop/templates/widgets/navigation_bar.html:69
 msgid "BRACELETS"
 msgstr "BRACCIALETTI"
 
 #: shop/templates/widgets/mobile_links_panel.html:38
 #: shop/templates/widgets/navigation_bar.html:60
+#: shop/templates/widgets/navigation_bar.html:70
 msgid "ACCESSORIES"
 msgstr "ACCESSORI"
 
 #: shop/templates/widgets/navigation_bar.html:55
+#: shop/templates/widgets/navigation_bar.html:65
 msgid "ALL PRODUCTS"
 msgstr "TUTTI I PRODOTTI"
 
-#: shop/templates/widgets/navigation_bar.html:62
+#: shop/templates/widgets/navigation_bar.html:63
+msgid "ADDRESSES"
+msgstr "Indirizzi"
+
+#: shop/templates/widgets/navigation_bar.html:74
 msgid "COLLECTIONS"
 msgstr "Collezioni"
 
-#: shop/views.py:650
+#: shop/views.py:651
 msgid "Plating Material"
 msgstr "Materiale di placcatura"
 
-#: shop/views.py:651
+#: shop/views.py:652
 msgid "Stone color"
 msgstr "Colore pietra"
 
-#: shop/views.py:655
+#: shop/views.py:656
 msgid "Processing"
 msgstr "Elaborazione"
 
-#: shop/views.py:657
+#: shop/views.py:658
 msgid "Product successfully added to your shopping cart"
 msgstr "Prodotto aggiunto con successo al tuo carrello"
 
-#: shop/views.py:661 shop/views_scripts/checkout_cart_views.py:438
-#: shop/views_scripts/checkout_cart_views.py:440
+#: shop/views.py:662 shop/views_scripts/checkout_cart_views.py:674
+#: shop/views_scripts/checkout_cart_views.py:676
 msgid "Quantity"
 msgstr "Quantità"
 
-#: shop/views.py:662
+#: shop/views.py:663
 msgid "Number of items in your cart:"
 msgstr "Numero di articoli nel carrello:"
 
-#: shop/views.py:667
+#: shop/views.py:668
 msgid "This item is only available for pre-order!"
 msgstr "Questo articolo è disponibile solo per il preordine!"
 
-#: shop/views.py:673
+#: shop/views.py:674
 msgid "No items found"
 msgstr "Nessun articolo trovato"
 
-#: shop/views.py:674
+#: shop/views.py:675
 msgid "Current page"
 msgstr "Pagina corrente"
 
-#: shop/views.py:676
+#: shop/views.py:677
 msgid "Copy link"
 msgstr "Copia collegamento"
 
-#: shop/views.py:677
+#: shop/views.py:678
 msgid "Copied!"
 msgstr "Copiato!"
 
-#: shop/views.py:679
+#: shop/views.py:680
 msgid "Similar products"
 msgstr "Prodotti simili"
 
-#: shop/views.py:680
+#: shop/views.py:681
 msgid "Turn off the magnifying glass"
 msgstr "Spegni la lente d'ingrandimento"
 
-#: shop/views.py:681
+#: shop/views.py:682
 msgid "Turn on the magnifying glass"
 msgstr "Accendi la lente d'ingrandimento"
 
-#: shop/views.py:682
+#: shop/views.py:683
 msgid "Back to shop"
 msgstr "Ritorno al negozio"
 
-#: shop/views.py:683
+#: shop/views.py:684
 msgid "Cart is empty"
 msgstr "Il carrello è vuoto"
 
-#: shop/views.py:684
+#: shop/views.py:685
 msgid ""
 "You cant delete items during checkout. Go back to shop pages to change your "
 "cart"
@@ -4554,39 +4661,39 @@ msgstr ""
 "Non puoi eliminare gli articoli durante il checkout. Torna alle pagine del "
 "negozio per modificare il carrello"
 
-#: shop/views.py:685
+#: shop/views.py:686
 msgid "Remove from cart"
 msgstr "Rimuovi dal carrello"
 
-#: shop/views.py:686
+#: shop/views.py:687
 msgid "Please enter a valid amount."
 msgstr "Inserisci un importo valido."
 
-#: shop/views.py:687
+#: shop/views.py:688
 msgid "Show details"
 msgstr "Mostra dettagli"
 
-#: shop/views.py:688
+#: shop/views.py:689
 msgid "Hide details"
 msgstr "Nascondi dettagli"
 
-#: shop/views.py:690
+#: shop/views.py:691
 msgid "Image"
 msgstr "Immagine"
 
-#: shop/views.py:691
+#: shop/views.py:692
 msgid "Description"
 msgstr "Descrizione"
 
-#: shop/views.py:693
+#: shop/views.py:694
 msgid "Summary"
 msgstr "Riepilogo"
 
-#: shop/views.py:696
+#: shop/views.py:697
 msgid "The address has been successfully updated!"
 msgstr "L'indirizzo è stato aggiornato con successo!"
 
-#: shop/views.py:697
+#: shop/views.py:698
 msgid ""
 "We use cookies to personalize content and improve your browsing experience. "
 "By continuing, you accept our cookie policy."
@@ -4595,127 +4702,131 @@ msgstr ""
 "esperienza di navigazione. Continuando, accetti la nostra politica sui "
 "cookie."
 
-#: shop/views.py:698
+#: shop/views.py:699
 msgid "Decline"
 msgstr "Declino"
 
-#: shop/views.py:699
+#: shop/views.py:700
 msgid "Privacy Policy"
 msgstr "Politica sulla riservatezza"
 
-#: shop/views.py:700
+#: shop/views.py:701
 msgid "Accept"
 msgstr "Accettare"
 
-#: shop/views.py:702
+#: shop/views.py:703
 msgid "Store address update error"
 msgstr "Errore di aggiornamento dell'indirizzo dell'archiviazione"
 
-#: shop/views.py:703
+#: shop/views.py:704
 msgid "Store address delete error"
 msgstr "STORE INDIRIZZO Elimina ERRORE"
 
-#: shop/views.py:704
+#: shop/views.py:705
 msgid "Store address create error"
 msgstr "Store l'indirizzo Creare l'errore"
 
-#: shop/views.py:705
+#: shop/views.py:706
 msgid "Unknown error"
 msgstr "Errore sconosciuto"
 
-#: shop/views.py:706
+#: shop/views.py:707
 msgid "The store address has been successfully added."
 msgstr "L'indirizzo del negozio è stato aggiunto con successo."
 
-#: shop/views.py:707
+#: shop/views.py:708
 msgid "Store address with ID"
 msgstr "Indirizzo del negozio con ID"
 
-#: shop/views.py:708
+#: shop/views.py:709
 msgid "was successfully added"
 msgstr "è stato aggiunto con successo"
 
-#: shop/views.py:709
+#: shop/views.py:710
 msgid "was successfully updated"
 msgstr "è stato aggiornato con successo"
 
-#: shop/views.py:710
+#: shop/views.py:711
 msgid "was successfully deleted"
 msgstr "è stato eliminato con successo"
 
-#: shop/views.py:711
+#: shop/views.py:712
 msgid "Show route"
 msgstr "Mostra rotta"
 
-#: shop/views.py:712
+#: shop/views.py:713
 msgid "Please enter the address, zip / postal code, city or country."
 msgstr ""
 "Inserisci l'indirizzo, il codice postale / postale, la città o il paese."
 
-#: shop/views.py:713
+#: shop/views.py:714
 msgid "No stores were found in the area."
 msgstr "Non sono stati trovati negozi nella zona."
 
-#: shop/views.py:714
+#: shop/views.py:715
 msgid "An error occurred while loading stores."
 msgstr "Si è verificato un errore durante il caricamento dei negozi."
 
-#: shop/views.py:715
+#: shop/views.py:716
 msgid "Network error when loading stores."
 msgstr "Errore di rete durante il caricamento dei negozi."
 
-#: shop/views.py:716
+#: shop/views.py:717
 msgid "Error loading stores."
 msgstr "Errore di caricamento dei negozi."
 
-#: shop/views.py:719
+#: shop/views.py:720
 msgid "Loading..."
 msgstr "Caricamento..."
 
-#: shop/views.py:724
+#: shop/views.py:725
 msgid "TEST STROKE"
 msgstr "Test Actus"
 
-#: shop/views.py:727
+#: shop/views.py:728
 msgid "Type of written quantity has to be numeric and greater than 0"
 msgstr "Il tipo di quantità scritta deve essere numerico e maggiore di 0"
 
-#: shop/views.py:728
+#: shop/views.py:729
 msgid "Quantity has to be less than maximum on storage"
 msgstr "La quantità deve essere inferiore al massimo immagazzinato"
 
-#: shop/views.py:729
+#: shop/views.py:730
 msgid "Do you really want to delete this product from your cart?"
 msgstr "Vuoi davvero eliminare questo prodotto dal carrello?"
 
-#: shop/views.py:730
+#: shop/views.py:731
 msgid "Confirmed"
 msgstr "Confermato"
 
-#: shop/views.py:731
+#: shop/views.py:732
 msgid "You must add at least 1 order to your cart to proceed to checkout"
 msgstr ""
 "È necessario aggiungere almeno 1 ordine al carrello per procedere al "
 "checkout"
 
-#: shop/views.py:733
+#: shop/views.py:734
 msgid "The product is made of silver"
 msgstr "Il prodotto è realizzato in argento"
 
-#: shop/views.py:734
+#: shop/views.py:735
 msgid "To enlarge the picture, hover your mouse over the image"
 msgstr "Per ingrandire l'immagine, passa il mouse sull'immagine"
 
-#: shop/views.py:735
-#| msgid "The product is made of silver"
+#: shop/views.py:736
 msgid "The product is made of steel"
 msgstr "Il prodotto è realizzato in acciaio"
 
-#: shop/views.py:760
+#: shop/views.py:737
+#| msgid "May"
+msgid "Pay"
+msgstr "Paga"
+
+#: shop/views.py:762
 msgid "Welcome to my site."
 msgstr "Benvenuti nel mio sito."
 
-#: shop/views_scripts/checkout_cart_views.py:215
+#: shop/views_scripts/checkout_cart_views.py:451
 msgid ""
 "Dear Customer,\n"
 "\n"
@@ -4731,7 +4842,7 @@ msgstr ""
 "            Il tuo ordine è stato elaborato con successo e trovi la ricevuta in allegato a questa email.\n"
 "            Il tuo numero d'ordine"
 
-#: shop/views_scripts/checkout_cart_views.py:221
+#: shop/views_scripts/checkout_cart_views.py:457
 #: shop/views_scripts/profile_orders_pay.py:124
 msgid ""
 "Thank you for choosing Oliver Weber. We look forward to seeing you again!\n"
@@ -4744,15 +4855,15 @@ msgstr ""
 "            Cordiali saluti,  \n"
 "            Il team di Oliver Weber"
 
-#: shop/views_scripts/checkout_cart_views.py:227
+#: shop/views_scripts/checkout_cart_views.py:463
 msgid "Thank You for Your Order with Oliver Weber!"
 msgstr "Grazie per il tuo ordine con Oliver Weber!"
 
-#: shop/views_scripts/checkout_cart_views.py:320
+#: shop/views_scripts/checkout_cart_views.py:556
 msgid "Thank you for shopping with Oliver Weber Shop."
 msgstr "Grazie per aver acquistato con Oliver Weber Shop."
 
-#: shop/views_scripts/checkout_cart_views.py:322
+#: shop/views_scripts/checkout_cart_views.py:558
 msgid ""
 "You'll find your Order Summary below. If you have any questions regarding "
 "your order, please contact us."
@@ -4760,80 +4871,88 @@ msgstr ""
 "Di seguito troverai il riepilogo del tuo ordine. Se hai domande riguardo al "
 "tuo ordine, contattaci."
 
-#: shop/views_scripts/checkout_cart_views.py:336
+#: shop/views_scripts/checkout_cart_views.py:572
 msgid "Order Status"
 msgstr "Stato dell'ordine"
 
-#: shop/views_scripts/checkout_cart_views.py:338
+#: shop/views_scripts/checkout_cart_views.py:574
 msgid "Shipping Date"
 msgstr "Data di spedizione"
 
-#: shop/views_scripts/checkout_cart_views.py:339
+#: shop/views_scripts/checkout_cart_views.py:575
 msgid "Receipt"
 msgstr "Ricevuta"
 
-#: shop/views_scripts/checkout_cart_views.py:341
+#: shop/views_scripts/checkout_cart_views.py:577
 msgid "Customer Code"
 msgstr "Codice Cliente"
 
-#: shop/views_scripts/checkout_cart_views.py:349
+#: shop/views_scripts/checkout_cart_views.py:585
 msgid "Phone:"
 msgstr "Telefono:"
 
-#: shop/views_scripts/checkout_cart_views.py:402
+#: shop/views_scripts/checkout_cart_views.py:638
 msgid "Customer Billing Details"
 msgstr "Dettagli di fatturazione del cliente"
 
-#: shop/views_scripts/checkout_cart_views.py:402
+#: shop/views_scripts/checkout_cart_views.py:638
 msgid "Delivery Details"
 msgstr "Dettagli di consegna"
 
-#: shop/views_scripts/checkout_cart_views.py:403
+#: shop/views_scripts/checkout_cart_views.py:639
 msgid "Contact Phone"
 msgstr "Contatta il telefono"
 
-#: shop/views_scripts/checkout_cart_views.py:404
+#: shop/views_scripts/checkout_cart_views.py:640
 msgid "Ship-To Code"
 msgstr "Codice di spedizione"
 
-#: shop/views_scripts/checkout_cart_views.py:405
+#: shop/views_scripts/checkout_cart_views.py:641
 msgid "Billing Address"
 msgstr "Indirizzo di fatturazione"
 
-#: shop/views_scripts/checkout_cart_views.py:407
+#: shop/views_scripts/checkout_cart_views.py:643
 msgid "Ship-To Name"
 msgstr "Nome del destinatario"
 
-#: shop/views_scripts/checkout_cart_views.py:412
+#: shop/views_scripts/checkout_cart_views.py:648
 msgid "Shipping Address"
 msgstr "Indirizzo di spedizione"
 
-#: shop/views_scripts/checkout_cart_views.py:437
-#: shop/views_scripts/checkout_cart_views.py:439
+#: shop/views_scripts/checkout_cart_views.py:673
+#: shop/views_scripts/checkout_cart_views.py:675
 msgid "Product"
 msgstr "Prodotto"
 
-#: shop/views_scripts/checkout_cart_views.py:437
+#: shop/views_scripts/checkout_cart_views.py:673
 msgid "Photo"
 msgstr "Foto"
 
-#: shop/views_scripts/checkout_cart_views.py:438
-#: shop/views_scripts/checkout_cart_views.py:440
+#: shop/views_scripts/checkout_cart_views.py:674
+#: shop/views_scripts/checkout_cart_views.py:676
 msgid "Item Details"
 msgstr "Dettagli articolo"
 
-#: shop/views_scripts/checkout_cart_views.py:439
-#: shop/views_scripts/checkout_cart_views.py:441
+#: shop/views_scripts/checkout_cart_views.py:675
+#: shop/views_scripts/checkout_cart_views.py:677
 msgid "Unit Price"
 msgstr "Prezzo unitario"
 
-#: shop/views_scripts/checkout_cart_views.py:484
+#: shop/views_scripts/checkout_cart_views.py:720
 msgid "Shipping VAT"
 msgstr "Spedizione VAT"
 
-#: shop/views_scripts/checkout_cart_views.py:486
+#: shop/views_scripts/checkout_cart_views.py:722
 msgid "TOTAL"
 msgstr "TOTALE"
+
+#: shop/views_scripts/manage_invoices/invoices_managing.py:72
+msgid "Your invoice:"
+msgstr "La tua fattura:"
+
+#: shop/views_scripts/manage_invoices/invoices_managing.py:73
+msgid "Pay using this link:"
+msgstr "Paga usando questo link:"
 
 #: shop/views_scripts/profile_orders_pay.py:120
 msgid ""
@@ -4873,7 +4992,6 @@ msgid "Requested quantity"
 msgstr "Quantità richiesta"
 
 #: shop/views_scripts/profile_views.py:420
-#| msgid "is less than number of products in storage for product"
 msgid "exceeds available stock in storage for product"
 msgstr "supera lo stock disponibile nello stoccaggio per il prodotto"
 
@@ -4884,6 +5002,12 @@ msgstr "Il prodotto non è stato aggiunto al carrello."
 #: shop/views_scripts/profile_views.py:440
 msgid "Error updating cart for product"
 msgstr "Errore durante l'aggiornamento del carrello per il prodotto"
+
+#~ msgid "Returns and exchanges "
+#~ msgstr "Resi e cambi"
+
+#~ msgid "Shipping information "
+#~ msgstr "Informazioni sulla spedizione"
 
 #, python-brace-format
 #~ msgid "{editor}: Editing failed"
@@ -5076,9 +5200,6 @@ msgstr "Errore durante l'aggiornamento del carrello per il prodotto"
 
 #~ msgid "file"
 #~ msgstr "file"
-
-#~ msgid "directory"
-#~ msgstr "directory"
 
 #~ msgid "path"
 #~ msgstr "sentiero"
@@ -5636,9 +5757,6 @@ msgstr "Errore durante l'aggiornamento del carrello per il prodotto"
 #~ msgid "Clear"
 #~ msgstr "Chiaro"
 
-#~ msgid "Currently"
-#~ msgstr "Attualmente"
-
 #~ msgid "Change"
 #~ msgstr "Modifica"
 
@@ -5751,9 +5869,6 @@ msgstr "Errore durante l'aggiornamento del carrello per il prodotto"
 
 #~ msgid "April"
 #~ msgstr "aprile"
-
-#~ msgid "May"
-#~ msgstr "Maggio"
 
 #~ msgid "June"
 #~ msgstr "Giugno"
