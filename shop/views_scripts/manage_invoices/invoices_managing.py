@@ -69,7 +69,7 @@ def create_invoice(request):
     })
 
     # 3) Send email with link
-    subject_1 = _("Your invice:")
+    subject_1 = _("Your invoice:")
     body_1 = _("Pay using this link:")
     email = EmailMessage(
         subject=subject_1+f" {amount/100:.2f} {currency}",
