@@ -11,6 +11,7 @@
 <link rel="stylesheet" type="text/css" href="{% static 'css/checkout_cart.css' %}">
 <link rel="stylesheet" href="{% static 'css/checkout/checkout_addresses.css' %}">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" href="{% static "css/checkout/checkout_main.css" %}">
 <link rel="stylesheet" href="{% static "css/profile/profile_information.css" %}">
 <link rel="stylesheet" href="{% static 'css/SeparateWidgets/addressesWidget.css' %}">
 <script src="https://js.stripe.com/v3/"></script>  <!-- new -->
@@ -19,7 +20,7 @@
 
 <body>
 {% include 'widgets/navigation_bar.html' %}
-<div class="all" >
+<div class="checkout-page-container">
     <div class="page-content" style="width: 100%;">
         <div class="container-steps" >
             <div class="doc-content" style="width: 100%">

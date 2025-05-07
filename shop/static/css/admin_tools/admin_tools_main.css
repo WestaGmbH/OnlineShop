@@ -1,4 +1,6 @@
-
+.admin-container-page{
+    margin-top: 40px;
+}
 .container-page {
    width: 1450px;
    max-width: 100%;

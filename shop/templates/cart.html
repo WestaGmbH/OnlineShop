@@ -37,6 +37,7 @@
 
     }'>
     {{ config|json_script:"config-data" }}
+    <link rel="stylesheet" href="{% static "css/checkout/checkout_main.css" %}">
     <script src="{% static "js/checkout/totalCalculation.js" %}"></script>
     <script type="module" src="{% static "js/firebaseFunctions.js" %}"></script>
     <script src="{% static "js/productsTransmutation.js" %}"></script>
@@ -45,7 +46,7 @@
 </head>
 <body>
 {% include 'widgets/navigation_bar.html' %}
-<div class="page-content-container">
+<div class="checkout-page-container">
     <div class="page-content">
       <div class="doc-content">
 

@@ -7,6 +7,7 @@
 <title>Checkout user info</title>
 <link rel="icon" href="{% static "images/icons/web-icon.png" %}" type="image/x-icon">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<link rel="stylesheet" href="{% static "css/checkout/checkout_main.css" %}">
 <link rel="stylesheet" type="text/css" href="{% static 'css/checkout_cart.css' %}">
 <link rel="stylesheet" type="text/css" href="{% static 'css/checkout/checkout_auth.css' %}">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -20,7 +21,7 @@
     {% endif %}
 
     {% include "widgets/navigation_bar.html" %}
-    <div class="all" style="margin-top: 150px">
+    <div class="checkout-page-container">
         <div class="page-content">
             <div class="doc-content">
                 <div class="informational-content">
