@@ -16,15 +16,17 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm
 from django.core.mail import EmailMessage
-from django.http import HttpResponse, JsonResponse
+from django.http import HttpResponse, JsonResponse, FileResponse
 from django.shortcuts import render, redirect
 from django.utils.translation import gettext as _, activate
 from firebase_admin import firestore
 from reportlab.lib import colors
-from reportlab.lib.pagesizes import A4
+from reportlab.lib.pagesizes import A4, letter
 from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
+from reportlab.lib.units import inch
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
+from reportlab.pdfgen import canvas
 from reportlab.platypus import Image
 from reportlab.platypus import SimpleDocTemplate, Table, TableStyle, Paragraph, Spacer
 
@@ -35,7 +37,7 @@ from shop.views import db, orders_ref, get_cart, cart_ref, single_order_ref, \
     get_user_category, get_user_session_type, metadata_ref, users_ref, update_email_in_db, get_user_prices, \
     get_user_info, get_address_info, get_order_items, \
     active_promocodes_ref, active_cart_coupon, get_active_coupon, delete_user_coupons, used_promocodes_ref, \
-    mark_user_coupons_as_used, get_user_sale, get_vocabulary_product_card, get_currency_symbol
+    mark_user_coupons_as_used, get_user_sale, get_vocabulary_product_card, get_currency_symbol, image_error_img
 from shop.views_scripts.auth_views import get_new_user_id, get_all_errors
 from shop.views_scripts.profile_views import get_user_addresses, make_json_serializable
 
@@ -323,6 +325,37 @@ def checkout_payment_type(request):
 
     return render(request, 'checkout/Checkout_Payment_Type.html', context=context)
 
+
+def checkout_order_review(request):
+    email = get_user_session_type(request)
+
+    category, currency_code = get_user_category(email) or ("Default", "Euro")
+    currency_symbol = get_currency_symbol(currency_code)
+    addresses_properties_json = request.POST.get('addresses_properties')
+    addresses_properties = json.loads(addresses_properties_json) if addresses_properties_json else {}
+    cart_products = sorted(get_cart(email), key=lambda x: x['number'])
+    config = {'documents': cart_products}
+    config_data = make_json_serializable(config)
+    context = {
+        'documents': cart_products,
+        'currency': currency_symbol,
+        'STRIPE_PUBLISHABLE_KEY': settings.STRIPE_PUBLISHABLE_KEY,
+        'addresses_properties': addresses_properties,
+        'config': config_data,
+    }
+
+    return render(request, 'checkout/Checkout_Order_Review.html', context=context)
+
+
+def generate_order_review_pdf(request):
+    email = get_user_session_type(request)
+    cart_products = sorted(get_cart(email), key=lambda x: x['number'])
+
+    buffer = BytesIO()
+    make_review_pdf(cart_products, buffer, get_user_info(email))
+    buffer.seek(0)
+
+    return FileResponse(buffer, as_attachment=True, filename='your_order.pdf')
 
 def sort_documents(request):
     order_by = request.GET.get('order_by', 'name')
@@ -747,6 +780,186 @@ def make_pdf(order, buffer, isWithImgs):
     doc.build(elements)
 
     return buffer
+
+
+def make_review_pdf(products, buffer, userInfo):
+
+    currency_code = userInfo.get('currency', "Euro")
+    currency_symbol = get_currency_symbol(currency_code)
+
+    # vat = userInfo.get('VAT', 0)
+    vat = 0 #round(int(vat)/100, 3)
+    shippingValue = 0 #userInfo.get('shippingPrice', 0)
+    date = datetime.now()
+    date_str = str(date)
+    date_obj = datetime.fromisoformat(date_str)
+
+    # Apply the formatting
+    formatted_date = date_obj.strftime('%Y-%m-%d')
+    roboto_font_path = os.path.join(settings.BASE_DIR, "shop", "static", "fonts", "Roboto-Regular.ttf")
+    pdfmetrics.registerFont(TTFont('Roboto', roboto_font_path))
+    roboto_bold_font_path = os.path.join(settings.BASE_DIR, "shop", "static", "fonts", "Roboto-Bold.ttf")
+    pdfmetrics.registerFont(TTFont('Roboto-Bold', roboto_bold_font_path))
+    doc = SimpleDocTemplate(buffer, pagesize=A4, rightMargin=30, leftMargin=30, topMargin=30, bottomMargin=18)
+    elements = []
+
+    # Logo
+    logo_path = os.path.join(settings.BASE_DIR, "shop", "static", "images", "general", "main_logo_receipt.jpg")
+    elements.append(Image(logo_path, width=180, height=60))
+    elements.append(Spacer(1, 20))
+
+    # Header
+    styles = getSampleStyleSheet()
+    title_style = styles["Heading1"]
+    title_style.fontName = "Roboto"
+    title_style.alignment = 1
+
+    normal_style = styles["Normal"]
+    normal_style.fontName = "Roboto"
+
+    elements.append(Paragraph(_("Thank you for shopping with Oliver Weber Shop."), title_style))
+    subtitle = _(
+        "You'll find your Order Summary Review below. If you have any questions regarding your order, please contact us.")
+    elements.append(Paragraph(subtitle, normal_style))
+    elements.append(Spacer(1, 20))
+    bold_style = styles["Normal"].clone('bold_style')  # Create a new style based on “Normal”
+    bold_style.fontName = "Roboto-Bold"  # Specify the registered bold font
+    bold_style.fontSize = 10  # Optionally, you can specify the font size
+    bold_style.textColor = colors.black
+    bold_style.wordWrap = "CJK"
+
+    white_style = styles["Normal"]
+    white_style.fontName = 'Roboto'  # Specify your font
+    white_style.fontSize = 10
+    white_style.textColor = colors.white
+    white_style.wordWrap = 'CJK'
+
+    # Tables
+    order_data = [
+        [Paragraph('<b>' + _("Payment type") + '</b>', bold_style), f"BANK TRANSFER"],
+        [Paragraph('<b>' + _("Date") + '</b>', bold_style), f"{formatted_date}"],
+        [Paragraph(_("Customer email"), bold_style), Paragraph(userInfo.get('email', ''))],
+        [Paragraph(_("Customer name"), bold_style), Paragraph(userInfo.get('first_name', '') + " " + userInfo.get('last_name', ''))],
+    ]
+
+    # Data for second table
+    contact_data = [
+        [Paragraph("<b>Oliver Weber Collection</b>", bold_style), ""],
+        ["", ""],
+        [Paragraph('<b>' + _("Phone:")+ '</b>', bold_style), "+43 5223 41 881"],
+        [Paragraph("Email:", bold_style), "office@oliverweber.at"],
+
+    ]
+    # Table creation
+    order_table = Table(order_data, colWidths=[120, 140])  # Column width
+    contact_table = Table(contact_data, colWidths=[80, 220])
+
+    # Table styles
+    order_table.setStyle(TableStyle([
+        ('ALIGN', (0, 0), (-1, -1), 'LEFT'),
+        ('VALIGN', (0, 0), (-1, -1), 'TOP'),
+        ('FONTNAME', (0, 0), (-1, -1), 'Helvetica'),
+        ('FONTSIZE', (0, 0), (-1, -1), 10),
+        ('BOTTOMPADDING', (0, 0), (-1, -1), 5),
+    ]))
+
+    contact_table.setStyle(TableStyle([
+        ('ALIGN', (0, 0), (-1, -1), 'LEFT'),
+        ('VALIGN', (0, 0), (-1, -1), 'TOP'),
+        ('FONTNAME', (0, 0), (-1, -1), 'Helvetica'),
+        ('FONTSIZE', (0, 0), (-1, -1), 10),
+        ('BOTTOMPADDING', (0, 0), (-1, -1), 5),
+        ('SPAN', (0, 0), (1, 0)),  # Merging a cell for a header
+    ]))
+
+    # Composition of tables on a single line
+    composite_table_data = [[order_table, contact_table]]
+
+    composite_table = Table(composite_table_data, colWidths=[250, 250])  # Total width
+
+    # Setting a common style for the layout
+    composite_table.setStyle(TableStyle([
+        ('ALIGN', (0, 0), (-1, -1), 'LEFT'),
+        ('VALIGN', (0, 0), (-1, -1), 'TOP'),
+    ]))
+    elements.append(composite_table)
+    elements.append(Spacer(1, 20))
+
+    # Table of products
+    product_data = [ [Paragraph(_("Product"), white_style), Paragraph(_("Photo"), white_style),
+         Paragraph(_("Item Details"), white_style), Paragraph(_("Quantity"), white_style),
+         Paragraph(_("Unit Price"), white_style), Paragraph(_("Total"), white_style)]]
+
+    order_sum = 0
+    for item_order in products:
+        image_path = item_order['image-url'] if 'image-url' in item_order else item_order['image_url'] if 'image_url' in item_order else image_error_img
+        image = Image(image_path)
+        image.drawHeight = 50  # Example height in points
+        image.drawWidth = 50
+        row = [item_order['name'], image, item_order['description'], item_order['quantity'],
+               currency_symbol + f"{(item_order['price']):.2f}",
+               currency_symbol + f"{(round(item_order['price'] * item_order['quantity'], 2)):.2f}"]
+        product_data.append(row)
+        order_sum += float(item_order.get('price', 0)) * int(item_order.get('quantity', 0))
+    product_table = Table(product_data)
+    product_table.setStyle(TableStyle([('BACKGROUND', (0, 0), (-1, 0), colors.HexColor("#003765")),
+                                       ('TEXTCOLOR', (0, 0), (-1, 0), colors.white),
+                                       ('VALIGN', (0, 0), (-1, 0), 'MIDDLE'),
+                                       ]))
+
+    elements.append(product_table)
+    elements.append(Spacer(1, 20))
+
+    # Total amount
+    total_price = round(order_sum, 2)
+    product_price = round(total_price / (1 + vat), 2)
+    shippingPrice = round(shippingValue / (1+vat), 2)
+    shipping_vat = round(shippingValue - shippingPrice, 2)
+    vat_price = round(total_price - product_price, 2)
+
+    formatted_total_price = f"{product_price:.2f}"
+    formatted_shipping_price = f"{shippingPrice:.2f}"
+    formatted_shipping_price_vat = f"{shipping_vat:.2f}"
+    formatted_vat_price = f"{vat_price:.2f}"
+    formatted_full_price = f"{total_price+shippingValue:.2f}"
+    bold_style1 = styles["Normal"].clone('bold_style1')  # Create a copy of the style
+    bold_style1.fontName = "Roboto-Bold"  # Specify a bold font
+    bold_style1.fontSize = 10  # Font size
+    bold_style1.textColor = colors.black
+    summary_data = [
+        [Paragraph('<b>' + _('Subtotal') + '</b>', bold_style1), f"{currency_symbol}{formatted_total_price}"],
+        [Paragraph("<b>" + _('Shipping price') + "</b>", bold_style1), f"{currency_symbol}{formatted_shipping_price}"],
+        [Paragraph("<b>" + _('Shipping VAT') + "</b>", bold_style1), f"{currency_symbol}{formatted_shipping_price_vat}"],
+        [Paragraph("<b>VAT</b>", bold_style1), f"{currency_symbol}{formatted_vat_price}"],
+        [Paragraph("<b>" + _("TOTAL") + "</b>", bold_style1), f"{currency_symbol}{formatted_full_price}"],
+    ]
+
+    # Create a table
+    summary_table = Table(summary_data, colWidths=[100, 100])  # Column width
+
+    # Table styles
+    summary_table.setStyle(TableStyle([
+        ('ALIGN', (0, 0), (-1, -1), 'RIGHT'),  # Aligning text in cells
+        ('FONTNAME', (0, 0), (-1, -1), 'Helvetica'),  # Text font
+        ('FONTSIZE', (0, 0), (-1, -1), 10),  # Font size
+        ('BOTTOMPADDING', (0, 0), (-1, -1), 5),  # Bottom indent
+        # ('LINEBELOW', (0, 1), (-1, 1), 1, colors.black),  # Line under the SHIPPING price line
+        ('LINEBELOW', (0, 3), (-1, 3), 1, colors.black),  # The line under the VAT line
+        ('LINEBELOW', (0, 4), (-1, 4), 1.5, colors.black),  # Line under the TOTAL line
+    ]))
+
+    # Adding a table indented to the right
+    table_wrapper = Table([[summary_table]], colWidths=[doc.width])  # External table for indentation
+    table_wrapper.setStyle(TableStyle([
+        ('ALIGN', (0, 0), (-1, -1), 'RIGHT'),  # Aligning the entire table to the right edge
+    ]))
+
+    # Adding a table to elements
+    elements.append(table_wrapper)
+    doc.build(elements)
+
+    return buffer
+
 
 
 def get_check_id():

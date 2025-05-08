@@ -11,7 +11,7 @@
 <link rel="stylesheet" type="text/css" href="{% static 'css/checkout_cart.css' %}">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <link rel="stylesheet" href="{% static "css/checkout/checkout_main.css" %}">
-<link rel="stylesheet" href="{% static "css/checkout/checkout_payment_type.css" %}">
+<link rel="stylesheet" href="{% static "css/checkout/checkout_order_review.css" %}">
 <link rel="stylesheet" href="{% static "css/profile/profile_information.css" %}">
 <link rel="stylesheet" href="{% static 'css/SeparateWidgets/addressesWidget.css' %}">
 <script src="https://js.stripe.com/v3/"></script>
@@ -27,31 +27,29 @@
                 <div class="informational-content">
                     <div class="shopping-cart-label">1. {% trans "Personal Information"%}<hr class="no-padding"></div>
                     <div class="shopping-cart-label">2. {% trans "Addresses"%}<hr class="no-padding"></div>
-                    <div class="shopping-cart-label">3. {% trans "Payment type"%}<hr class="no-padding"></div>
+                    <div class="shopping-cart-label">3. {% trans "Order review"%}<hr class="no-padding"></div>
                 </div>
 
                 <section id="content" class="page-content col-md-12 col-lg-9 myacc_content">
 
                     <header class="page-header">
-                        <h1 style="margin-bottom: 40px;  color: #0a0a0a">{% trans "Choose payment type"%} </h1>
-                        <div class="container-pay-types">
-                            <div class="payment-type">
-                                <input type="radio" id="stripe-payment" name="payment-method" value="stripe" checked>
-                                <label for="stripe-payment">
-                                     <img src="{% static 'images/general/Visa.jpg' %}" alt="Visa" class="payment-icon" width="40" height="24">
-                                     <img src="{% static 'images/general/Mastercard.png' %}" alt="MasterCard" class="payment-icon" width="40" height="24">
-                                    {% trans "Pay with Credit Card via Stripe" %}
-                               </label>
-                            </div>
-{#                            <div class="payment-type">#}
-{#                                <input type="radio" id="paypal-payment" name="payment-method" value="paypal">#}
-{#                                <label for="paypal-payment">{% trans "Pay with PayPal" %}</label>#}
-{#                            </div>#}
+                        <h1 style="margin-bottom: 40px;  color: #0a0a0a">{% trans "Review my order"%} </h1>
+                        <div class="container-order">
+                            <button id="downloadOrderPdfLink" class="order-details-button">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text">
+                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2z"></path>
+                                    <polyline points="14 2 14 8 20 8"></polyline>
+                                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                                    <polyline points="10 9 9 9 8 9"></polyline>
+                                </svg>
+                                <span>{% translate "View Order Details (PDF)" %}</span>
+                            </button>
                         </div>
                     </header>
                 </section>
             </div>
-            <button type="button" class="btn btn-primary wide form-control-submit float-xs-right" id="continueCheckoutBtn"> {% trans "Continue"%} </button>
+            <button type="button" class="btn btn-primary wide form-control-submit float-xs-right" id="continueCheckoutBtn"> {% trans "Submit and send order"%} </button>
         </div>
 
         {% include "checkout/checkout_widget.html" %}
@@ -328,62 +326,52 @@ function init() {
 document.addEventListener("DOMContentLoaded", function() {
     hideOverlay();
     isCheckout = true;
+    console.log(addressProperties);
     init();
 });
+document.addEventListener('DOMContentLoaded', function() {
+    const downloadOrderPdfLink = document.getElementById('downloadOrderPdfLink');
 
-
-document.getElementById('continueCheckoutBtn').addEventListener('click', function (e){
-     e.preventDefault();
-     if (product_documents.length !== 0){
-        const csrfToken = getCookie('csrftoken');
-        fetch("{% url 'create_checkout_session' %}", {
-            method: 'POST',
-            headers: {
-                'X-CSRFToken': csrfToken,
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(addressProperties)
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.id) {
-                // Initialize Stripe with our publishable key
-                const stripe = Stripe('{{ STRIPE_PUBLISHABLE_KEY }}');
-
-                // Redirect the user to the Stripe payment page
-                stripe.redirectToCheckout({ sessionId: data.id })
-                    .then(function (result) {
-                        if (result.error) {
-                            console.error('Error redirecting to Stripe checkout:', result.error.message);
-                        }
-                    });
-            } else {
-                console.error('Error creating checkout session:', data.error);
-            }
-        })
-        .catch(error => {
-            console.error('Error:', error);
+    if (downloadOrderPdfLink) {
+        downloadOrderPdfLink.addEventListener('click', function() {
+            window.open(`{% url "generate_order_review_pdf" %}`, '_blank');
         });
+    }
+});
+document.getElementById('continueCheckoutBtn').addEventListener('click', function (){
+     if (product_documents.length !== 0){
+         window.alert("{{ _("Order will be delivered to your email")|escapejs }}");
+         showOverlay();
+         fetch('{% url 'send_email'%}', {
+                 method: 'POST',
+                 headers: {
+                     'X-CSRFToken': getCookie('csrftoken'),
+                     'Content-Type': 'application/json',
+                 },
+                 body: JSON.stringify(addressProperties)
+             }
+         )
+         .then(response => response.json())
+         .then(data => {
+             if (data.status === 'success') {
+                 // Redirect to the home URL
+                 window.location.href = '{% url 'home' %}';
+             } else {
+                 // Handle error or unsuccessful status
+                 console.error('Error in processing the order');
+             }
+         })
+         .catch(error => console.error('Error:', error))
+         .finally(() => {
+             // This will execute after fetch is complete, regardless of the outcome
+             hideOverlay();
+         });
      }
-    else
-     {
-         window.alert("{{ _("You have to add at least 1 item to finish order")|escapejs }}");
+     else{
+        window.alert("{{ _("You have to add at least 1 item to finish order")|escapejs }}");
      }
 });
-function getCookie(name) {
-    let cookieValue = null;
-    if (document.cookie && document.cookie !== '') {
-        const cookies = document.cookie.split(';');
-        for (let i = 0; i < cookies.length; i++) {
-            const cookie = cookies[i].trim();
-            // Does this cookie string begin with the name we want?
-            if (cookie.substring(0, name.length + 1) === (name + '=')) {
-                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                break;
-            }
-        }
-    }
-    return cookieValue;
-}
+
+
 </script>
 {% endblock %}
