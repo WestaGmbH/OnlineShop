@@ -53,11 +53,19 @@ window.addEventListener("load", function(){
 
         onInitialise: function(status) {
           if (status === 'allow') {
+            gtag('consent', 'update', {
+              'analytics_storage': 'granted',
+              'ad_storage':       'granted'
+            });
             enableHotjar();
           }
         },
-        onStatusChange: function(status, chosenBefore) {
+        onStatusChange: function(status) {
           if (status === 'allow') {
+            gtag('consent', 'update', {
+              'analytics_storage': 'granted',
+              'ad_storage':       'granted'
+            });
             enableHotjar();
           }
         }
