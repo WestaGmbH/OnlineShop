@@ -16,6 +16,7 @@
 
     <meta name="cartConfig" content='{
         "sale": {{ sale|safe }},
+        "price_modifier": {{ price_modifier|safe }},
         "price_category": "{{ price_category|safe }}",
         "show_quantities": {{ show_quantities|yesno:"true,false" }},
         "user_email": "{{ user.email }}",

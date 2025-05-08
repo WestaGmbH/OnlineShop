@@ -41,6 +41,7 @@ import(window.config.firebaseFunctionScriptUrl)
 
         let product_documents = [];
         let sale = window.config.sale;
+        let price_modifier = window.config.price_modifier;
         let price_category = window.config.price_category;
         let allItems = {};
         let favouriteItems = {};
@@ -57,7 +58,7 @@ import(window.config.firebaseFunctionScriptUrl)
            favouriteItems = await fetchFavouriteItems(email);
            let {all: stones} = await fetchStones();
 
-           allItems = productsTransmutation(unfilteredItems, price_category, sale, stones, window.config.customer_type==="B2B");
+           allItems = productsTransmutation(unfilteredItems, price_category, sale, price_modifier, stones, window.config.customer_type==="B2B");
 
            isCheckout = true;
            init();

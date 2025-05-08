@@ -19,6 +19,7 @@
     <meta name="config" content='{
         "show_quantities": {{ show_quantities|yesno:"true,false" }},
         "sale": {{ sale|safe }},
+        "price_modifier": {{ price_modifier|safe }},
         "price_category": "{{ category|escapejs }}",
         "customer_type": "{{ customer_type|escapejs }}",
         "userEmail": "{{ user.email|escapejs }}",

@@ -830,6 +830,7 @@ def home_page(request):
     currency = '€' if currency == 'Euro' else '$'
     info = get_user_info(email) or {}
     sale = get_user_sale(info)
+    price_modifier = get_user_price_modifier(info)
     show_quantities = info.get('show_quantities', False)
     config_data = {
         "bestseller_items": bestseller_items,
@@ -837,6 +838,7 @@ def home_page(request):
     context['currency'] = currency
     context['category'] = category
     context['sale'] = sale
+    context['price_modifier'] = price_modifier
     context['show_quantities'] = show_quantities
     context['hello'] = test_text
     context['bestseller_items'] = bestseller_items
@@ -876,6 +878,14 @@ def get_user_sale(user_info):
     :return: transformed user sale
     """
     return round((0 if "sale" not in user_info else user_info['sale']) / 100, 3) or 0
+
+def get_user_price_modifier(user_info):
+    """
+    This function returns the sale of the user after sale transformation.
+    :param user_info: user info dictionary
+    :return: transformed user sale
+    """
+    return round(user_info.get('price_modifier', 1) / 100, 3) if user_info.get('price_modifier') is not None else 1
 
 
 def get_user_category(email):

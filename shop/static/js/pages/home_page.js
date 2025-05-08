@@ -47,6 +47,7 @@ import(window.config.firebaseFunctionScriptUrl)
             let favouriteItems = [];
             let bestseller_items = window.config.bestseller_items;
             let sale = window.config.sale;
+            let price_modifier = window.config.price_modifier;
             const price_category = window.config.price_category;
             let bestsellers = [
                 "22572R", "32034 001", "11025R", "11910R", "61125 BLU", "11030R", "11616 BLU", "11025G", "61191",
@@ -79,7 +80,7 @@ import(window.config.firebaseFunctionScriptUrl)
                 let email = window.config.userEmail;
                 favouriteItems = await fetchFavouriteItems(email);
                 let {all: stones} = await fetchStones();
-                bestseller_items = productsTransmutation(unfilteredItems, price_category, sale, stones, window.config.customer_type==="B2B");
+                bestseller_items = productsTransmutation(unfilteredItems, price_category, sale, price_modifier, stones, window.config.customer_type==="B2B");
                 shuffleArray(bestseller_items);
                 bestseller_items = bestseller_items.slice(0, 15);
 

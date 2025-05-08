@@ -4,7 +4,7 @@ from django.shortcuts import render
 from shop.decorators import login_required_or_session
 from shop.views import itemsRef, get_cart, get_user_info, get_user_session_type, get_user_prices, \
     get_vocabulary_product_card, get_stones, \
-    get_user_sale
+    get_user_sale, get_user_price_modifier
 
 
 @login_required_or_session
@@ -19,6 +19,7 @@ def form_page(request, product_id):
     stones = get_stones()
     info = get_user_info(email) or {}
     sale = get_user_sale(info)
+    price_modifier = get_user_price_modifier(info)
     show_quantities = info.get("show_quantities", False)
     cart = get_cart(email)
 
@@ -56,9 +57,9 @@ def form_page(request, product_id):
         elif category == "USD_GH":
             obj['price'] = obj['priceUSD_GH']
         elif category == "Default_USD":
-            obj['price'] = round(obj['priceUSD'] * (1 - sale), 1)
+            obj['price'] = round(price_modifier * obj['priceUSD'] * (1 - sale), 1)
         else:
-            obj['price'] = round(obj['priceVK4'] * (1 - sale), 1)
+            obj['price'] = round(price_modifier * obj['priceVK4'] * (1 - sale), 1)
 
     document = products[0]
     if document.get('additionalImages'):

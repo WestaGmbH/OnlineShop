@@ -18,7 +18,7 @@ from openpyxl.workbook import Workbook
 
 from shop.views import db, orders_ref, serialize_firestore_document, users_ref, addresses_ref, update_email_in_db, \
     get_user_info, get_vocabulary_product_card, get_user_prices, get_user_session_type, itemsRef, \
-    get_user_sale, make_json_serializable
+    get_user_sale, make_json_serializable, get_user_price_modifier
 from shop.views_scripts.catalog_views import update_cart, get_full_product
 
 
@@ -402,6 +402,7 @@ def upload_file(request):
                 category, currency = get_user_prices(request, email)
                 info = get_user_info(email) or {}
                 sale = get_user_sale(info)
+                price_modifier = get_user_price_modifier(info)
 
                 # Check for product name and quantity
                 if not product_name or new_quantity is None:
@@ -426,12 +427,12 @@ def upload_file(request):
                     document['price'] = document.get('priceGH', 0)
                 elif category == "Default_High":
                     document['price'] = document.get('priceVK4', 0) * 1.3
-                elif category == "Default_USD":
-                    document['price'] = round(document.get('priceUSD', 0) * (1-sale), 1) or 0
                 elif category == "GH_USD":
                     document['price'] = document.get('priceUSD_GH', 0)
+                elif category == "Default_USD":
+                    document['price'] = round(price_modifier * document.get('priceUSD', 0) * (1 - sale), 1) or 0
                 else:
-                    document['price'] = round(document.get('priceVK4', 0) * (1-sale), 1) or 0
+                    document['price'] = round(price_modifier * document.get('priceVK4', 0) * (1 - sale), 1) or 0
 
                 # Update the cart
                 subtotal, cart_size = update_cart(email, product_name, new_quantity, document)

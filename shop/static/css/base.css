@@ -263,3 +263,22 @@ body{
 .btn-confirm{
     width: 100%;
 }
+.text-align-center{
+    text-align: center!important;
+}
+.margin-toggle{
+    margin-right: 20px!important;
+}
+.flex{
+    display: flex;
+}
+.flex-column{
+    flex-direction: column;
+}
+.flex-row{
+    flex-direction: row;
+}
+.flex-center{
+    justify-content: center;
+    align-items: center;
+}

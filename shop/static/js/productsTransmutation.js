@@ -1,8 +1,9 @@
 const regex = /^[a-zA-Z]{0,2}\d{5}[a-zA-Z]{0,5}$/;
-function productsTransmutation(items, price_category, sale, stones, isB2B){
+function productsTransmutation(items, price_category, sale, price_modifier, stones, isB2B){
 
     let products = {};
-
+    console.log(`${sale} with type ${typeof sale}`);
+    console.log(`${price_modifier} with type ${typeof price_modifier}`);
     items.forEach(item => {
         if(item.Visible === false || item.b2b_only === true && !isB2B){
             return;
@@ -18,7 +19,7 @@ function productsTransmutation(items, price_category, sale, stones, isB2B){
                     product_name: item.category + " "+ item.product_name,
                     product_group_name: item.product_name,
                     description: item.description,
-                    price:calculatePrice(item, price_category, sale),
+                    price:calculatePrice(item, price_category, sale, price_modifier),
                     category: item.category,
                     collection: item.hasOwnProperty('collection') ? item.collection : "",
                     pre_order: item.hasOwnProperty('pre_order') ? item.pre_order : false,
@@ -120,13 +121,13 @@ function orderSizes(sizes) {
     return orderedSizes;
 }
 
-function calculatePrice(item, price_category, sale) {
+function calculatePrice(item, price_category, sale, price_modifier) {
     return (Number(((price_category === "VK3" ? item.priceVK3 :
              price_category === "GH" ? item.priceGH :
              price_category === "GH_USD" ? item.priceUSD_GH :
-             price_category === "Default_USD" ? (item.priceUSD * (1 - sale)) :
              price_category === "Default_High" ? (item.priceVK4 * 1.3) :
-             (item.priceVK4 * (1 - sale)))).toFixed(1))).toFixed(2);
+             price_category === "Default_USD" ? (price_modifier * item.priceUSD * (1 - sale)) :
+             (price_modifier * item.priceVK4 * (1 - sale)))).toFixed(1))).toFixed(2);
 }
 
 function getNormalizedItemName(itemName, item){

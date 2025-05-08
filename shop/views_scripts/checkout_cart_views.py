@@ -37,7 +37,8 @@ from shop.views import db, orders_ref, get_cart, cart_ref, single_order_ref, \
     get_user_category, get_user_session_type, metadata_ref, users_ref, update_email_in_db, get_user_prices, \
     get_user_info, get_address_info, get_order_items, \
     active_promocodes_ref, active_cart_coupon, get_active_coupon, delete_user_coupons, used_promocodes_ref, \
-    mark_user_coupons_as_used, get_user_sale, get_vocabulary_product_card, get_currency_symbol, image_error_img
+    mark_user_coupons_as_used, get_user_sale, get_vocabulary_product_card, get_currency_symbol, image_error_img, \
+    get_user_price_modifier
 from shop.views_scripts.auth_views import get_new_user_id, get_all_errors
 from shop.views_scripts.profile_views import get_user_addresses, make_json_serializable
 
@@ -73,36 +74,12 @@ def cart_page(request):
     context = {
         'show_quantities': info.get("show_quantities", False),
         'sale': get_user_sale(info),
+        'price_modifier': get_user_price_modifier(info),
         'price_category': category,
         'vocabulary': get_vocabulary_product_card(),
         'documents': cart_products,
         'currency': currency_symbol,
         'active_coupon': active_coupon if len(active_coupon.keys()) != 0 else False,
-        'config': config_data
-    }
-
-    return render(request, 'cart.html', context=context)
-
-
-@login_required_or_session
-def cart_page(request):
-    email = get_user_session_type(request)
-    category, currency_code = get_user_prices(request, email)
-    currency_symbol = "€" if currency_code == "Euro" else "$" if currency_code == "Dollar" else currency_code
-
-    info = get_user_info(email) or {}
-    active_coupon = get_active_coupon(email)
-
-    cart_products = sorted(get_cart(email), key=lambda x: x['number'])
-    config = {'documents': cart_products}
-    config_data = make_json_serializable(config)
-    context = {
-        'show_quantities': info.get("show_quantities", False),
-        'sale': get_user_sale(info),
-        'price_category': category,
-        'documents': cart_products,
-        'currency': currency_symbol,
-        'active_coupon': bool(active_coupon),
         'config': config_data
     }
 

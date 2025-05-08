@@ -26,15 +26,15 @@
             <tr>
                 <th></th>
                 <th>User ID<span class="arrow-sorting"><i class="sort-arrow fa-solid fa-x"></i></span></th>
-                <th>{% trans "Social Title" %}<span class="arrow-sorting"><i class="sort-arrow fa-solid fa-x"></i></span></th>
-                <th>{% trans "First Name"%}<span class="arrow-sorting"><i class="sort-arrow fa-solid fa-x"></i></span></th>
-                <th>{% trans "Last Name"%}<span class="arrow-sorting"><i class="sort-arrow fa-solid fa-x"></i></span></th>
+                <th>{% trans "Social title" %}<span class="arrow-sorting"><i class="sort-arrow fa-solid fa-x"></i></span></th>
+                <th>{% trans "First name"%}<span class="arrow-sorting"><i class="sort-arrow fa-solid fa-x"></i></span></th>
+                <th>{% trans "Last name"%}<span class="arrow-sorting"><i class="sort-arrow fa-solid fa-x"></i></span></th>
                 <th>Email<span class="arrow-sorting"><i class="sort-arrow fa-solid fa-x"></i></span></th>
-                <th>{% trans "Sales"%} </th>
-                <th>{% trans "Enabled"%}<span class="arrow-sorting"><i class="sort-arrow fa-solid fa-x"></i></span></th>
-                <th>{% trans "Newsletter"%}<span class="arrow-sorting"><i class="sort-arrow fa-solid fa-x"></i></span></th>
-                <th>{% trans "Partners Offer"%}<span class="arrow-sorting"><i class="sort-arrow fa-solid fa-x"></i></span></th>
-                <th>{% trans "Registration Date"%}<span class="arrow-sorting"><i class="sort-arrow fa-solid fa-x"></i></span></th>
+                <th>{% trans "Price category"%} <span class="arrow-sorting"><i class="sort-arrow fa-solid fa-x"></i></span></th>
+                <th>{% trans "Price modifier"%} <span class="arrow-sorting"><i class="sort-arrow fa-solid fa-x"></i></span></th>
+                <th>{% trans "Sale"%} </th>
+                <th>{% trans "Enabled"%}</th>
+                <th>{% trans "Registration date"%}<span class="arrow-sorting"><i class="sort-arrow fa-solid fa-x"></i></span></th>
                 <th>{% trans "Actions"%}</th>
             </tr>
         </thead>
@@ -184,14 +184,17 @@
                         valA = a.email; valB = b.email;
                         break;
                     case 5: // Placeholder for missing case
+                        const numA = parseFloat(a.price_category) || 0;
+                        const numB = parseFloat(b.price_category) || 0;
+                        valA = numA;
+                        valB = numB;
                         break;
-                    case 6: // Enabled
-                         valA = a.receive_newsletter || false ? "Yes" : "No"; valB = b.receive_newsletter || false ? "Yes" : "No";
+                    case 6: // Placeholder for missing case
+                        console.log(`valA for price_modifier: ${a.price_modifier || 0}, valB for price_modifier: ${b.price_modifier}`);
+                        valA = parseInt(a.price_modifier || 0); valB = parseInt(b.price_modifier || 0);
                         break;
-                    case 7: // Receive Newsletter
-                        valA = a.receive_offers ? "Yes" : "No"; valB = b.receive_offers ? "Yes" : "No";
-                        break;
-                    case 8: // Receive Offers
+
+                    case 7: // Receive Offers
                        valA = a.registrationDate ? new Date(a.registrationDate) : new Date(0);
                         valB = b.registrationDate ? new Date(b.registrationDate) : new Date(0);
                         break;
@@ -456,22 +459,19 @@
 
             // Repeat for each user property...
             // For cells with static content like '---' for sales
+            let priceCategoryCell = document.createElement('td');
+            priceCategoryCell.textContent = user.price_category // Assuming sales data is not available
+            row.appendChild(priceCategoryCell);
+            let priceModifierCell = document.createElement('td');
+            priceModifierCell.textContent = `${user.price_modifier || 0}%`; // Assuming sales data is not available
+            row.appendChild(priceModifierCell);
             let salesCell = document.createElement('td');
-            salesCell.textContent = '---'; // Assuming sales data is not available
+            salesCell.textContent = `${user.sale || 0}%`; // Assuming sales data is not available
             row.appendChild(salesCell);
 
             let enabledCell = document.createElement('td');
             enabledCell.textContent = user.Enabled ? "Enabled" : "Disabled"; // Assuming sales data is not available
             row.appendChild(enabledCell);
-
-            // For boolean values, you might want to show a more user-friendly value
-            let newsletterCell = document.createElement('td');
-            newsletterCell.textContent = user.receive_newsletter ? 'Yes' : 'No';
-            row.appendChild(newsletterCell);
-
-            let partnersCell = document.createElement('td');
-            partnersCell.textContent = user.receive_offers ? 'Yes' : 'No';
-            row.appendChild(partnersCell);
 
             let registrationDateCell = document.createElement('td');
             console.log(user.registrationDate.split(" ")[0]);

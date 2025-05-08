@@ -6,7 +6,7 @@ from django.shortcuts import render
 from shop.decorators import login_required_or_session
 from shop.views import itemsRef, cart_ref, get_cart, favourites_ref, \
     get_user_info, get_user_session_type, get_vocabulary_product_card, get_user_prices, get_stones, \
-    get_active_coupon, get_user_sale
+    get_active_coupon, get_user_sale, get_user_price_modifier
 
 categories = {
     "0": "All",
@@ -78,7 +78,7 @@ def catalog_view(request):
     category, currency = get_user_prices(request,email)
     info = get_user_info(email) or {}
     sale = get_user_sale(info)
-
+    price_modifier = get_user_price_modifier(info)
     show_quantities = info.get('show_quantities', False)
     context = {
         "currency": "€" if currency == "Euro" else "$",
@@ -88,6 +88,7 @@ def catalog_view(request):
         "plating_catalog": plating_catalog,
         "base_catalog": base_catalog,
         'sale': sale,
+        'price_modifier': price_modifier,
         'show_quantities': show_quantities,
         'vocabulary': get_vocabulary_product_card()
     }
@@ -106,7 +107,7 @@ def param_catalog(request, category_id, category_name):
     category, currency = get_user_prices(request,email)
     info = get_user_info(email) or {}
     sale = get_user_sale(info)
-
+    price_modifier = get_user_price_modifier(info)
     show_quantities = info.get('show_quantities', False)
     context = {
         "currency": "€" if currency == "Euro" else "$",
@@ -116,6 +117,7 @@ def param_catalog(request, category_id, category_name):
         "plating_catalog": plating_catalog,
         "base_catalog": base_catalog,
         'sale': sale,
+        "price_modifier": price_modifier,
         'show_quantities': show_quantities,
         'vocabulary': get_vocabulary_product_card()
     }
@@ -135,6 +137,7 @@ def add_to_cart_from_catalog(request):
         category, currency = get_user_prices(request, email)
         info = get_user_info(email) or {}
         sale = get_user_sale(info)
+        price_modifier = get_user_price_modifier(info)
         if not product_name or new_quantity is None:
             return JsonResponse({'status': 'error', 'message': 'Missing product name or quantity'}, status=400)
 
@@ -144,14 +147,14 @@ def add_to_cart_from_catalog(request):
             document['price'] = document.get('priceVK3', 0)
         elif category == "GH":
             document['price'] = document.get('priceGH', 0)
-        elif category == "Default_USD":
-            document['price'] = round(document.get('priceUSD', 0) * (1-sale), 1) or 0
         elif category == "GH_USD":
             document['price'] = document.get('priceUSD_GH', 0)
         elif category == "Default_High":
             document['price'] = document.get('priceVK4', 0) * 1.3
+        elif category == "Default_USD":
+            document['price'] = round(price_modifier * document.get('priceUSD', 0) * (1 - sale), 1) or 0
         else:
-            document['price'] = round(document.get('priceVK4', 0) * (1-sale), 1) or 0
+            document['price'] = round(price_modifier * document.get('priceVK4', 0) * (1 - sale), 1) or 0
         if not document:
             return JsonResponse({'status': 'error', 'message': 'Product not found'}, status=404)
 

@@ -24,6 +24,7 @@ import(window.config.firebaseFunctionScriptUrl)
         let vocabulary = getVocabulary()
 
         let sale = window.config.sale;
+        let price_modifier = window.config.price_modifier;
         const price_category = window.config.price_category;
         const show_quantities = window.config.show_quantities;
         let itemsPerPage = 20;
@@ -63,7 +64,7 @@ import(window.config.firebaseFunctionScriptUrl)
             let unfilteredItems = await fetchAllItems(); // Fetch all items on load
             favouriteItems = await fetchFavouriteItems(window.config.userEmail);
             ({ all: stones, reversed: stones_reversed } = await fetchStones());
-            allItems = productsTransmutation(unfilteredItems, price_category, sale, stones, window.config.customer_type==="B2B");
+            allItems = productsTransmutation(unfilteredItems, price_category, sale, price_modifier, stones, window.config.customer_type==="B2B");
 
             total_pages = Math.ceil(allItems.length / itemsPerPage);
 
