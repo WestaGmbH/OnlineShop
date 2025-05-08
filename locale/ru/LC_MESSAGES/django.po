@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-05-07 18:55+0000\n"
+"POT-Creation-Date: 2025-05-08 13:01+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -80,7 +80,6 @@ msgid "Invoice Management"
 msgstr "Управление счетом"
 
 #: shop/templates/admin_tools/AT_invoices.html:10
-#| msgid "Create new address"
 msgid "Create New Invoice"
 msgstr "Создать новый счет"
 
@@ -97,7 +96,6 @@ msgid "Currency (ISO code)"
 msgstr "Валюта (код ISO)"
 
 #: shop/templates/admin_tools/AT_invoices.html:25
-#| msgid "Create an account"
 msgid "Create and Send"
 msgstr "Создать и отправить"
 
@@ -110,21 +108,18 @@ msgid "Invoice ID"
 msgstr "Идентификатор счета"
 
 #: shop/templates/admin_tools/AT_invoices.html:36
-#| msgid "View User"
 msgid "User"
 msgstr "Пользователь"
 
 #: shop/templates/admin_tools/AT_invoices.html:37
 #: shop/templates/profile/profile_my_invoices.html:22
 #: shop/templates/profile/profile_my_invoices.html:38
-#| msgid "Account"
 msgid "Amount"
 msgstr "Сумма"
 
 #: shop/templates/admin_tools/AT_invoices.html:38
 #: shop/templates/profile/profile_my_invoices.html:23
 #: shop/templates/profile/profile_my_invoices.html:39
-#| msgid "Currently"
 msgid "Currency"
 msgstr "Валюта"
 
@@ -148,15 +143,15 @@ msgstr "Действия"
 #: shop/templates/admin_tools/AT_stores.html:56
 #: shop/templates/checkout/Checkout_Addresses.html:196
 #: shop/templates/profile/profile_create_address.html:50
-#: shop/templates/profile/profile_update_address.html:51 shop/views.py:721
+#: shop/templates/profile/profile_update_address.html:51 shop/views.py:722
 msgid "Address"
 msgstr "Адрес"
 
-#: shop/templates/admin_tools/AT_stores.html:23 shop/views.py:718
+#: shop/templates/admin_tools/AT_stores.html:23 shop/views.py:719
 msgid "Latitude"
 msgstr "Широта"
 
-#: shop/templates/admin_tools/AT_stores.html:24 shop/views.py:719
+#: shop/templates/admin_tools/AT_stores.html:24 shop/views.py:720
 msgid "Longitude"
 msgstr "Долготу"
 
@@ -242,7 +237,7 @@ msgstr "Удалить пользователя"
 msgid "Shopping cart"
 msgstr "Корзина"
 
-#: shop/templates/cart.html:68 shop/views.py:733
+#: shop/templates/cart.html:68 shop/views.py:734
 msgid "In cart"
 msgstr "В корзине"
 
@@ -250,11 +245,11 @@ msgstr "В корзине"
 msgid "Less than 5 items left"
 msgstr "Осталось менее 5 позиций"
 
-#: shop/templates/cart.html:76 shop/views.py:727
+#: shop/templates/cart.html:76 shop/views.py:728
 msgid "Confirm"
 msgstr "Обновить"
 
-#: shop/templates/cart.html:93 shop/views.py:665
+#: shop/templates/cart.html:93 shop/views.py:666
 msgid "Continue shopping"
 msgstr "Продолжить покупки"
 
@@ -263,7 +258,8 @@ msgid "Recommended based on items in your cart"
 msgstr "Рекомендуется на основе предметов в вашей корзине"
 
 #: shop/templates/cart.html:119 shop/templates/checkout/checkout_widget.html:9
-#: shop/views.py:664 shop/views_scripts/checkout_cart_views.py:718
+#: shop/views.py:665 shop/views_scripts/checkout_cart_views.py:751
+#: shop/views_scripts/checkout_cart_views.py:930
 msgid "Subtotal"
 msgstr "Итого"
 
@@ -285,20 +281,23 @@ msgid "discount"
 msgstr "скидка"
 
 #: shop/templates/cart.html:141
+#: shop/templates/checkout/Checkout_Order_Review.html:321
 #: shop/templates/checkout/Checkout_Payment_Type.html:323
 #: shop/templates/checkout/checkout_widget.html:26
-#: shop/views_scripts/checkout_cart_views.py:675
-#: shop/views_scripts/checkout_cart_views.py:677
+#: shop/views_scripts/checkout_cart_views.py:708
+#: shop/views_scripts/checkout_cart_views.py:710
+#: shop/views_scripts/checkout_cart_views.py:891
 msgid "Total"
 msgstr "Всего"
 
 #: shop/templates/cart.html:141
+#: shop/templates/checkout/Checkout_Order_Review.html:321
 #: shop/templates/checkout/Checkout_Payment_Type.html:323
 #: shop/templates/checkout/checkout_widget.html:26
 msgid "VAT Incl."
 msgstr "НДС Вкл."
 
-#: shop/templates/cart.html:147 shop/views.py:666
+#: shop/templates/cart.html:147 shop/views.py:667
 msgid "Proceed to checkout"
 msgstr "Перейти к оформлению заказа"
 
@@ -315,12 +314,12 @@ msgid "Order by"
 msgstr "Отсортировать по"
 
 #: shop/templates/catalog.html:203 shop/templates/catalog.html:204
-#: shop/views.py:690
+#: shop/views.py:691
 msgid "Name"
 msgstr "Название"
 
 #: shop/templates/catalog.html:205 shop/templates/catalog.html:206
-#: shop/templates/widgets/filters_section.html:22 shop/views.py:693
+#: shop/templates/widgets/filters_section.html:22 shop/views.py:694
 msgid "Price"
 msgstr "Цена"
 
@@ -338,6 +337,7 @@ msgstr "Перейти"
 
 #: shop/templates/checkout/Checkout_Account_Auth.html:30
 #: shop/templates/checkout/Checkout_Addresses.html:28
+#: shop/templates/checkout/Checkout_Order_Review.html:28
 #: shop/templates/checkout/Checkout_Payment_Type.html:28
 msgid "Personal Information"
 msgstr "Персональная информация"
@@ -441,6 +441,7 @@ msgid "Login"
 msgstr "Войти"
 
 #: shop/templates/checkout/Checkout_Addresses.html:29
+#: shop/templates/checkout/Checkout_Order_Review.html:29
 #: shop/templates/checkout/Checkout_Payment_Type.html:29
 #: shop/templates/profile/profile_side_menu.html:30
 #: shop/templates/widgets/account_panel.html:72
@@ -453,13 +454,13 @@ msgstr "Адрес доставки"
 
 #: shop/templates/checkout/Checkout_Addresses.html:62
 #: shop/templates/checkout/Checkout_Addresses.html:121
-#: shop/templates/profile/profile_addresses.html:33 shop/views.py:722
+#: shop/templates/profile/profile_addresses.html:33 shop/views.py:723
 msgid "Update"
 msgstr "Обновить"
 
 #: shop/templates/checkout/Checkout_Addresses.html:68
 #: shop/templates/checkout/Checkout_Addresses.html:127
-#: shop/templates/profile/profile_addresses.html:39 shop/views.py:723
+#: shop/templates/profile/profile_addresses.html:39 shop/views.py:724
 msgid "Delete"
 msgstr "Удалить"
 
@@ -532,32 +533,51 @@ msgstr "Сохранить"
 msgid "Please select a shipping address first"
 msgstr "Пожалуйста, сначала выберите адрес доставки"
 
-#: shop/templates/checkout/Checkout_Addresses.html:739 shop/views.py:696
+#: shop/templates/checkout/Checkout_Addresses.html:739 shop/views.py:697
 msgid "The address has been successfully added!"
 msgstr "Адрес успешно добавлен!"
 
-#: shop/templates/checkout/Checkout_Addresses.html:753 shop/views.py:695
+#: shop/templates/checkout/Checkout_Addresses.html:753 shop/views.py:696
 msgid "Are you sure you want to delete this address?"
 msgstr "Вы уверены, что хотите удалить этот адрес?"
 
-#: shop/templates/checkout/Checkout_Addresses.html:839
-msgid "Order will be delivered to your email"
-msgstr "Заказ будет доставлен на вашу электронную почту"
-
-#: shop/templates/checkout/Checkout_Addresses.html:869
+#: shop/templates/checkout/Checkout_Addresses.html:889
+#: shop/templates/checkout/Checkout_Order_Review.html:371
 #: shop/templates/checkout/Checkout_Payment_Type.html:370
 msgid "You have to add at least 1 item to finish order"
 msgstr "Чтобы завершить заказ, вам необходимо добавить хотя бы 1 товар."
 
-#: shop/templates/checkout/Checkout_Addresses.html:873
+#: shop/templates/checkout/Checkout_Addresses.html:893
 msgid "You didn't provide billing address"
 msgstr "Вы не указали платежный адрес"
 
-#: shop/templates/checkout/Checkout_Addresses.html:877
+#: shop/templates/checkout/Checkout_Addresses.html:897
 msgid "You didn't provide shipping address"
 msgstr "Вы не указали адрес доставки"
 
+#: shop/templates/checkout/Checkout_Order_Review.html:30
+#| msgid "Order by"
+msgid "Order review"
+msgstr "Обзор заказа"
+
+#: shop/templates/checkout/Checkout_Order_Review.html:36
+msgid "Review my order"
+msgstr "Просмотрите мой заказ"
+
+#: shop/templates/checkout/Checkout_Order_Review.html:46
+msgid "View Order Details (PDF)"
+msgstr "Просмотреть данные заказа (PDF)"
+
+#: shop/templates/checkout/Checkout_Order_Review.html:52
+msgid "Submit and send order"
+msgstr "Отправить и отправить заказ"
+
+#: shop/templates/checkout/Checkout_Order_Review.html:343
+msgid "Order will be delivered to your email"
+msgstr "Заказ будет доставлен на вашу электронную почту"
+
 #: shop/templates/checkout/Checkout_Payment_Type.html:30
+#: shop/views_scripts/checkout_cart_views.py:839
 msgid "Payment type"
 msgstr "Оплата"
 
@@ -839,7 +859,7 @@ msgid "Catalogs"
 msgstr "Каталоги"
 
 #: shop/templates/profile/profile_chat.html:15
-#: shop/views_scripts/checkout_cart_views.py:573
+#: shop/views_scripts/checkout_cart_views.py:606
 msgid "Order"
 msgstr "Заказ"
 
@@ -913,12 +933,12 @@ msgid "Favorite products"
 msgstr "Любимые продукты"
 
 #: shop/templates/profile/profile_favourites.html:126
-#: shop/templates/profile/profile_favourites.html:312 shop/views.py:676
+#: shop/templates/profile/profile_favourites.html:312 shop/views.py:677
 msgid "Remove from favorites"
 msgstr "Удалить из избранного"
 
 #: shop/templates/profile/profile_favourites.html:126
-#: shop/templates/profile/profile_favourites.html:313 shop/views.py:673
+#: shop/templates/profile/profile_favourites.html:313 shop/views.py:674
 msgid "Add to favorites"
 msgstr "Добавить в избранное"
 
@@ -976,12 +996,10 @@ msgid "My Invoices"
 msgstr "Мои счета"
 
 #: shop/templates/profile/profile_my_invoices.html:12
-#| msgid "Pendant"
 msgid "Pending"
 msgstr "В ожидании оплаты"
 
 #: shop/templates/profile/profile_my_invoices.html:13
-#| msgid "directory"
 msgid "History"
 msgstr "История"
 
@@ -999,7 +1017,6 @@ msgid "Created"
 msgstr "Созданный"
 
 #: shop/templates/profile/profile_my_invoices.html:25
-#| msgid "Actions"
 msgid "Action"
 msgstr "Действия"
 
@@ -1054,7 +1071,8 @@ msgid "Order ID"
 msgstr "Идентификатор заказа"
 
 #: shop/templates/profile/profile_orders.html:16
-#: shop/views_scripts/checkout_cart_views.py:578
+#: shop/views_scripts/checkout_cart_views.py:611
+#: shop/views_scripts/checkout_cart_views.py:840
 msgid "Date"
 msgstr "Дата"
 
@@ -1063,7 +1081,8 @@ msgid "Total price"
 msgstr "Общая стоимость"
 
 #: shop/templates/profile/profile_orders.html:18
-#: shop/views_scripts/checkout_cart_views.py:719
+#: shop/views_scripts/checkout_cart_views.py:752
+#: shop/views_scripts/checkout_cart_views.py:931
 msgid "Shipping price"
 msgstr "Цена доставки"
 
@@ -4318,7 +4337,7 @@ msgstr "Радиус:"
 msgid "Search"
 msgstr "Поиск"
 
-#: shop/templates/shop_page.html:65 shop/views.py:660
+#: shop/templates/shop_page.html:65 shop/views.py:661
 msgid "Plating"
 msgstr "Покрытие"
 
@@ -4327,24 +4346,24 @@ msgid "Stone"
 msgstr "Камень"
 
 #: shop/templates/shop_page.html:82
-#: shop/templates/widgets/filters_section.html:103 shop/views.py:653
+#: shop/templates/widgets/filters_section.html:103 shop/views.py:654
 msgid "Size"
 msgstr "Размер"
 
-#: shop/templates/shop_page.html:93 shop/views.py:670
+#: shop/templates/shop_page.html:93 shop/views.py:671
 msgid "Product width"
 msgstr "Ширина продукта"
 
-#: shop/templates/shop_page.html:103 shop/views.py:671
+#: shop/templates/shop_page.html:103 shop/views.py:672
 msgid "Product height"
 msgstr "Высота продукта"
 
-#: shop/templates/shop_page.html:114 shop/views.py:672
+#: shop/templates/shop_page.html:114 shop/views.py:673
 msgid "Chain length"
 msgstr "Длина подвески"
 
 #: shop/templates/shop_page.html:134 shop/templates/shop_page.html:140
-#: shop/views.py:649
+#: shop/views.py:650
 msgid "In stock"
 msgstr "В наличии"
 
@@ -4352,11 +4371,11 @@ msgstr "В наличии"
 msgid "Out of stock"
 msgstr "Распродано"
 
-#: shop/templates/shop_page.html:142 shop/views.py:650
+#: shop/templates/shop_page.html:142 shop/views.py:651
 msgid "Less than 5 pieces left!"
 msgstr "Осталось меньше 5 штук!"
 
-#: shop/templates/shop_page.html:151 shop/views.py:667
+#: shop/templates/shop_page.html:151 shop/views.py:668
 msgid "Add to cart"
 msgstr "Добавить в корзину"
 
@@ -4364,11 +4383,11 @@ msgstr "Добавить в корзину"
 msgid "Oops... searched product is not available"
 msgstr "К сожалению... искомый товар недоступен"
 
-#: shop/templates/shop_page.html:273 shop/views.py:657
+#: shop/templates/shop_page.html:273 shop/views.py:658
 msgid "An error occured"
 msgstr "Произошла ошибка"
 
-#: shop/templates/shop_page.html:286 shop/views.py:655
+#: shop/templates/shop_page.html:286 shop/views.py:656
 msgid ""
 "Quantity number has to be less than or equal to quantity number in stock or "
 "and be greater than 0"
@@ -4376,7 +4395,7 @@ msgstr ""
 "Количество должно быть меньше или равно количеству количества на складе или "
 "быть больше 0."
 
-#: shop/templates/shop_page.html:296 shop/views.py:669
+#: shop/templates/shop_page.html:296 shop/views.py:670
 msgid "Maximum items for pre-order is 20, minimum is 1"
 msgstr "Максимум товаров для предзаказа — 20, минимум — 1."
 
@@ -4448,15 +4467,15 @@ msgstr "Материал покрытия"
 #: shop/templates/widgets/filters_section.html:61
 #: shop/templates/widgets/filters_section.html:78
 #: shop/templates/widgets/filters_section.html:98
-#: shop/templates/widgets/filters_section.html:124 shop/views.py:679
+#: shop/templates/widgets/filters_section.html:124 shop/views.py:680
 msgid "Reset this group"
 msgstr "Сбросить эту группу"
 
-#: shop/templates/widgets/filters_section.html:65 shop/views.py:661
+#: shop/templates/widgets/filters_section.html:65 shop/views.py:662
 msgid "Base material"
 msgstr "Базовый материал"
 
-#: shop/templates/widgets/filters_section.html:81 shop/views.py:659
+#: shop/templates/widgets/filters_section.html:81 shop/views.py:660
 msgid "Crystal color"
 msgstr "Кристал"
 
@@ -4543,72 +4562,73 @@ msgstr "Адреса"
 msgid "COLLECTIONS"
 msgstr "КОЛЛЕКЦИИ"
 
-#: shop/views.py:651
+#: shop/views.py:652
 msgid "Plating Material"
 msgstr "Материал покрытия"
 
-#: shop/views.py:652
+#: shop/views.py:653
 msgid "Stone color"
 msgstr "Цвет камня"
 
-#: shop/views.py:656
+#: shop/views.py:657
 msgid "Processing"
 msgstr "Обработка"
 
-#: shop/views.py:658
+#: shop/views.py:659
 msgid "Product successfully added to your shopping cart"
 msgstr "Товар успешно добавлен в корзину"
 
-#: shop/views.py:662 shop/views_scripts/checkout_cart_views.py:674
-#: shop/views_scripts/checkout_cart_views.py:676
+#: shop/views.py:663 shop/views_scripts/checkout_cart_views.py:707
+#: shop/views_scripts/checkout_cart_views.py:709
+#: shop/views_scripts/checkout_cart_views.py:890
 msgid "Quantity"
 msgstr "Количество"
 
-#: shop/views.py:663
+#: shop/views.py:664
 msgid "Number of items in your cart:"
 msgstr "Количество товаров в корзине:"
 
-#: shop/views.py:668
+#: shop/views.py:669
 msgid "This item is only available for pre-order!"
 msgstr "Этот товар доступен только для предзаказа!"
 
-#: shop/views.py:674
+#: shop/views.py:675
 msgid "No items found"
 msgstr "Элементы не найдены"
 
-#: shop/views.py:675
+#: shop/views.py:676
 msgid "Current page"
 msgstr "Текущая страница"
 
-#: shop/views.py:677
+#: shop/views.py:678
 msgid "Copy link"
 msgstr "Копировать ссылку"
 
-#: shop/views.py:678
+#: shop/views.py:679
 msgid "Copied!"
 msgstr "Скопировано!"
 
-#: shop/views.py:680
+#: shop/views.py:681
 msgid "Similar products"
 msgstr "Подобные продукты"
 
-#: shop/views.py:681
+#: shop/views.py:682
 msgid "Turn off the magnifying glass"
 msgstr "Выключите увеличительное стекло"
 
-#: shop/views.py:682
+#: shop/views.py:683
 msgid "Turn on the magnifying glass"
 msgstr "Включить увеличительное стекло"
 
-#: shop/views.py:683
+#: shop/views.py:684
 msgid "Back to shop"
 msgstr "Вернуться в магазин"
 
-#: shop/views.py:684
+#: shop/views.py:685
 msgid "Cart is empty"
 msgstr "Корзина пуста"
 
-#: shop/views.py:685
+#: shop/views.py:686
 msgid ""
 "You cant delete items during checkout. Go back to shop pages to change your "
 "cart"
@@ -4616,39 +4636,39 @@ msgstr ""
 "Вы не можете удалять товары во время оформления заказа. Вернитесь на "
 "страницы магазина, чтобы изменить корзину."
 
-#: shop/views.py:686
+#: shop/views.py:687
 msgid "Remove from cart"
 msgstr "Удалить из корзины"
 
-#: shop/views.py:687
+#: shop/views.py:688
 msgid "Please enter a valid amount."
 msgstr "Пожалуйста, введите действительную сумму."
 
-#: shop/views.py:688
+#: shop/views.py:689
 msgid "Show details"
 msgstr "Показать детали"
 
-#: shop/views.py:689
+#: shop/views.py:690
 msgid "Hide details"
 msgstr "Скрыть детали"
 
-#: shop/views.py:691
+#: shop/views.py:692
 msgid "Image"
 msgstr "Изображение"
 
-#: shop/views.py:692
+#: shop/views.py:693
 msgid "Description"
 msgstr "Описание"
 
-#: shop/views.py:694
+#: shop/views.py:695
 msgid "Summary"
 msgstr "Краткое содержание"
 
-#: shop/views.py:697
+#: shop/views.py:698
 msgid "The address has been successfully updated!"
 msgstr "Адрес успешно обновлен!"
 
-#: shop/views.py:698
+#: shop/views.py:699
 msgid ""
 "We use cookies to personalize content and improve your browsing experience. "
 "By continuing, you accept our cookie policy."
@@ -4656,131 +4676,130 @@ msgstr ""
 "Мы используем файлы cookie для персонализации контента и улучшения вашего "
 "опыта просмотра. Продолжая, вы принимаете нашу политику конфиденциальности."
 
-#: shop/views.py:699
+#: shop/views.py:700
 msgid "Decline"
 msgstr "Отклонить"
 
-#: shop/views.py:700
+#: shop/views.py:701
 msgid "Privacy Policy"
 msgstr "Политика конфиденциальности"
 
-#: shop/views.py:701
+#: shop/views.py:702
 msgid "Accept"
 msgstr "Принять"
 
-#: shop/views.py:703
+#: shop/views.py:704
 msgid "Store address update error"
 msgstr "Ошибка обновления адреса хранения"
 
-#: shop/views.py:704
+#: shop/views.py:705
 msgid "Store address delete error"
 msgstr "Ошибка удаления адреса хранения"
 
-#: shop/views.py:705
+#: shop/views.py:706
 msgid "Store address create error"
 msgstr "Адрес магазина вызвал ошибку"
 
-#: shop/views.py:706
+#: shop/views.py:707
 msgid "Unknown error"
 msgstr "Неизвестная ошибка"
 
-#: shop/views.py:707
+#: shop/views.py:708
 msgid "The store address has been successfully added."
 msgstr "Адрес магазина был успешно добавлен."
 
-#: shop/views.py:708
+#: shop/views.py:709
 msgid "Store address with ID"
 msgstr "Сохранить адрес с ID"
 
-#: shop/views.py:709
+#: shop/views.py:710
 msgid "was successfully added"
 msgstr "был успешно добавлен"
 
-#: shop/views.py:710
+#: shop/views.py:711
 msgid "was successfully updated"
 msgstr "был успешно обновлен"
 
-#: shop/views.py:711
+#: shop/views.py:712
 msgid "was successfully deleted"
 msgstr "был успешно удален"
 
-#: shop/views.py:712
+#: shop/views.py:713
 msgid "Show route"
 msgstr "Показать маршрут"
 
-#: shop/views.py:713
+#: shop/views.py:714
 msgid "Please enter the address, zip / postal code, city or country."
 msgstr ""
 "Пожалуйста, введите адрес, почтовый индекс / почтовый код, город или страну."
 
-#: shop/views.py:714
+#: shop/views.py:715
 msgid "No stores were found in the area."
 msgstr "В этом регионе не было найдено магазинов."
 
-#: shop/views.py:715
+#: shop/views.py:716
 msgid "An error occurred while loading stores."
 msgstr "Произошла ошибка во время загрузки магазинов."
 
-#: shop/views.py:716
+#: shop/views.py:717
 msgid "Network error when loading stores."
 msgstr "Сетевая ошибка при загрузке хранилища."
 
-#: shop/views.py:717
+#: shop/views.py:718
 msgid "Error loading stores."
 msgstr "Ошибка загрузки хранилища."
 
-#: shop/views.py:720
+#: shop/views.py:721
 msgid "Loading..."
 msgstr "Загрузка ..."
 
-#: shop/views.py:725
+#: shop/views.py:726
 msgid "TEST STROKE"
 msgstr "Тестовый ход"
 
-#: shop/views.py:728
+#: shop/views.py:729
 msgid "Type of written quantity has to be numeric and greater than 0"
 msgstr "Тип записываемого количества должен быть числовым и больше 0."
 
-#: shop/views.py:729
+#: shop/views.py:730
 msgid "Quantity has to be less than maximum on storage"
 msgstr "Количество должно быть меньше максимального на складе."
 
-#: shop/views.py:730
+#: shop/views.py:731
 msgid "Do you really want to delete this product from your cart?"
 msgstr "Вы действительно хотите удалить этот товар из корзины?"
 
-#: shop/views.py:731
+#: shop/views.py:732
 msgid "Confirmed"
 msgstr "Подтверждено!"
 
-#: shop/views.py:732
+#: shop/views.py:733
 msgid "You must add at least 1 order to your cart to proceed to checkout"
 msgstr ""
 "Вы должны добавить как минимум 1 заказ в свою корзину, чтобы продолжить "
 "оформление заказа"
 
-#: shop/views.py:734
+#: shop/views.py:735
 msgid "The product is made of silver"
 msgstr "Продукт изготовлен из серебра"
 
-#: shop/views.py:735
+#: shop/views.py:736
 msgid "To enlarge the picture, hover your mouse over the image"
 msgstr "Чтобы увеличить изображение, наведите свою мышь на изображение"
 
-#: shop/views.py:736
+#: shop/views.py:737
 msgid "The product is made of steel"
 msgstr "Продукт изготовлен из стали"
 
-#: shop/views.py:737
-#| msgid "May"
+#: shop/views.py:738
 msgid "Pay"
 msgstr "Платить"
 
-#: shop/views.py:762
+#: shop/views.py:763
 msgid "Welcome to my site."
 msgstr "Добро пожаловать на мой сайт."
 
-#: shop/views_scripts/checkout_cart_views.py:451
+#: shop/views_scripts/checkout_cart_views.py:484
 msgid ""
 "Dear Customer,\n"
 "\n"
@@ -4796,7 +4815,7 @@ msgstr ""
 "            Ваш заказ успешно обработан, и квитанция приложена к этому письму.\n"
 "            Номер вашего заказа"
 
-#: shop/views_scripts/checkout_cart_views.py:457
+#: shop/views_scripts/checkout_cart_views.py:490
 #: shop/views_scripts/profile_orders_pay.py:124
 msgid ""
 "Thank you for choosing Oliver Weber. We look forward to seeing you again!\n"
@@ -4809,15 +4828,16 @@ msgstr ""
 "            С уважением,  \n"
 "            Команда Oliver Weber"
 
-#: shop/views_scripts/checkout_cart_views.py:463
+#: shop/views_scripts/checkout_cart_views.py:496
 msgid "Thank You for Your Order with Oliver Weber!"
 msgstr "Благодарим вас за заказ у Оливера Вебера!"
 
-#: shop/views_scripts/checkout_cart_views.py:556
+#: shop/views_scripts/checkout_cart_views.py:589
+#: shop/views_scripts/checkout_cart_views.py:820
 msgid "Thank you for shopping with Oliver Weber Shop."
 msgstr "Благодарим вас за покупку в магазине Oliver Weber."
 
-#: shop/views_scripts/checkout_cart_views.py:558
+#: shop/views_scripts/checkout_cart_views.py:591
 msgid ""
 "You'll find your Order Summary below. If you have any questions regarding "
 "your order, please contact us."
@@ -4825,80 +4845,108 @@ msgstr ""
 "Ниже вы найдете сводную информацию о своем заказе. Если у вас есть какие-"
 "либо вопросы относительно вашего заказа, пожалуйста, свяжитесь с нами."
 
-#: shop/views_scripts/checkout_cart_views.py:572
+#: shop/views_scripts/checkout_cart_views.py:605
 msgid "Order Status"
 msgstr "Статус заказа"
 
-#: shop/views_scripts/checkout_cart_views.py:574
+#: shop/views_scripts/checkout_cart_views.py:607
 msgid "Shipping Date"
 msgstr "Дата доставки"
 
-#: shop/views_scripts/checkout_cart_views.py:575
+#: shop/views_scripts/checkout_cart_views.py:608
 msgid "Receipt"
 msgstr "Квитанция"
 
-#: shop/views_scripts/checkout_cart_views.py:577
+#: shop/views_scripts/checkout_cart_views.py:610
 msgid "Customer Code"
 msgstr "Код клиента"
 
-#: shop/views_scripts/checkout_cart_views.py:585
+#: shop/views_scripts/checkout_cart_views.py:618
+#: shop/views_scripts/checkout_cart_views.py:849
 msgid "Phone:"
 msgstr "Телефон:"
 
-#: shop/views_scripts/checkout_cart_views.py:638
+#: shop/views_scripts/checkout_cart_views.py:671
 msgid "Customer Billing Details"
 msgstr "Платежные данные клиента"
 
-#: shop/views_scripts/checkout_cart_views.py:638
+#: shop/views_scripts/checkout_cart_views.py:671
 msgid "Delivery Details"
 msgstr "Детали доставки"
 
-#: shop/views_scripts/checkout_cart_views.py:639
+#: shop/views_scripts/checkout_cart_views.py:672
 msgid "Contact Phone"
 msgstr "Контактный телефон"
 
-#: shop/views_scripts/checkout_cart_views.py:640
+#: shop/views_scripts/checkout_cart_views.py:673
 msgid "Ship-To Code"
 msgstr "Код доставки"
 
-#: shop/views_scripts/checkout_cart_views.py:641
+#: shop/views_scripts/checkout_cart_views.py:674
 msgid "Billing Address"
 msgstr "Адрес для выставления счета"
 
-#: shop/views_scripts/checkout_cart_views.py:643
+#: shop/views_scripts/checkout_cart_views.py:676
 msgid "Ship-To Name"
 msgstr "Имя получателя"
 
-#: shop/views_scripts/checkout_cart_views.py:648
+#: shop/views_scripts/checkout_cart_views.py:681
 msgid "Shipping Address"
 msgstr "Адрес доставки"
 
-#: shop/views_scripts/checkout_cart_views.py:673
-#: shop/views_scripts/checkout_cart_views.py:675
+#: shop/views_scripts/checkout_cart_views.py:706
+#: shop/views_scripts/checkout_cart_views.py:708
+#: shop/views_scripts/checkout_cart_views.py:889
 msgid "Product"
 msgstr "Продукт"
 
-#: shop/views_scripts/checkout_cart_views.py:673
+#: shop/views_scripts/checkout_cart_views.py:706
+#: shop/views_scripts/checkout_cart_views.py:889
 msgid "Photo"
 msgstr "Фото"
 
-#: shop/views_scripts/checkout_cart_views.py:674
-#: shop/views_scripts/checkout_cart_views.py:676
+#: shop/views_scripts/checkout_cart_views.py:707
+#: shop/views_scripts/checkout_cart_views.py:709
+#: shop/views_scripts/checkout_cart_views.py:890
 msgid "Item Details"
 msgstr "Детали товара"
 
-#: shop/views_scripts/checkout_cart_views.py:675
-#: shop/views_scripts/checkout_cart_views.py:677
+#: shop/views_scripts/checkout_cart_views.py:708
+#: shop/views_scripts/checkout_cart_views.py:710
+#: shop/views_scripts/checkout_cart_views.py:891
 msgid "Unit Price"
 msgstr "Цена за единицу товара"
 
-#: shop/views_scripts/checkout_cart_views.py:720
+#: shop/views_scripts/checkout_cart_views.py:753
+#: shop/views_scripts/checkout_cart_views.py:932
 msgid "Shipping VAT"
 msgstr "VAT доставки"
 
-#: shop/views_scripts/checkout_cart_views.py:722
+#: shop/views_scripts/checkout_cart_views.py:755
+#: shop/views_scripts/checkout_cart_views.py:934
 msgid "TOTAL"
 msgstr "ВСЕГО"
+
+#: shop/views_scripts/checkout_cart_views.py:822
+#| msgid ""
+#| "You'll find your Order Summary below. If you have any questions regarding "
+#| "your order, please contact us."
+msgid ""
+"You'll find your Order Summary Review below. If you have any questions "
+"regarding your order, please contact us."
+msgstr ""
+"Вы найдете обзор сводного заказа ниже. Если у вас есть какие -либо вопросы "
+"относительно вашего заказа, пожалуйста, свяжитесь с нами."
+
+#: shop/views_scripts/checkout_cart_views.py:841
+#| msgid "Customer Code"
+msgid "Customer email"
+msgstr "Почта клиента"
+
+#: shop/views_scripts/checkout_cart_views.py:842
+#| msgid "Customer Code"
+msgid "Customer name"
+msgstr "Имя клиента"
 
 #: shop/views_scripts/manage_invoices/invoices_managing.py:72
 msgid "Your invoice:"
